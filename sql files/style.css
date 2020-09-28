@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.contact-title {
+    color: rgb(59, 44, 44);
+    text-transform: uppercase;
+    margin-top: 100px;
+}
+
+.contact-title h1 {
+    font-size: 32px;
+    line-height: 10px;
+}
+
+form {
+    margin-top: 50px;
+}
+
+.form-control {
+    width: 600px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    color: rgb(39, 24, 24);
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+/*FOR MESSAGE FIELD HEIGHT*/
+.form-control-message {
+    width: 600px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid #fff;
+    outline: none;
+    border-bottom: 1px solid gray;
+    color: rgb(39, 24, 24);
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+/*FOR MESSAGE FIELD HEIGHT END*/
+
+input {
+    height: 45px;
+}
+
+form .submit {
+    background: rgb(95, 67, 67);
+    border-color: transparent;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: 120px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+form .submit:hover {
+    background-color: rgb(75, 65, 65);
+    cursor: pointer;
+}
+
