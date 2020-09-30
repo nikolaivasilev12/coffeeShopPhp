@@ -2,32 +2,71 @@ DROP DATABASE IF EXISTS coffeeshopDB;
 CREATE DATABASE coffeeshopDB;
 USE coffeeshopDB;
 
---Change accordingly once Soren approves our schema
+
+CREATE TABLE CUSTOMER
+(
+    `customerID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `email` CHAR(255) NOT NULL,
+    `password` VARCHAR(20) NOT NULL,
+    `fname` VARCHAR(255) NOT NULL,
+    `lname` VARCHAR (255) NOT NULL,
+    `phoneNr` CHAR(11) NOT NULL
+);
 
 CREATE TABLE PRODUCT
 (
-    `genreID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `productID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
-    `description` VARCHAR(255) NULL
+    `description` VARCHAR (255) NOT NULL,
+    `price` INT(4) NOT NULL,
+    `stock` INT NOT NULL,
+    `origin` VARCHAR (255) NOT NULL,
+    `type` VARCHAR (255) NOT NULL,
+    `isSpecial` BOOLEAN NULL
+);
+
+CREATE TABLE POSTALCODE 
+(
+    `postalCode` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `city` VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE ADRESS 
+(
+    `adressID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    FOREIGN KEY (code) REFERENCES POSTALCODE(postalCode)
+);
+
+CREATE TABLE ORDER
+(
+    `orderID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    FOREIGN KEY (customerID) REFERENCES CUSTOMER(customerID),
+    FOREIGN KEY (adressID) REFERENCES ADRESS(adressID),
+    `date` DATETIME NOT NULL,
+    `amount` VARCHAR (4) NOT NULL
+);
+
+CREATE TABLE ORDERHASPRODUCT
+(
+    `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    FOREIGN KEY (price) REFERENCES PRODUCT(price),
+    FOREIGN KEY (amount) REFERENCES ORDER(amount),
+    FOREIGN KEY (orderID) REFERENCES ORDER(orderID),
+    FOREIGN KEY (productID) REFERENCES PRODUCT(productID)
 );
 
 CREATE TABLE CATEGORY
 (
-    `movieID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `name` VARCHAR(255) NOT NULL,
-    `length` INT NULL,
-    `rating` FLOAT NULL,
-    `genre` INT NULL,
-    FOREIGN KEY (genre) REFERENCES MovieGenre(genreID)
+    `categoryID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` VARCHAR(50) NOT NULL,
+    `description` TEXT
 );
 
-CREATE TABLE CUSTOMER
+CREATE TABLE PRODUCTHASCATEGORY
 (
-    `actorID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `gender` CHAR NULL,
-    `dateOfBirth` DATE,
-    `fname` VARCHAR (100) NOT NULL,
-    `lname` VARCHAR (255) NOT NULL
+    `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    FOREIGN KEY (productID) REFERENCES PRODUCT(productID),
+    FOREIGN KEY (categoryID) REFERENCES CATEGORY(categoryID)
 );
 
 CREATE TABLE ActorAppearsIn
@@ -39,8 +78,3 @@ CREATE TABLE ActorAppearsIn
       FOREIGN KEY (movieID) REFERENCES Movie (movieID)
 );
 
-
-INSERT INTO MovieGenre (genreID, name, description) VALUES (NULL, 'Action', 'Action Description');
-INSERT INTO Movie (movieID, name, length, rating, genre) VALUES (NULL, 'INCEPTION', 230, 7.5, 1);
-INSERT INTO Actor (actorID, gender, dateOfBirth, fname, lname) VALUES (NULL, 'M', '11-11-1974', 'Leaondardo', 'DiCaprio');
-INSERT INTO ActorAppearsIn (recID, actorID, movieID) VALUES (NULL, 1, 1);
