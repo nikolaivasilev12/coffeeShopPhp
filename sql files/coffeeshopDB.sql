@@ -75,4 +75,39 @@ CREATE TABLE PRODUCTHASCATEGORY
     FOREIGN KEY (categoryID) REFERENCES CATEGORY(categoryID)
 );
 
+CREATE TABLE RATING
+(
+    `ratingID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    productID INT NOT NULL,
+    customerID INT NOT NULL,
+    `ratingValue` INT NOT NULL,
+    FOREIGN KEY (productID) REFERENCES PRODUCT (productID),
+    FOREIGN KEY (customerID) REFERENCES CUSTOMER (customerID)
+);
+
+CREATE TABLE COMPANYDATA
+(
+    `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `companyDescription` TEXT,
+    `adress` VARCHAR(255),
+    `phone` INT,
+    `email` VARCHAR(255)
+);
+
+CREATE TABLE WORKDAYS 
+(
+    `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    companyID INT NOT NULL,
+    `startingHour` DATETIME,
+    `closingHour` DATETIME,
+    `openDay` VARCHAR(255),
+    FOREIGN KEY (`companyID`) REFERENCES COMPANYDATA (ID)
+);
+
+CREATE TABLE NEWS
+(
+    `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `content` TEXT,
+    `date` DATETIME
+);
 
