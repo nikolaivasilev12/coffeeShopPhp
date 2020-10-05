@@ -7,7 +7,7 @@ CREATE TABLE CUSTOMER
 (
     `customerID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `email` CHAR(255) NOT NULL,
-    `password` VARCHAR(20) NOT NULL,
+    `password` VARCHAR(250) NOT NULL,
     `fname` VARCHAR(255) NOT NULL,
     `lname` VARCHAR (255) NOT NULL,
     `phoneNr` CHAR(11) NOT NULL

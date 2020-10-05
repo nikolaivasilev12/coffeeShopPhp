@@ -10,7 +10,7 @@ class DBController
         $pass = $this->pass;
 
         try {
-            $this->DBController = new PDO('mysql:host=localhost;dbname=coffeeshop;charset=utf8', $user, $pass);
+            $this->DBController = new PDO('mysql:host=localhost;dbname=coffeeshopdb;charset=utf8', $user, $pass);
             return $this->DBController;
         } catch (PDOException $err) {
             echo "Error!: " . $err->getMessage() . "<br/>";

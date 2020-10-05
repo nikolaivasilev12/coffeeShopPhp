@@ -11,6 +11,8 @@ class LoginUser
         if($query->execute()){
             $found_user = $query->fetchAll();
             if (count($found_user)==1){
+                echo "$password"; 
+                print_r ($found_user[0]['password']);
                 if(password_verify($password, $found_user[0]['password'])){
                     $_SESSION['customerID'] = $found_user[0]['customerID'];
                     $_SESSION['email'] = $found_user[0]['email'];
