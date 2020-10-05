@@ -1,5 +1,5 @@
 <?php
-/*spl_autoload_register(function ($class)
+spl_autoload_register(function ($class)
 {include"classes/".$class.".php";});
 $session = new SessionHandle();
 if ($session->confirm_logged_in()) {
@@ -9,7 +9,7 @@ if ($session->confirm_logged_in()) {
 if (isset($_POST['submit'])) { // Form has been submitted.
     $newUser = new NewUser($_POST['user'],$_POST['pass']);
     $msg = $newUser->message;
-}*/
+}
 ?>
 <html>
 <head>
