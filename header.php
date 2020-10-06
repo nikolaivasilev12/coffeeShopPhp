@@ -1,3 +1,12 @@
+<?php
+spl_autoload_register(function ($class)
+{include"classes/".$class.".php";});
+//check of the user is logged in:
+$session = new SessionHandle();
+if ($session->confirm_logged_in()) {
+    $redirect = new Redirector("login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <header>
@@ -42,10 +51,18 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0 px-4">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
+            <button type="button" class="btn btn-danger"><a class="link" href="login.php?logout=1">Logout!</a> </button>
         </div>
     </nav>
+    <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>
 </header>
+<style lang="css">
+.link {
+    text-decoration: none !important;
+    color: #ffffff !important;
+}
+</style>

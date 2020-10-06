@@ -7,7 +7,7 @@ class LoginUser
         $db = new DBController();
         $email = trim($email);
         $password = trim($password);
-        $query = $db->DBController->prepare("SELECT customerID, email, `password` FROM customer WHERE email = '{$email}' LIMIT 1");
+        $query = $db->DBController->prepare("SELECT customerID, email, `password`, fname FROM customer WHERE email = '{$email}' LIMIT 1");
         if($query->execute()){
             $found_user = $query->fetchAll();
             if (count($found_user)==1){
@@ -16,7 +16,8 @@ class LoginUser
                 if(password_verify($password, $found_user[0]['password'])){
                     $_SESSION['customerID'] = $found_user[0]['customerID'];
                     $_SESSION['email'] = $found_user[0]['email'];
-                    $redirect = new Redirector("frontpage.php");
+                    $_SESSION['fname'] = $found_user[0]['fname'];
+                    $redirect = new Redirector("index.php");
                 } else {
                     // username/password combo was not found in the database
                     $this->message = "Username/password combination incorrect.<br />
