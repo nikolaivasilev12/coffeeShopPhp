@@ -11,7 +11,6 @@ function __autoload($class_name)
 }
 
 $PageTitle = "Coffee Shop";
-include("header.php");
 
 function customPageHeader()
 {

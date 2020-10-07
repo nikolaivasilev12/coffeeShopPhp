@@ -4,7 +4,7 @@ spl_autoload_register(function ($class)
 //check of the user is logged in:
 $session = new SessionHandle();
 if ($session->confirm_logged_in()) {
-    $redirect = new Redirector("login.php");
+    $redirect = new Redirector("login");
 }
 ?>
 <!DOCTYPE html>
@@ -55,7 +55,7 @@ if ($session->confirm_logged_in()) {
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <button type="button" class="btn btn-danger"><a class="link" href="login.php?logout=1">Logout!</a> </button>
+            <button type="button" class="btn btn-danger"><a class="link" href="logout">Logout!</a> </button>
         </div>
     </nav>
     <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>

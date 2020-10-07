@@ -12,3 +12,12 @@ Route::set('about-us', function() {
 Route::set('contact-us', function() {
     ContactUs::CreateView('ContactUs');
 });
+
+Route::set('login', function() {
+    LoginUser::CreateView('Login');
+});
+
+Route::set('logout', function() {
+    new Logoutor;
+    Logoutor::CreateView('Login');
+});

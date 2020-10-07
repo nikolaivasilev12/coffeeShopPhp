@@ -1,5 +1,5 @@
 <?php
-class LoginUser
+class LoginUser extends Controller
 {
     public $message;
     public function __construct($email, $password)
@@ -7,9 +7,8 @@ class LoginUser
         $db = new DBController();
         $email = trim($email);
         $password = trim($password);
-        $query = $db->DBController->prepare("SELECT customerID, email, `password`, fname FROM customer WHERE email = '{$email}' LIMIT 1");
-        if($query->execute()){
-            $found_user = $query->fetchAll();
+        $query = self::query("SELECT customerID, email, `password`, fname FROM customer WHERE email = '{$email}' LIMIT 1");
+            $found_user = $query;
             if (count($found_user)==1){
                 echo "$password"; 
                 print_r ($found_user[0]['password']);
@@ -27,6 +26,5 @@ class LoginUser
                 $this->message = "No such Username in the database.<br />
 				Please make sure your caps lock key is off and try again.";
             }
-        }
     }
 }

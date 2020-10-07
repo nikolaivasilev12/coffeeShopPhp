@@ -1,8 +1,9 @@
 <?php
-class Logoutor
+class Logoutor extends Controller
 {
     public function __construct()
     {
+    session_start();
     // Four steps to closing a session
     // (i.e. logging out)
 
