@@ -6,6 +6,7 @@ Route::set('index.php', function() {
 
 Route::set('about-us', function() {
     AboutUs::CreateView('AboutUs');
+    AboutUs::test();
 });
 
 Route::set('contact-us', function() {
