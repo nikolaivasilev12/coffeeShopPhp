@@ -33,7 +33,7 @@ if ($session->confirm_logged_in()) {
                     <a class="nav-link" href="products">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about-us" tabindex="-1" aria-disabled="true">About us</a>
+                    <a class="nav-link" href="about-us" >About us</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 px-4">
