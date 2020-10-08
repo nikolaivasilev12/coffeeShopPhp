@@ -28,4 +28,5 @@ Route::set('logout', function() {
 
 Route::set('products', function() {
     Products::CreateView('Products');
+    // new Products();
 });
