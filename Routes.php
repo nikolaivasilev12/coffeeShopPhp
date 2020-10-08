@@ -4,6 +4,10 @@ Route::set('index.php', function() {
     Index::CreateView('Index');
 });
 
+Route::set('index', function() {
+    Index::CreateView('Index');
+});
+
 Route::set('about-us', function() {
     AboutUs::CreateView('AboutUs');
     AboutUs::test();
@@ -20,4 +24,8 @@ Route::set('login', function() {
 Route::set('logout', function() {
     new Logoutor;
     Logoutor::CreateView('Login');
+});
+
+Route::set('products', function() {
+    Products::CreateView('Products');
 });

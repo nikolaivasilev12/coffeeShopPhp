@@ -7,7 +7,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
     $logout = new Logoutor();
     $msg = "You are now logged out.";
 }elseif ($session->logged_in()) {
-    $redirect = new Redirector("index.php");
+    $redirect = new Redirector("index");
 }
 // START FORM PROCESSING
 if (isset($_POST['submit'])) { // Form has been submitted.
