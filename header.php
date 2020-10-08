@@ -1,6 +1,4 @@
 <?php
-spl_autoload_register(function ($class)
-{include"classes/".$class.".php";});
 //check of the user is logged in:
 $session = new SessionHandle();
 if ($session->confirm_logged_in()) {
@@ -30,7 +28,7 @@ if ($session->confirm_logged_in()) {
                     <a class="nav-link" href=".">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="products">Products</a>
+                    <a class="nav-link" href="categories">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about-us" >About us</a>
@@ -43,7 +41,6 @@ if ($session->confirm_logged_in()) {
             <button type="button" class="btn btn-danger"><a class="link" href="logout">Logout!</a> </button>
         </div>
     </nav>
-    <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>
 </header>
 <style lang="css">
 .link {

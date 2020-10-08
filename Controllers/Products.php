@@ -2,9 +2,12 @@
 
 class Products extends Controller
 {
-    public function getProducts() {
-        $productsArr = (self::query("SELECT * FROM product"));
-        return $productsArr;
+    public static function getProductsByCategory($category) {
+        $productsId = (self::query("SELECT productID FROM productHasCategory WHERE categoryID = '3'"));
+        foreach ($productsId as $value) {
+            $productByCategory = (self::query("SELECT * FROM product where productID = '$value[productID]'"));
+            return($productByCategory);
+        }
     }
 }
 

@@ -255,9 +255,15 @@ insert into CATEGORY (name, description) values ('War', 'Triple-buffered encompa
 -- PRODUCTHASCATEGORY
 
 insert into PRODUCTHASCATEGORY (productID, categoryID) values (1, 1);
-insert into PRODUCTHASCATEGORY (productID, categoryID) values (2, 2);
-insert into PRODUCTHASCATEGORY (productID, categoryID) values (3, 3);
-insert into PRODUCTHASCATEGORY (productID, categoryID) values (4, 4);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (4, 2);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (8, 2);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (11, 3);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (5, 4);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (12, 4);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (13, 4);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (10, 3);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (15, 3);
+insert into PRODUCTHASCATEGORY (productID, categoryID) values (6, 3);
 
 
 -- RATING

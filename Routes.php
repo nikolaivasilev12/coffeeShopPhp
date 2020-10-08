@@ -26,6 +26,10 @@ Route::set('logout', function() {
     Logoutor::CreateView('Login');
 });
 
+Route::set('categories', function() {
+    Products::CreateView('Categories');
+    // new Products();
+});
 Route::set('products', function() {
     Products::CreateView('Products');
     // new Products();
