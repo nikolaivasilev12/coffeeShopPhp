@@ -34,5 +34,10 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
     <input type="password" name="password" maxlength="30"/>
     <input type="submit" name="submit" value="Login"/>
 </form>
+<a href="new-user">
+    <div>
+        Create a new account
+    </div>
+</a>
 </body>
 </html>

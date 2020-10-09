@@ -34,3 +34,7 @@ Route::set('products', function() {
     Products::CreateView('Products');
     // new Products();
 });
+Route::set('new-user', function() {
+    Products::CreateView('newUser');
+    // new Products();
+});

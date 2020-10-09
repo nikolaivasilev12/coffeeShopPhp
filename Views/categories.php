@@ -25,7 +25,6 @@ include('header.php');
         if (isset($_POST['category'])) {
             $productsObj = new Products($_POST['category']);
             $products = $productsObj->productsArr;
-            // print_r($products);
             foreach ($products as $value) {
                 echo ('
         <div class="col-4">
