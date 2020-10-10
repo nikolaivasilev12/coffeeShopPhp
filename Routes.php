@@ -30,7 +30,7 @@ Route::set('categories', function() {
     Products::CreateView('Categories');
     // new Products();
 });
-Route::set('products', function() {
+Route::set('product', function() {
     Products::CreateView('Products');
     // new Products();
 });
