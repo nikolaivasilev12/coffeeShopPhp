@@ -8,22 +8,19 @@ include('header.php');
     <div class="row justify-content-center">
         <?php
         $catArr = new Categories();
-        // $products = new Products();
         foreach ($catArr->getCategory() as  $value) {
             echo ('
-            <form action="" method="post">
-                <button name="category" type="submit" value="' . $value['categoryID'] . '">' . $value['name'] . '</button>
-            </form>
-                ');
-                // <input name="category" type="submit" value="' . $value['categoryID'] . '">' . $value['name'] . '</input>
+                <a href="categories?categoryID=' . $value['categoryID'] . '">
+                    <button name="category" type="submit" value="' . $value['categoryID'] . '">' . $value['name'] . '</button>
+                </a>');
         }
         ?>
     </div>
     <div class="row justify-content-center">
         <?php
-        if (isset($_POST['category'])) {
+        if (isset($_GET['categoryID'])) {
             $productsObj = new Products();
-            $productsByCategory = $productsObj->getProductByCategory($_POST['category']);
+            $productsByCategory = $productsObj->getProductByCategory($_GET['categoryID']);
             foreach ($productsByCategory as $value) {
                 echo ('
         <div class="col-4">
@@ -32,7 +29,7 @@ include('header.php');
                 <h5 class="card-title">' . $value['name'] . '</h5>
                 <h6 class="card-subtitle mb-2 text-muted">ID: ' . $value['productID'] . '</h6>
                 <p class="card-text">' . $value['description'] . '</p>
-                <a href="product?productID='. $value['productID'] .'"> 
+                <a href="product?productID=' . $value['productID'] . '"> 
                     <button href="/email" class="card-link">Price:' . $value['price'] . '</button>
                 </a>
             </div>
