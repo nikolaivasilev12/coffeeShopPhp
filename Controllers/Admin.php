@@ -3,12 +3,10 @@
 class Admin extends Controller {
     
     public function getCategories() {
-        $categoriesArr = (self::query("SELECT * FROM category"));
-        return $categoriesArr;
+        return (self::query("SELECT * FROM category"));
     }
     public function getProducts() {
-        $productsArr = (self::query("SELECT * FROM product"));
-        return $productsArr;
+        return (self::query("SELECT * FROM product"));
     }
     public function updateCategory($name, $description, $categoryID) { 
         $name = trim($name);
