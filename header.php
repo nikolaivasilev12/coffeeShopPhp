@@ -33,6 +33,9 @@ if ($session->confirm_logged_in()) {
                 <li class="nav-item">
                     <a class="nav-link" href="about-us" >About us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin" >Admin</a>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 px-4">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

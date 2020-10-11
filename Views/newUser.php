@@ -26,7 +26,7 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 </form>
 <a href="login">
     <div>
-        Create a new account
+        Login Here
     </div>
 </a>
 </body>
