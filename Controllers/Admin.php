@@ -20,11 +20,19 @@ class Admin extends Controller {
         $price = trim($price);
         $stock = trim($stock);
         $origin = trim($origin);
-        self::query("UPDATE product SET name = '{$name}', description = '{$description}', price = '{$price}', stock = '{$stock}', origin = '{$origin}', type = '{$type}' WHERE productID = '{$productID}'");
+        self::query("UPDATE product SET name = '{$name}', description = '{$description}',
+        price = '{$price}', stock = '{$stock}', origin = '{$origin}', type = '{$type}' 
+        WHERE productID = '{$productID}'");
     }
     public function updateProductCategory($productID, $categoryID) {
-        //Not finished!!!
-        // self::query("UPDATE product SET name = '{$name}', description = '{$description}', price = '{$price}', stock = '{$stock}', origin = '{$origin}', type = '{$type}' WHERE productID = '{$productID}'");
+        $productHasCategory = self::query("SELECT * FROM producthascategory
+        WHERE productID = '{$productID}'");
+        if($productHasCategory){
+            self::query("UPDATE product SET name = '{$productID}', description = '{$categoryID}'");
+        } else {
+            self::query("INSERT INTO producthascategory (productID, categoryID)
+            VALUES ('{$productID}', '{$categoryID}')");
+        }
     }
     public function createCategory($name, $description){
         $name = trim($name);

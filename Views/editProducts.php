@@ -14,6 +14,9 @@ if (isset($_POST['update'])) {
 if (isset($_POST['delete'])) {
     $admin->deleteCategory($_POST['categoryID']);
 }
+if (isset($_POST['updateCat'])) {
+    $admin-> updateProductCategory($_POST['productID'],$_POST['categoryID']);
+}
 ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -72,12 +75,13 @@ if (isset($_POST['delete'])) {
                         <div class="col-10">
                             <h2> Select Category </h2>
                         </div>
+                        <input type="hidden" value="' . $productDetails['productID'] . '" name="productID"">
                         <div class="col-12">
-                            <select name="cars" id="cars" form="carform">
+                            <select name="categoryID"">
                             ');
                             foreach ($catObj->getCategory() as $value){
                                 echo('
-                                    <option value="'.$value['name'].'">'.$value['name'].'</option>
+                                    <option value="'.$value['categoryID'].'">'.$value['name'].'</option>
                                 ');
                             };
                             echo('
