@@ -35,3 +35,6 @@ Route::set('admin', function() {
 Route::set('edit-categories', function() {
     Admin::CreateView('editCategories');
 });
+Route::set('edit-products', function() {
+    Admin::CreateView('editProducts');
+});

@@ -26,9 +26,9 @@ if (isset($_POST['delete'])) {
                         <div class="col-10">
                             Category Name:<label class="mt-3 mb-0" for="' . $value['categoryID'] . '"><strong>' . $value['name'] . '</strong></label>
                             <input type="hidden" value="' . $value['categoryID'] . '" name="categoryID" class="form-control">
-                            <input type="text" name="name" class="form-control" id="' . $value['categoryID'] . '" placeholder="Category name">
+                            <input type="text" value="' . $value['name'] . '" name="name" class="form-control" placeholder="Category name">
                             <label class="mb-0 mt-1">Description</label>
-                            <textarea type="text" name="description" class="form-control" id="' . $value['categoryID'] . '" placeholder="' . $value['description'] . '"></textarea>
+                            <textarea type="text" name="description" class="form-control" placeholder="' . $value['description'] . '"></textarea>
                         </div>
                         <div class="col-2">
                             <input type="submit" name="update" value="Update"/>
@@ -42,7 +42,7 @@ if (isset($_POST['delete'])) {
         </div>
         <div class="col">
             <form action="" method="post">
-                <h2">Create a new category</h2>
+                <h2>Create a new category</h2>
                 <input type="text" name="name" class="form-control" placeholder="Category name">
                 <input type="text" name="description" class="form-control" placeholder="Description">
                 <input type="submit" name="add" value="Add"/>

@@ -12,7 +12,8 @@ include('header.php');
             echo ('
                 <a href="categories?categoryID=' . $value['categoryID'] . '">
                     <button name="category" type="submit" value="' . $value['categoryID'] . '">' . $value['name'] . '</button>
-                </a>');
+                </a>
+                ');
         }
         ?>
     </div>
