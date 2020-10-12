@@ -5,7 +5,7 @@
         return self::query("SELECT `name`, `categoryID` FROM category");
     }
     public function getProductCategory($productID) {
-        return $this->array_flatten(self::query("SELECT c.name
+        return $this->array_flatten(self::query("SELECT c.name, c.categoryID
         FROM category as c
         INNER JOIN producthascategory as pc
             ON c.categoryID = pc.categoryID
