@@ -41,7 +41,7 @@ if (isset($_GET["productID"])) {
                     <h5 class="card-title">' . $value['name'] . '</h5>
                     <p class="card-text">' . $value['description'] . '</p>
                     <p class="card-text">Price:' . $value['price'] . '</p>
-                    <a href="product?productID=' . $value['productID'] . '" class="btn btn-primary">Edit Product</a>
+                    <a href="product?productID=' . $value['productID'] . '" class="btn btn-primary">View Product</a>
                 </div>
             </div>
         </div>
