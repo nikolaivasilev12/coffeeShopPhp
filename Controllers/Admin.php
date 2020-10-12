@@ -21,7 +21,11 @@ class Admin extends Controller {
         $stock = trim($stock);
         $origin = trim($origin);
         self::query("UPDATE product SET name = '{$name}', description = '{$description}',
-        price = '{$price}', stock = '{$stock}', origin = '{$origin}', type = '{$type}' 
+        price = '{$price}', stock = '{$stock}', origin = '{$origin}', type = '{$type}', isSpecial = NULL
+        WHERE productID = '{$productID}'");
+    }
+    public function updateProductIsSpecial ($productID, $isSpecial) {
+        self::query("UPDATE product SET isSpecial = '{$isSpecial}'
         WHERE productID = '{$productID}'");
     }
     public function updateProductCategory($productID, $categoryID) {

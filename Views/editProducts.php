@@ -7,10 +7,13 @@ if (isset($_GET['productID'])) {
     $productDetails = $productsObj->getProductDetails($_GET["productID"]);
 }
 if (isset($_POST['update'])) {
-    $admin->updateProductDetails($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['categoryID']);
-}
-if (isset($_POST['update'])) {
-    $admin->updateProductCategory($_POST['productID'], $_POST['categoryIDs']);
+    if(isset($_POST['isSpecial']))
+    {
+        $admin->updateProductDetails($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['productID']);
+        $admin->updateProductIsSpecial($_POST['productID'], $_POST['isSpecial']);
+    } else {
+        $admin->updateProductDetails($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['productID']);
+    }
 }
 if (isset($_POST['delete'])) {
     $admin->deleteCategory($_POST['categoryID']);
@@ -64,7 +67,7 @@ if (isset($_POST['updateCat'])) {
                             ID: ' . $productDetails['productID'] . '
                             <br/>
                             Product Name:<label class="mt-3 mb-0" for="' . $productDetails['name'] . '"><strong>' . $productDetails['name'] . '</strong></label>
-                            <input type="hidden" value="' . $productDetails['productID'] . '" name="categoryID" class="form-control">
+                            <input type="hidden" value="' . $productDetails['productID'] . '" name="productID" class="form-control">
                             <input type="text" value="' . $productDetails['name'] . '" name="name" class="form-control" id="' . $productDetails['name'] . '" placeholder="Category name">
                             <label class="mb-0 mt-1">Description</label>
                             <textarea type="text" value="' . $productDetails['description'] . '" name="description" class="form-control" placeholder="' . $productDetails['description'] . '"></textarea>
@@ -76,6 +79,8 @@ if (isset($_POST['updateCat'])) {
                             <input type="text" value="' . $productDetails['origin'] . '" name="origin" class="form-control" placeholder="' . $productDetails['origin'] . '"></input>
                             <label class="mb-0 mt-1">Type</label>
                             <input type="text" value="' . $productDetails['type'] . '" name="type" class="form-control" placeholder="' . $productDetails['type'] . '"></input>
+                            <label class="mb-0 mt-1">Toggle Special product:' . $productDetails['isSpecial'] . '</label>
+                            <input type="checkbox" value="1" name="isSpecial" class="form-control"></input>
                         </div>
                         <div class="col-12">
                             <input type="submit" name="update" value="Update"/>
