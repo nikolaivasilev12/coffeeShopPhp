@@ -24,18 +24,16 @@ include('header.php');
             $productsByCategory = $productsObj->getProductByCategory($_GET['categoryID']);
             foreach ($productsByCategory as $value) {
                 echo ('
-        <div class="col-4">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">' . $value['name'] . '</h5>
-                <h6 class="card-subtitle mb-2 text-muted">ID: ' . $value['productID'] . '</h6>
-                <p class="card-text">' . $value['description'] . '</p>
-                <a href="product?productID=' . $value['productID'] . '"> 
-                    <button href="/email" class="card-link">Price:' . $value['price'] . '</button>
-                </a>
-            </div>
-        </div>
-        </div>
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">' . $value['name'] . '</h5>
+                            <p class="card-text">' . $value['description'] . '</p>
+                            <p class="card-text">Price:' . $value['price'] . '</p>
+                            <a href="product?productID=' . $value['productID'] . '" class="btn btn-primary">Edit Product</a>
+                        </div>
+                    </div>
+                </div>
         ');
             }
         }

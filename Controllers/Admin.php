@@ -28,7 +28,8 @@ class Admin extends Controller {
         $productHasCategory = self::query("SELECT * FROM producthascategory
         WHERE productID = '{$productID}'");
         if($productHasCategory){
-            self::query("UPDATE product SET name = '{$productID}', description = '{$categoryID}'");
+            self::query("UPDATE producthascategory SET productID = '{$productID}', categoryID = '{$categoryID}'
+            WHERE productID = '{$productID}'");
         } else {
             self::query("INSERT INTO producthascategory (productID, categoryID)
             VALUES ('{$productID}', '{$categoryID}')");
@@ -45,5 +46,3 @@ class Admin extends Controller {
         self::query("DELETE FROM category WHERE categoryID = '{$categoryID}'");
     }
 }
-
-?>

@@ -18,7 +18,5 @@ class Controller extends DBController {
           } 
         } 
         return $result; 
-      }
+    }
 }
-
-?>

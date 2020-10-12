@@ -1,21 +1,22 @@
 <?php
 include("header.php");
 $admin = new Admin();
+$catObj = new Categories();
 if (isset($_GET['productID'])) {
     $productsObj = new Products();
     $productDetails = $productsObj->getProductDetails($_GET["productID"]);
 }
 if (isset($_POST['update'])) {
-    $admin->updateProductDetails($_POST['name'],$_POST['description'],$_POST['price'],$_POST['stock'],$_POST['origin'],$_POST['type'],$_POST['categoryID']);
+    $admin->updateProductDetails($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['categoryID']);
 }
 if (isset($_POST['update'])) {
-    $admin->updateProductCategory($_POST['productID'],$_POST['categoryIDs']);
+    $admin->updateProductCategory($_POST['productID'], $_POST['categoryIDs']);
 }
 if (isset($_POST['delete'])) {
     $admin->deleteCategory($_POST['categoryID']);
 }
 if (isset($_POST['updateCat'])) {
-    $admin-> updateProductCategory($_POST['productID'],$_POST['categoryID']);
+    $admin->updateProductCategory($_POST['productID'], $_POST['categoryID']);
 }
 ?>
 <div class="container">
@@ -27,12 +28,24 @@ if (isset($_POST['updateCat'])) {
             <h2>Products</h2>
         </div>
         <?php
-        if(!isset($_GET['productID'])){
+        if (!isset($_GET['productID'])) {
             foreach ($admin->getProducts() as $value) {
+                $productCategory = $catObj->getProductCategory($value['productID']);
                 echo ('
                 <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                Category:
+                <strong>
+                ');
+                if ($productCategory) {
+                    print_r($productCategory['name']);
+                } else { {
+                        print_r('<strong>Not set</strong>');
+                    }
+                }
+                echo ('
+                </strong>
                             <h5 class="card-title">' . $value['name'] . '</h5>
                             <p class="card-text">' . $value['description'] . '</p>
                             <p class="card-text">Price:' . $value['price'] . '</p>
@@ -43,12 +56,12 @@ if (isset($_POST['updateCat'])) {
                     ');
             }
         } else {
-            $catObj = new Categories();
-                echo ('
+            $productCategory = $catObj->getProductCategory($_GET['productID']);
+            echo ('
                 <form action="" method="post">
                     <div class="row align-items-end">
                         <div class="col-10">
-                            ID: '. $productDetails['productID'] .'
+                            ID: ' . $productDetails['productID'] . '
                             <br/>
                             Product Name:<label class="mt-3 mb-0" for="' . $productDetails['name'] . '"><strong>' . $productDetails['name'] . '</strong></label>
                             <input type="hidden" value="' . $productDetails['productID'] . '" name="categoryID" class="form-control">
@@ -73,18 +86,18 @@ if (isset($_POST['updateCat'])) {
                 <form action="" method="post">
                     <div class="row align-items-end">
                         <div class="col-10">
-                            <h2> Select Category </h2>
+                            <h2> Currently selected category: <br/> <strong>' . $productCategory['name'] . '</strong></h2>
                         </div>
                         <input type="hidden" value="' . $productDetails['productID'] . '" name="productID"">
                         <div class="col-12">
-                            <select name="categoryID"">
+                            <select name="categoryID" ">
                             ');
-                            foreach ($catObj->getCategory() as $value){
-                                echo('
-                                    <option value="'.$value['categoryID'].'">'.$value['name'].'</option>
+            foreach ($catObj->getCategory() as $value) {
+                echo ('
+                                    <option value="' . $value['categoryID'] . '">' . $value['name'] . '</option>
                                 ');
-                            };
-                            echo('
+            };
+            echo ('
                             </select>
                         </div>
                         <div class="col-12">

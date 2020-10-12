@@ -2,10 +2,10 @@
 include("header.php");
 $admin = new Admin();
 if (isset($_POST['update'])) {
-    $admin->updateCategory($_POST['name'],$_POST['description'],$_POST['categoryID']);
+    $admin->updateCategory($_POST['name'], $_POST['description'], $_POST['categoryID']);
 }
 if (isset($_POST['add'])) {
-    $admin->createCategory($_POST['name'],$_POST['description']);
+    $admin->createCategory($_POST['name'], $_POST['description']);
 }
 if (isset($_POST['delete'])) {
     $admin->deleteCategory($_POST['categoryID']);
@@ -17,7 +17,7 @@ if (isset($_POST['delete'])) {
 <div class="container">
     <div class="row">
         <div class="col-8">
-        <h2>Categories</h2>
+            <h2>Categories</h2>
             <?php
             foreach ($admin->getCategories() as  $value) {
                 echo ('
@@ -45,11 +45,11 @@ if (isset($_POST['delete'])) {
                 <h2>Create a new category</h2>
                 <input type="text" name="name" class="form-control" placeholder="Category name">
                 <input type="text" name="description" class="form-control" placeholder="Description">
-                <input type="submit" name="add" value="Add"/>
+                <input type="submit" name="add" value="Add" />
             </form>
         </div>
     </div>
-<div>
-    
-</div>
+    <div>
+
+    </div>
 </div>
