@@ -42,18 +42,6 @@ $index = new Index();
                         }
                     }
                     ?>
-                    <!-- <div class="d-block w-100">
-                            <div class="card" style="width: 18rem; background-color:gray">
-                                <div class="card-body">
-                                Category:
-                                    <h5 class="card-title">' . $value['name'] . '</h5>
-                                    <p class="card-text">' . $value['description'] . '</p>
-                                    <p class="card-text">Price:' . $value['price'] . '</p>
-                                    <a href="product?productID=' . $value['productID'] . '" class="btn btn-primary">View Product</a>
-                                </div>
-                            </div>
-                        </div>
-                    <img class="d-block w-100" src="https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg" alt="First slide"> -->
                 </div>
                 <?php
                 $counter = false;
@@ -90,4 +78,6 @@ $index = new Index();
             </a>
         </div>
     </div>
+    
+    <h1 align="center">News</h1>
 </div>

@@ -49,4 +49,22 @@ class Admin extends Controller {
         self::query("DELETE FROM producthascategory WHERE categoryID = '{$categoryID}'");
         self::query("DELETE FROM category WHERE categoryID = '{$categoryID}'");
     }
+    public function deleteProduct($productID) {
+        $productHasCategory = self::query("SELECT * FROM producthascategory
+        WHERE productID = '{$productID}'");
+        $productHasOrder = self::query("SELECT * FROM orderhasproduct
+        WHERE productID = '{$productID}'");
+        $productHasRating = self::query("SELECT * FROM rating
+        WHERE productID = '{$productID}'");
+        if($productHasCategory){
+            self::query("DELETE FROM producthascategory WHERE productID = '{$productID}'");
+        } 
+        if ($productHasOrder) {
+            self::query("DELETE FROM orderhasproduct WHERE productID = '{$productID}'");
+        } 
+        if ($productHasRating) {
+            self::query("DELETE FROM rating WHERE productID = '{$productID}'");
+        } 
+        self::query("DELETE FROM product WHERE productID = '{$productID}'");
+    }
 }

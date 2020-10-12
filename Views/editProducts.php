@@ -14,11 +14,11 @@ if (isset($_POST['update'])) {
         $admin->updateProductDetails($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['productID']);
     }
 }
-if (isset($_POST['delete'])) {
-    $admin->deleteCategory($_POST['categoryID']);
-}
 if (isset($_POST['updateCat'])) {
     $admin->updateProductCategory($_POST['productID'], $_POST['categoryID']);
+}
+if (isset($_POST['delete'])) {
+    $admin->deleteProduct($_POST['productID']);
 }
 ?>
 <div class="container">
@@ -90,7 +90,13 @@ if (isset($_POST['updateCat'])) {
                 <form action="" method="post">
                     <div class="row align-items-end">
                         <div class="col-10">
-                            <h2> Currently selected category: <br/> <strong>' . $productCategory['name'] . '</strong></h2>
+                            <h2> Currently selected category: <br/> <strong>');
+                            if(isset($productCategory['name'])){
+                                echo($productCategory['name']);
+                            } else {
+                                echo('No category selected');
+                            }
+                            echo('</strong></h2>
                         </div>
                         <input type="hidden" value="' . $productDetails['productID'] . '" name="productID"">
                         <div class="col-12">
