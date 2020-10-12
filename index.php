@@ -10,12 +10,6 @@ function __autoload($class_name)
   }
 }
 
-$PageTitle = "Coffee Shop";
-
-function customPageHeader()
-{
-}
-
 ?>
 
 <body><script

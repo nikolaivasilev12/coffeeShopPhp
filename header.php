@@ -4,6 +4,8 @@ $session = new SessionHandle();
 if ($session->confirm_logged_in()) {
     $redirect = new Redirector("login");
 }
+
+$PageTitle = "Coffee Shop";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +17,6 @@ if ($session->confirm_logged_in()) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= isset($PageTitle) ? $PageTitle : "Default Title" ?></title>
         <!-- Additional tags here -->
-        <?php if (function_exists('customPageHeader')) {
-            customPageHeader();
-        } ?>
     </head>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
