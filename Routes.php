@@ -38,3 +38,6 @@ Route::set('edit-categories', function() {
 Route::set('edit-products', function() {
     Admin::CreateView('editProducts');
 });
+Route::set('edit-news', function() {
+    Admin::CreateView('editNews');
+});

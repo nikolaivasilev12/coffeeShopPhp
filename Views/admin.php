@@ -16,5 +16,10 @@ include("header.php");
                 Edit Products
             </a>
         </div>
+        <div class="col text-center">
+            <a href="edit-news" class="card">
+                Edit News
+            </a>
+        </div>
     </div>
 </div>

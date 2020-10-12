@@ -2,6 +2,12 @@
 
 class Admin extends Controller {
     
+    public function createCategory($name, $description){
+        $name = trim($name);
+        $description = trim($description);
+        self::query("INSERT INTO category (name, description)
+        VALUES ('{$name}', '{$description}')");
+    }
     public function getCategories() {
         return (self::query("SELECT * FROM category"));
     }
@@ -39,11 +45,8 @@ class Admin extends Controller {
             VALUES ('{$productID}', '{$categoryID}')");
         }
     }
-    public function createCategory($name, $description){
-        $name = trim($name);
-        $description = trim($description);
-        self::query("INSERT INTO category (name, description)
-        VALUES ('{$name}', '{$description}')");
+    public function updateNews($content){
+         self::query("UPDATE news SET content = '{$content}' WHERE ID = 1");
     }
     public function deleteCategory($categoryID) {
         self::query("DELETE FROM producthascategory WHERE categoryID = '{$categoryID}'");
