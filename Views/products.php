@@ -30,7 +30,7 @@ if (isset($_GET["productID"])) {
         } else {
             echo ('
     <div class="col-12 text-center">
-        <h1> Products </h1>
+        <h1> All Products </h1>
     </div>
     ');
             foreach ($productsObj->getAllProducts() as $value) {

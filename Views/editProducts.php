@@ -7,8 +7,7 @@ if (isset($_GET['productID'])) {
     $productDetails = $productsObj->getProductDetails($_GET["productID"]);
 }
 if (isset($_POST['update'])) {
-    if(isset($_POST['isSpecial']))
-    {
+    if (isset($_POST['isSpecial'])) {
         $admin->updateProductDetails($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['productID']);
         $admin->updateProductIsSpecial($_POST['productID'], $_POST['isSpecial']);
     } else {
@@ -99,8 +98,8 @@ if (isset($_POST['updateCat'])) {
                             ');
             foreach ($catObj->getCategory() as $value) {
                 echo ('
-                                    <option value="' . $value['categoryID'] . '">' . $value['name'] . '</option>
-                                ');
+                    <option value="' . $value['categoryID'] . '">' . $value['name'] . '</option>
+                ');
             };
             echo ('
                             </select>
@@ -110,7 +109,7 @@ if (isset($_POST['updateCat'])) {
                         </div>
                     </div>
                 </form>
-                    ');
+            ');
         }
         ?>
     </div>
