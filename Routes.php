@@ -41,3 +41,9 @@ Route::set('edit-products', function() {
 Route::set('edit-news', function() {
     Admin::CreateView('editNews');
 });
+Route::set('chat', function() {
+    Controller::CreateChat('chat');
+});
+Route::set('botman', function() {
+    Controller::CreateView('botman');
+});
