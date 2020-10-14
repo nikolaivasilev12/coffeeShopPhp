@@ -22,7 +22,7 @@ $botman->hears('Hello', function (BotMan $bot) {
 });
 
 $botman->fallback(function ($bot) {
-    $bot->reply('Sorry, I did not understand these commands. Here is a list of commands I understand: ...');
+    $bot->reply('Sorry, I didnt get that becuase Niko only told me how to answer to "Hello"');
 });
 
 // Start listening
