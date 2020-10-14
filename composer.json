@@ -1,0 +1,5 @@
+{
+    "require": {
+        "botman/botman": "^2.6"
+    }
+}

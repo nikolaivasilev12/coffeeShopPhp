@@ -5,6 +5,9 @@ class Controller extends DBController {
     public static function CreateView($viewName) {
         require_once("Views/$viewName.php");
     }
+    public static function CreateChat($viewName) {
+      require_once("$viewName.html");
+    }
     public function array_flatten($array) { 
         if (!is_array($array)) { 
           return false; 
