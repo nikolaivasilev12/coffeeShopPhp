@@ -8,5 +8,3 @@ class Index extends Controller {
         return $this->array_flatten(self::query("SELECT * FROM news"));
     }
 }
-
-?>
