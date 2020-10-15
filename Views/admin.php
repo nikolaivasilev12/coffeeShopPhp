@@ -1,6 +1,7 @@
 <?php
 include("header.php");
 ?>
+<style> <?php include 'style.css'; ?> </style>
 <div class="container">
     <div class="row justify-content-center">
         <h2>ADMIN</h2>

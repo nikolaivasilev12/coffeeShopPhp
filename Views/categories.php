@@ -1,9 +1,10 @@
 <?php
 include('header.php');
 ?>
+<style> <?php include 'style.css'; ?> </style>
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Pick a category</h1>
+        <h1>Choose a Category</h1>
     </div>
     <div class="row justify-content-center">
         <?php
@@ -12,7 +13,7 @@ include('header.php');
             echo ('
                 <a href="categories?categoryID=' . $value['categoryID'] . '">
                     <button name="category" type="submit" value="' . $value['categoryID'] . '">' . $value['name'] . '</button>
-                </a>
+                </a>&nbsp;
                 ');
         }
         ?>
