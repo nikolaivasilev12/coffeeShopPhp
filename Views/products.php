@@ -6,6 +6,7 @@ if (isset($_GET["productID"])) {
 }
 
 ?>
+<style> <?php include 'style.css'; ?> </style>
 <div class="container">
     <div class="row justify-content-center">
         <?php if (isset($_GET["productID"])) {
