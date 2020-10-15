@@ -66,3 +66,41 @@ form .submit:hover {
     cursor: pointer;
 }
 
+#shopping-cart table{width:100%;background-color: #dedede;}
+#shopping-cart table td{background-color:#FFFFFF;}
+#shopping-cart table th{text-align:left;}
+#shopping-cart {margin-bottom:30px;}
+
+.heading{
+    padding: 10px 10px;
+    border-radius: 2px;
+    color: #FFF;
+    background: #02f100;
+    margin-bottom:10px;
+}
+a.removeBtn{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;}
+a.removeBtn:visited{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;}
+
+#emptyBtn {
+    background-color: #D60200;
+    border: #D60200 1px solid;
+    padding: 1px 10px;
+    color: #ffffff;
+    font-size: 0.8em;
+    float: right;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.addBtn{
+    background-color: #eb705b;
+    border: 0;
+    padding: 3px 10px;
+    color: #ffffff;
+    margin-left: 2px;
+    border-radius: 2px;
+}
+.cart-item {border-bottom: #79b946 1px dotted;padding: 10px;}
+.product-item {	float:left;	background: #ffffff;margin:15px 10px;	padding:5px;border:#CCC 1px solid;border-radius:4px;}
+.product-item div{text-align:center;	margin:10px;}
+.product-price {color: #005dbb;font-weight: 600;}
+.product-image {height:100px;background-color:#FFF;}

@@ -4,6 +4,7 @@ $productsObj = new Products();
 if (isset($_GET["productID"])) {
     $productDetails = $productsObj->getProductDetails($_GET["productID"]);
 }
+
 ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -24,7 +25,17 @@ if (isset($_GET["productID"])) {
                 <div class="col-12">
                     <p> <strong>Type:</strong>' . $productDetails["type"] . '</p>
                 </div>
+                <div class="col-12">
+                <p> <strong>Stock:</strong>' . $productDetails["stock"] . '</p>
+                </div> 
+                <div class="col-12">
+                <a href="cart.php'. '" class="btn btn-primary">Add to Shopping Cart</a>
+                <input type="submit" value="Add to Cart" class="addBtn" />
+                </div> 
+                
+               
             ');
+            
             $catObj = new Categories();
             if($catObj->getProductCategory($_GET["productID"])){
                 echo('

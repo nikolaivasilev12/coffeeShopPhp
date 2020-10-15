@@ -7,7 +7,7 @@ class DBController
     $user = "admin";
     $pass = "123456";
 
-    $pdo = new PDO('mysql:host=127.0.0.1;dbname=coffeeshopdb;charset=utf8', $user, $pass);
+    $pdo = new PDO('mysql:host=localhost;dbname=coffeeshopdb;charset=utf8', $user, $pass);
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $pdo;

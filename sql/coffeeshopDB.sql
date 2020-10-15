@@ -19,7 +19,7 @@ CREATE TABLE PRODUCT
     `name` VARCHAR(255) NOT NULL,
     `description` VARCHAR (255) NOT NULL,
     `price` DECIMAL(10,2) NOT NULL,
-    `stock` BOOLEAN NOT NULL,
+    `stock` TINYINT(255) NOT NULL,
     `origin` VARCHAR (255) NOT NULL,
     `type` VARCHAR (255) NOT NULL,
     `isSpecial` BOOLEAN NULL
@@ -134,26 +134,26 @@ insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('tpilleri@
 insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('klaiblej@answers.com', '0lLDJvG1PU', 'Kirstin', 'Laible', '308-757-4382');
 
 -- PRODUCT
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Konklux', 'ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula', 112.47, false, 'China', 'instruction set', false);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Tres-Zap', 'morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem', 144.87, false, 'China', 'global', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Voltsillam', 'eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis', 52.38, false, 'Venezuela', 'mission-critical', false);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Pannier', 'ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo', 237.46, true, 'Czech Republic', 'Centralized', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Cookley', 'amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo', 137.52, true, 'Bolivia', 'process improvement', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Hatity', 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec', 80.29, true, 'Philippines', 'Optional', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Flowdesk', 'nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec', 7.57, true, 'Cameroon', 'secured line', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Konklux', 'ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula', 112.47, 42, 'China', 'instruction set', false);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Tres-Zap', 'morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem', 144.87, 43, 'China', 'global', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Voltsillam', 'eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis', 52.38, 15, 'Venezuela', 'mission-critical', false);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Pannier', 'ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo', 237.46, 1, 'Czech Republic', 'Centralized', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Cookley', 'amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo', 137.52, 4, 'Bolivia', 'process improvement', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Hatity', 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec', 80.29, 0, 'Philippines', 'Optional', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Flowdesk', 'nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec', 7.57, 1, 'Cameroon', 'secured line', true);
 insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Ventosanzap', 'integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent', 235.0, false, 'Sweden', 'extranet', false);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Flowdesk', 'et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis', 278.4, true, 'Canada', 'Innovative', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Home Ing', 'vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat', 243.12, true, 'Nigeria', 'capability', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Trippledex', 'dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque', 61.46, true, 'Indonesia', 'Front-line', false);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Cardguard', 'ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere', 206.74, true, 'Indonesia', 'Graphic Interface', false);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Trippledex', 'quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique tortor eu', 298.96, false, 'China', 'workforce', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Stringtough', 'orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis', 23.23, false, 'Philippines', 'Monitored', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Konklux', 'ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui', 120.13, true, 'Brazil', 'analyzing', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Veribet', 'molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque', 185.46, false, 'Cameroon', 'matrices', false);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Solarbreeze', 'velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus', 259.0, true, 'Netherlands', 'conglomeration', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Ronstring', 'morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis', 198.51, true, 'Greece', 'Implemented', false);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Lotstring', 'ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla', 280.44, false, 'Portugal', 'static', true);
-insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Matsoft', 'vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere', 88.7, false, 'China', 'User-centric', false);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Flowdesk', 'et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis', 278.4, 133, 'Canada', 'Innovative', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Home Ing', 'vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat', 243.12, 24, 'Nigeria', 'capability', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Trippledex', 'dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque', 61.46, 18, 'Indonesia', 'Front-line', false);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Cardguard', 'ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere', 206.74, 4, 'Indonesia', 'Graphic Interface', false);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Trippledex', 'quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique tortor eu', 298.96, 3, 'China', 'workforce', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Stringtough', 'orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis', 23.23, 5, 'Philippines', 'Monitored', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Konklux', 'ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui', 120.13, 49, 'Brazil', 'analyzing', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Veribet', 'molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque', 185.46, 0, 'Cameroon', 'matrices', false);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Solarbreeze', 'velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus', 259.0, 1, 'Netherlands', 'conglomeration', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Ronstring', 'morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis', 198.51, 255, 'Greece', 'Implemented', false);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Lotstring', 'ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla', 280.44, 0, 'Portugal', 'static', true);
+insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Matsoft', 'vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere', 88.7, 0, 'China', 'User-centric', false);
 
 -- POSTALCODE
 insert into POSTALCODE (city) values ('Zouma');

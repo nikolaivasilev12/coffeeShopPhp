@@ -41,3 +41,6 @@ Route::set('edit-products', function() {
 Route::set('edit-news', function() {
     Admin::CreateView('editNews');
 });
+Route::set('cart.php', function() {
+    Index::CreateView('Cart');
+});
