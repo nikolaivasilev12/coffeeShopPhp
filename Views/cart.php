@@ -1,7 +1,7 @@
 <?php
 
 $cartController = new CartController();
-if (isset($_SESSION["cartItem"])) {
+if (isset($_SESSION["/"])) {
     $cartController->existingCart($_SESSION["cartItem"]);
 }
 if(!empty($_GET["action"])) {
@@ -13,7 +13,7 @@ if(!empty($_GET["action"])) {
     //adding items to cart
         case "add":
             if (!empty($_POST["quantity"])) {
-                $productByName = $db_handle->runQuery("SELECT * FROM product WHERE `name`='" . $_GET["name"] . "'");
+                $productByName = self::query("SELECT * FROM product WHERE `name`='" . $_GET["name"] . "'");
                 $itemArray = array(
                     $productByName[0]["name"] => array(
                         'name' => $productByName[0]["name"],
@@ -117,16 +117,15 @@ if(isset($_SESSION["cartItem"])){
 </div>
 <div class="heading">Products</div>
 	<?php
-    $db_handle = new DBController();
-	$product_array = $db_handle->runQuery("SELECT * FROM product ORDER BY productIDx ASC");
+	$product_array = self::query("SELECT * FROM product ORDER BY productID ASC");
 	if (!empty($product_array)) { 
 		foreach($product_array as $key=> $value){
 	?>
 		<div class="product-item">
-			<form method="post" action="index.php?action=add&name=
-            <?php echo $product_array[$key]["name"]; ?>"> 
-			<div><strong><?php echo $product_array[$aNumber]["name"]; ?></strong></div>
-			<div class="product-price"><?php echo $product_array[$aNumber]["price"]." DKK"; ?></div>
+        <?php echo(($product_array[$key]["name"])); ?>
+			<form method="post" action="cart?action=add&name=<?php echo(trim($product_array[$key]["name"])); ?>"> 
+			<div><strong><?php echo $product_array[$key]["name"]; ?></strong></div>
+			<div class="product-price"><?php echo $product_array[$key]["price"]." DKK"; ?></div>
 			<div>
                 <input type="text" name="quantity" value="1" size="2" />
                 <input type="submit" value="Add to cart" class="addBtn" /></div>

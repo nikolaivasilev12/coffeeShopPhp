@@ -1,5 +1,5 @@
 <?php
-class CartController
+class CartController extends Controller
 {
     public $itemArray;
     public $newItemArray;
@@ -11,9 +11,8 @@ class CartController
     }
     public function cartAdd($name, $quantity)
     {
-        $db_handle = new DBController();
         if (!empty($quantity)) {
-            $productByName = $db_handle->runQuery("SELECT * FROM products WHERE `name`='" . $name . "'");
+            $productByName = self::query("SELECT * FROM products WHERE `name`='" . $name . "'");
             $this->newItemArray = array($productByName[0]["name"] => array(
                 'name' => $productByName[0]["name"],
                 'type' => $productByName[0]["type"],
