@@ -4,7 +4,13 @@ $index = new Index();
 ?>
 
 <div class="container">
-    <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>
+    <?php
+    if (isset($_SESSION['permission'])) {
+    ?>
+     <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>
+     <?php
+    }
+     ?>
     <h1 align="center">Special products</h1>
     <div class="row justify-content-center">
         <div id="carouselHome" class="carousel slide" data-ride="carousel">
