@@ -22,7 +22,6 @@
         <?php
         if (isset($_GET['categoryID'])) {
             $productsObj = new Products();
-            print_r($_GET['categoryID']);
             $productsByCategory = $productsObj->getProductByCategory($_GET['categoryID']);
             foreach ($productsByCategory as $value) { ?>
                 <div class="product-item">
@@ -33,13 +32,12 @@
                         <div>
                             <input type="text" name="quantity" value="1" size="2" />
                             <input type="submit" value="Add to cart" class="addBtn" />
-                            <?php echo $value['productID']?>
                             <a href="product?productID=<?php echo($value['productID']) ?>" class="btn btn-primary">View Product</a></div>
                         </form>
                     </div>
                 <?php
             }
-        } else {
+        } elseif (!isset($_GET['productID'])) {
             $productsByCategory = $productsObj->getProductByCategory(0);
             foreach ($productsByCategory as $value) { ?>
                 <div class="product-item">
