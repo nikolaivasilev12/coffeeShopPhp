@@ -200,10 +200,10 @@ if (isset($_GET["productID"])) {
                                             <div class="card" style="width: 18rem; background-color:gray">
                                                 <div class="card-body">
                                                     Category:
-                                                    <h5 class="card-title">' . $value['name'] . '</h5>
-                                                    <p class="card-text">' . $value['description'] . '</p>
-                                                    <p class="card-text">Price:' . $value['price'] . '</p>
-                                                    <a href="product?productID=' . $value['productID'] . '" class="btn btn-primary">View Product</a>
+                                                    <h5 class="card-title"><?php echo $value['name'] ?></h5>
+                                                    <p class="card-text"><?php echo $value['description'] ?></p>
+                                                    <p class="card-text">Price:<?php echo $value['price'] ?></p>
+                                                    <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-primary">View Product</a>
                                                 </div>
                                             </div>
                                         </div>
