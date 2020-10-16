@@ -1,4 +1,5 @@
 <?php
+$session = new SessionHandle();
 include("header.php");
 $admin = new Admin();
 if (isset($_POST['update'])) {

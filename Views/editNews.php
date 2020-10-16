@@ -1,4 +1,5 @@
 <?php
+$session = new SessionHandle();
 include('header.php');
 $index=new Index();
 if(isset($_POST['saveNews'])) {

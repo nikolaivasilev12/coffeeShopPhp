@@ -1,5 +1,6 @@
 <?php
 $session = new SessionHandle();
+include('header.php');
 // if ($session->confirm_logged_in()) {
 //     $redirect = new Redirector("login.php");
 // }

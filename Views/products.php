@@ -1,4 +1,5 @@
 <?php
+$session = new SessionHandle();
 include('header.php');
 $productsObj = new Products();
 if (isset($_GET["productID"])) {
