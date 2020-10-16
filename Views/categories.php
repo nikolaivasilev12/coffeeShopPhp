@@ -1,6 +1,3 @@
-<?php
-include('header.php');
-?>
 <div class="container">
     <div class="row justify-content-center">
         <h1>Choose a Category</h1>
