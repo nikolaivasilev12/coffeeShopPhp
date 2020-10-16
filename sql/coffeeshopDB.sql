@@ -113,8 +113,8 @@ CREATE TABLE COMPANYDATA
 CREATE TABLE WORKDAYS
 (
     `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `startingHour` DATETIME,
-    `closingHour` DATETIME,
+    `startingHour` VARCHAR(5),
+    `closingHour` VARCHAR(5),
     `openDay` VARCHAR(255)
 );
 
@@ -301,13 +301,13 @@ insert into RATING (productID, customerID, ratingValue) values (10, 10, 3);
 insert into COMPANYDATA (companyDescription, adress, phone, email) values ('Enhanced content-based firmware', '9941 Sachtjen Alley', '799-589-5427', 'calkin0@bigcartel.com');
 
 -- WORKDAYS
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('2019-12-01 19:21:31', '2019-10-25 12:14:46', 'Monday');
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('2019-10-18 20:25:05', '2020-05-02 13:06:39', 'Tuesday');
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('2019-12-22 23:36:44', '2020-03-20 22:46:15', 'Wednesday');
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('2019-11-02 08:28:54', '2020-08-18 20:07:47', 'Thursday');
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('2020-09-24 05:17:15', '2020-08-25 13:23:35', 'Friday');
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('2020-10-01 10:19:07', '2020-05-28 20:17:30', 'Saturday');
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('2020-03-16 23:22:14', '2020-07-02 12:54:00', 'Sunday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Monday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Tuesday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Wednesday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Thursday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Friday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Saturday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Sunday');
 
 -- NEWS
 insert into NEWS (content, date) values (' I am da news part yo. Pellentesque ultrices mattis odio.', '2020-09-15 15:24:35');

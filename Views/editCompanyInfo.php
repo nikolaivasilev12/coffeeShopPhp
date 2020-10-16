@@ -27,7 +27,11 @@ if(isset($_POST['saveCompEmail'])) {
 <?php print_r($index->getCompanyData()['companyDescription'] . "<br>" )  ?>
 <?php print_r($index->getCompanyData()['adress'] . "<br>" ) ?>
 <?php print_r($index->getCompanyData()['phone'] . "<br>" ) ?>
-<?php print_r($index->getCompanyData()['email']) ?>
+<?php print_r($index->getCompanyData()['email']);
+
+
+    print_r($index->getWorkdays());
+?>
 
 <div class="container">
             <h2 class="text-center">
@@ -55,11 +59,21 @@ if(isset($_POST['saveCompEmail'])) {
                 <input type="text" name="companyEmail" value="<?php echo($index->getCompanyData()['email'])?>">
                 <input type="submit" name="saveCompEmail">
             </form>
+
+            <!-- workworkdays loop -->
             <h4 class="mt-4">Work Hours of the Company</h4>
-            <form action="" method="post">
-                <input type="text" name="companyEmail" value="<?php echo($index->getCompanyData()['email'])?>">
-                <input type="submit" name="saveCompEmail">
-            </form>
+            <?php
+
+            foreach($index->getWorkdays() as $value){
+                ?>
+                <div class="d-flex p-2">
+                <p><?php print_r($value['startingHour']) ?>&nbsp; - &nbsp; </p>
+                <p><?php print_r($value['closingHour']) ?></p>
+                <button name="workdays" type="submit" value="<?php print_r($value) ?>"><?php print_r($value['openDay']) ?></button>
+                </div>
+                <?php
+        }
+        ?>
         </div>
     </div>
 </div>

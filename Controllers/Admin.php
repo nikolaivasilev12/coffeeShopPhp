@@ -30,6 +30,10 @@ class Admin extends Controller {
         return (self::query("SELECT email FROM companydata"));
     }
 
+    /* Getting WORKHOURS  */
+    public function getWorkHours() {
+        
+    }
 
     public function updateCategory($name, $description, $categoryID) { 
         $name = trim($name);
