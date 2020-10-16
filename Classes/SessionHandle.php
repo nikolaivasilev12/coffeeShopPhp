@@ -1,6 +1,6 @@
 
 <?php
-class SessionHandle
+class SessionHandle extends Controller
 {
     public function __construct()
     {

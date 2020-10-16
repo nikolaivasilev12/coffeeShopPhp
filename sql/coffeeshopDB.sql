@@ -13,6 +13,21 @@ CREATE TABLE CUSTOMER
     `phoneNr` CHAR(11) NOT NULL
 );
 
+CREATE TABLE PERMISSION
+(
+    `permissionID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `name` VARCHAR (25) NOT NULL
+);
+
+CREATE TABLE `CUSTOMER_PERMISSION`
+(
+    `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `customerID` INT NOT NULL,
+    `permissionID` INT NOT NULL,
+    FOREIGN KEY (customerID) REFERENCES customer (customerID),
+    FOREIGN KEY (permissionID) REFERENCES permission (permissionID)
+);
+
 CREATE TABLE PRODUCT
 (
     `productID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -132,6 +147,10 @@ insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('nescofier
 insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('jmacevillyh@tamu.edu', 'IuK5h25', 'Johnnie', 'MacEvilly', '616-724-1665');
 insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('tpilleri@scientificamerican.com', 'ulPbqQ3', 'Theodora', 'Piller', '331-647-0092');
 insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('klaiblej@answers.com', '0lLDJvG1PU', 'Kirstin', 'Laible', '308-757-4382');
+
+-- PERMISSION
+insert into PERMISSION (`name`) values ('customer');
+insert into PERMISSION (`name`) values ('admin');
 
 -- PRODUCT
 insert into PRODUCT (name, description, price, stock, origin, type, isSpecial) values ('Konklux', 'ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula', 112.47, 42, 'China', 'instruction set', false);
