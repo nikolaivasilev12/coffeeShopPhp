@@ -2,7 +2,6 @@
 include("header.php");
 $index = new Index();
 ?>
-<style> <?php include 'style.css'; ?> </style>
 
 <div class="container">
     <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>

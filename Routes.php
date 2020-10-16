@@ -41,6 +41,9 @@ Route::set('edit-products', function() {
 Route::set('edit-news', function() {
     Admin::CreateView('editNews');
 });
+Route::set('edit-company', function() {
+    Admin::CreateView('editCompanyInfo');
+});
 Route::set('cart', function() {
     CartController::CreateView('cart');
 });

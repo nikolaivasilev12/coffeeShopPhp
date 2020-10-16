@@ -1,7 +1,6 @@
 <?php
 include('header.php');
 ?>
-<style> <?php include 'style.css'; ?> </style>
 <div class="container">
     <div class="row justify-content-center">
         <h1>Choose a Category</h1>

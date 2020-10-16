@@ -1,7 +1,6 @@
 <?php
 include("header.php");
 ?>
-<style> <?php include 'style.css'; ?> </style>
 <div class="container">
     <div class="row justify-content-center">
         <h1>ADMIN</h1>
@@ -21,7 +20,7 @@ include("header.php");
 
     </div>
     <div class="col text-center mt-4">
-        <h2>News & Company</h2>
+        <h3>News & Company</h3>
             <div class="row">
         <div class="col text-center">
             <a href="edit-news" class="card">
@@ -29,23 +28,8 @@ include("header.php");
             </a>
         </div>
         <div class="col text-center">
-            <a href="" class="card">
-               Edit Description of the Company
-            </a>
-        </div>
-        <div class="col text-center">
-            <a href="" class="card">
-                Edit Email
-            </a>
-        </div>
-        <div class="col text-center">
-            <a href="" class="card">
-               Edit Phone No.
-            </a>
-        </div>
-        <div class="col text-center">
-            <a href="" class="card">
-                Edit Opening Hours
+            <a href="edit-company" class="card">
+               Edit Company's Information
             </a>
         </div>
 </div>
