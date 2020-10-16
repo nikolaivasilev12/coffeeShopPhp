@@ -8,7 +8,6 @@ Route::set('index', function() {
 });
 Route::set('about-us', function() {
     AboutUs::CreateView('AboutUs');
-    // AboutUs::test();
 });
 Route::set('contact-us', function() {
     ContactUs::CreateView('ContactUs');
@@ -49,4 +48,7 @@ Route::set('chat', function() {
 });
 Route::set('botman', function() {
     Controller::CreateView('botman');
+});
+Route::set('checkout', function() {
+    CartController::CreateView('checkout');
 });
