@@ -4,6 +4,7 @@ $index=new Index();
 if(isset($_POST['saveNews'])) {
     $admin= new Admin();
     $admin->updateNews($_POST['content']);
+    print_r ($_POST);
 }
 ?>
 <div class="container">
