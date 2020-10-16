@@ -1,5 +1,4 @@
 <?php
-$session = new SessionHandle();
 include("header.php");
 $admin = new Admin();
 $catObj = new Categories();

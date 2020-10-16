@@ -1,13 +1,13 @@
 <?php
-$session = new SessionHandle();
 include('header.php');
-// if ($session->confirm_logged_in()) {
-//     $redirect = new Redirector("login.php");
-// }
 // START FORM PROCESSING
+if ($session->logged_in()) {
+    $redirect = new Redirector("index");
+}
 if (isset($_POST['submit'])) { // Form has been submitted.
     $newUser = new NewUser($_POST['user'],$_POST['pass']);
     $msg = $newUser->message;
+    $redirect = new Redirector("login");
 }
 ?>
 <html>

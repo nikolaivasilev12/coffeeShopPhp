@@ -1,5 +1,8 @@
 <?php
 //check of the user is logged in:
+if (!isset($_SESSION)){
+    $session = new SessionHandle();
+}
 if (isset($_SESSION['permission'])) {
     if ($_SESSION['permission'] === 'admin') {
         include('_partials/headerAdmin.php');
