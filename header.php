@@ -27,9 +27,6 @@ if (!isset($_SESSION)){
                     <a class="nav-link" href="product">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="categories">Categories</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="about-us" >About us</a>
                 </li>
                 <?php

@@ -4,7 +4,6 @@ $productsObj = new Products();
 if (isset($_GET["productID"])) {
     $productDetails = $productsObj->getProductDetails($_GET["productID"]);
 }
-
 ?>
 <style> <?php include 'style.css'; ?> </style>
 <div class="container">
@@ -71,12 +70,7 @@ if (isset($_GET["productID"])) {
             ?>
             
             
-            <html>
-            <head>
             <title>Shopping Cart</title>
-            <link href="style.css" type="text/css" rel="stylesheet" />
-            </head>
-            <body>
             <div id="shopping-cart">
             <div class="heading">Shopping Cart
              <a id="btnEmpty" href="product?action=empty">Empty Cart</a></div>
@@ -126,34 +120,8 @@ if (isset($_GET["productID"])) {
             </div>
             <div class="heading">Products</div>
                 <?php
-                $product_array = self::query("SELECT * FROM product ORDER BY productID ASC");
-                if (!empty($product_array)) { 
-                    foreach($product_array as $key=> $value){
-                ?>
-                    <div class="product-item">
-                    <?php echo(($product_array[$key]["name"])); ?>
-                        <form method="post" action="product?action=add&name=<?php echo(trim($product_array[$key]["name"])); ?>"> 
-                        <div><strong><?php echo $product_array[$key]["name"]; ?></strong></div>
-                        <div class="product-price"><?php echo $product_array[$key]["price"]." DKK"; ?></div>
-                        <div>
-                            <input type="text" name="quantity" value="1" size="2" />
-                            <input type="submit" value="Add to cart" class="addBtn" />
-                            <?php echo $product_array[$key]['productID']?>
-                            <a href="product?productID=<?php echo($product_array[$key]['productID']) ?>" class="btn btn-primary">View Product</a></div>
-                        </form>
-                    </div>
-                <?php
-                    }
-                }
-  
-           
         } else {
-            
-            echo ('
-    <div class="col-12 text-center">
-        <h1> All Products </h1>
-    </div>
-    ');
+
               echo ('
                 <div class="col-12 text-center">
                     <h1>Product Name: <span class="text-color-red">' . $productDetails["name"] . '</span></h1>
@@ -259,6 +227,7 @@ if (isset($_GET["productID"])) {
             }
 
         }
+include('categories.php')
         ?>
     </div>
 </div>
