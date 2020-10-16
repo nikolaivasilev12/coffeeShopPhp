@@ -5,6 +5,9 @@ if (isset($_POST["checkout-btn"])) {
     $order_number = rand(100, 999);
 }
 ?>
+<style>
+    <?php include 'style.css'; ?>
+</style>
 <HTML>
 <HEAD>
 <TITLE>One Page Checkout Script Free Template</TITLE>
@@ -84,7 +87,7 @@ if (isset($_POST["checkout-btn"])) {
             </div>
         </form>
     </div>
-    <script src="./assets/js/cart.js"></script>
+    <script src="components/js/cart.js"></script>
     <script>
 	
 function checkout() {

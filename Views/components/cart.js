@@ -16,7 +16,7 @@ function cartAction(action, product_code, productTitle, productPrice) {
 		}
 	}
 	jQuery.ajax({
-		url : "ajax/handle-cart-ep.php",
+		url : "components/handle-cart-ep.php",
 		data : queryString,
 		type : "POST",
 		success : function(data) {

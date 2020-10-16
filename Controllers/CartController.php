@@ -1,55 +1,75 @@
+
 <?php
+
 class CartController extends Controller
 {
-    public $itemArray;
-    public $newItemArray;
-    public function existingCart($existingItems)
+    public $cartSessionItemCount = 0;
+    function __construct()
     {
-        if (!empty($existingItems)) {
-            $this->itemArray["cartItem"] = $existingItems;
+        if (! empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
+            $this->cartSessionItemCount = count($_SESSION["cart_item"]);
         }
     }
-    public function cartAdd($name, $quantity)
-    {
-        if (!empty($quantity)) {
-            $productByName = self::query("SELECT * FROM products WHERE `name`='" . $name . "'");
-            $this->newItemArray = array($productByName[0]["name"] => array(
-                'name' => $productByName[0]["name"],
-                'type' => $productByName[0]["type"],
-                'quantity' => $_POST["quantity"],
-                'price' => $productByName[0]["price"]));
 
-            if (!empty($this->itemArray["cartItem"])) {
-                if (in_array($productByName[0]["name"], array_keys($this->itemArray["cartItem"]))) {
-                    foreach ($this->itemArray["cartItem"] as $k => $v) {
-                        if ($productByName[0]["name"] == $k) {
-                            if (empty($this->itemArray["cartItem"][$k]["quantity"])) {
-                                $this->itemArray["cartItem"][$k]["quantity"] = 0;
-                            }
-                            $this->itemArray["cartItem"][$k]["quantity"] += $_POST["quantity"];
-                        }
-                    }
-                } else {
-                    $this->itemArray["cartItem"] = array_merge($this->itemArray["cartItem"], $this->newItemArray);
+    function addToCart()
+    {
+        if (isset($_POST)) {
+            $productCode = $_POST["code"];
+            $productTitle = $_POST["productTitle"];
+            $poductQuantity = $_POST["quantity"];
+            $productPrice = $_POST["productPrice"];
+        }
+
+        $cartItem = array(
+            'code' => $productCode,
+            'name' => $productTitle,
+            'quantity' => $poductQuantity,
+            'price' => $productPrice
+        );
+
+        $_SESSION["cart_item"][$productCode] = $cartItem;
+        if (! empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
+            $this->cartSessionItemCount = count($_SESSION["cart_item"]);
+        }
+    }
+
+    function editCart()
+    {
+        if (! empty($_SESSION["cart_item"])) {
+            $total_price = 0;
+            foreach ($_SESSION["cart_item"] as $k => $v) {
+                if ($_POST["code"] == $k) {
+                    $_SESSION["cart_item"][$k]["quantity"] = $_POST["quantity"];
                 }
-            } else {
-                $this->itemArray["cartItem"] = $this->newItemArray;
+                $total_price = $total_price + ($_SESSION["cart_item"][$k]["quantity"] * $_SESSION["cart_item"][$k]["price"]);
             }
+            return $total_price;
+        }
+
+        if (! empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
+            $this->cartSessionItemCount = count($_SESSION["cart_item"]);
         }
     }
 
-    public function cartRemove($name){
-    //Remove item from cart
-        if (!empty($this->itemArray["cartItem"])) {
-            foreach ($this->itemArray["cartItem"] as $k => $v) {
-                if ($name == $k)
-                    unset($this->itemArray["cartItem"][$k]);
-                if (empty($this->itemArray["cartItem"]))
-                    unset($this->itemArray["cartItem"]);
+    function removeFromCart()
+    {
+        if (! empty($_SESSION["cart_item"])) {
+            foreach ($_SESSION["cart_item"] as $k => $v) {
+                if ($_POST["code"] == $k)
+                    unset($_SESSION["cart_item"][$k]);
+                if (empty($_SESSION["cart_item"]))
+                    unset($_SESSION["cart_item"]);
             }
         }
+
+        if (! empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
+            $this->cartSessionItemCount = count($_SESSION["cart_item"]);
+        }
     }
-    public function __destruct() {
-        //$_SESSION["cart_item"] = $this->itemArray;
+
+    function emptyCart()
+    {
+        unset($_SESSION["cart_item"]);
+        $this->cartSessionItemCount = 0;
     }
 }
