@@ -50,3 +50,9 @@ Route::set('chat', function() {
 Route::set('botman', function() {
     Controller::CreateView('botman');
 });
+Route::set('profile', function() {
+    Profile::CreateView('profile');
+});
+Route::set('edit-profile', function() {
+    Admin::CreateView('editProfile');
+});
