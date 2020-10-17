@@ -79,7 +79,7 @@ if (isset($_GET["productID"])) {
             <body>
             <div id="shopping-cart">
             <div class="heading">Shopping Cart
-             <a id="btnEmpty" href="product?action=empty">Empty Cart</a></div>
+            </div>
             <?php
             //Reset total cost to do recalc
             if(isset($_SESSION["cart_item"])){
@@ -104,12 +104,23 @@ if (isset($_GET["productID"])) {
                             <td><?php echo $item["quantity"]; ?></td>
                             <td><?php echo $item["price"]." DKK"; ?></td>
                             <td><a href="product?action=remove&name=<?php echo $item["name"]; ?>" 
-                            class="removeBtn">Remove</a></td>
+                            class="removeBtn">Remove</a>
+                            </td>
                             </tr>
+                           
                             <?php
                     $item_total += ($item["price"]*$item["quantity"]);
                     }
                     ?>
+                <!--  Empty cart -->
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a id="btnEmpty" href="product?action=empty">Empty Cart</a></td>
+                        </tr>
+                <!-- Empty cart END -->
             
             <tr>
             <td colspan="5" align=right><strong>Total:</strong> <?php echo $item_total." DKK"; ?></td>
@@ -124,7 +135,7 @@ if (isset($_GET["productID"])) {
             }
             ?>
             </div>
-            <div class="heading">Products</div>
+            <div class="col-12 text-center heading">Products</div>
                 <?php
                 $product_array = self::query("SELECT * FROM product ORDER BY productID ASC");
                 if (!empty($product_array)) { 
