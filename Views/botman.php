@@ -20,9 +20,15 @@ $botman = BotManFactory::create($config);
 $botman->hears('Hello', function (BotMan $bot) {
     $bot->reply('Hello too');
 });
+$botman->hears('sup', function (BotMan $bot) {
+    $bot->reply('Sup dawg');
+});
+$botman->hears('What is your name?', function (BotMan $bot) {
+    $bot->reply('I am ze BotMan!');
+});
 
 $botman->fallback(function ($bot) {
-    $bot->reply('Sorry, I didnt get that becuase Niko only told me how to answer to "Hello"');
+    $bot->reply('Sorry, I didnt get that because Niko made me stupid :("');
 });
 
 // Start listening

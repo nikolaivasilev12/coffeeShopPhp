@@ -1,11 +1,8 @@
 <?php
-//check of the user is logged in:
-$session = new SessionHandle();
-if ($session->confirm_logged_in()) {
-    $redirect = new Redirector("login");
-}
-
 $PageTitle = "Coffee Shop";
+if (!isset($_SESSION)){
+    $session = new SessionHandle();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,20 +27,32 @@ $PageTitle = "Coffee Shop";
                     <a class="nav-link" href="product">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="categories">Categories</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="about-us" >About us</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="admin" >Admin</a>
-                </li>
+                <?php
+                if (isset($_SESSION['permission'])){
+                    if($_SESSION['permission'] === 'admin') {?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin" >Admin</a>
+                    </li>
+                    <?php
+                    }
+                }
+                ?>
             </ul>
             <form class="form-inline my-2 my-lg-0 px-4">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <button type="button" class="btn btn-danger"><a class="link" href="logout">Logout!</a> </button>
+            <?php
+                if (isset($_SESSION['permission'])){?>
+                    <button type="button" class="btn btn-danger"><a class="link" href="logout">Logout!</a> </button>
+                    <?php
+                } else {?>
+                    <button type="button" class="btn btn-primary"><a class="link" href="login">Login!</a> </button>
+                <?php
+                }
+                ?>
         </div>
     </nav>
 </header>

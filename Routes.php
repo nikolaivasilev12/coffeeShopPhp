@@ -20,9 +20,6 @@ Route::set('logout', function() {
     new Logoutor;
     Logoutor::CreateView('Login');
 });
-Route::set('categories', function() {
-    Categories::CreateView('Categories');
-});
 Route::set('product', function() {
     Products::CreateView('Products');
 });
@@ -40,6 +37,9 @@ Route::set('edit-products', function() {
 });
 Route::set('edit-news', function() {
     Admin::CreateView('editNews');
+});
+Route::set('edit-company', function() {
+    Admin::CreateView('editCompanyInfo');
 });
 Route::set('cart', function() {
     CartController::CreateView('cart');

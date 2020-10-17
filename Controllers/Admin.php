@@ -1,7 +1,7 @@
 <?php 
 
 class Admin extends Controller {
-    
+
     public function createCategory($name, $description){
         $name = trim($name);
         $description = trim($description);
@@ -14,6 +14,27 @@ class Admin extends Controller {
     public function getProducts() {
         return (self::query("SELECT * FROM product"));
     }
+
+
+    /* Getting Company's DATA FIRST */
+    public function getCompDesc() {
+        return (self::query("SELECT companyDescription FROM companydata"));
+    }
+    public function getCompAddress() {
+        return (self::query("SELECT adress FROM companydata"));
+    }
+    public function getCompPhone() {
+        return (self::query("SELECT phone FROM companydata"));
+    }
+    public function getCompEmail() {
+        return (self::query("SELECT email FROM companydata"));
+    }
+
+    /* Getting WORKHOURS  */
+    public function getWorkHours() {
+        
+    }
+
     public function updateCategory($name, $description, $categoryID) { 
         $name = trim($name);
         $description = trim($description);
@@ -48,6 +69,22 @@ class Admin extends Controller {
     public function updateNews($content){
          self::query("UPDATE news SET content = '{$content}' WHERE ID = 1");
     }
+
+        /* Edit company's Desc, address, phone no., email */
+    public function updateCompDesc($companyDescription){
+        self::query("UPDATE companydata SET companyDescription = '{$companyDescription}'");
+    }
+    public function updateCompAddress($companyAddress){
+        self::query("UPDATE companydata SET adress = '{$companyAddress}'");
+    }
+    public function updateCompPhone($companyPhone){
+        self::query("UPDATE companydata SET phone = '{$companyPhone}'");
+    }
+    public function updateCompEmail($companyEmail){
+        self::query("UPDATE companydata SET email = '{$companyEmail}'");
+    }
+
+
     public function deleteCategory($categoryID) {
         self::query("DELETE FROM producthascategory WHERE categoryID = '{$categoryID}'");
         self::query("DELETE FROM category WHERE categoryID = '{$categoryID}'");

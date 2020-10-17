@@ -1,12 +1,12 @@
 <?php
 include("header.php");
 ?>
-<style> <?php include 'style.css'; ?> </style>
 <div class="container">
     <div class="row justify-content-center">
-        <h2>ADMIN</h2>
+        <h1>ADMIN</h1>
     </div>
-    <div class="row">
+        <h3 class="mt-4">Product Controls</h3>
+        <div class="row">
         <div class="col text-center">
             <a href="edit-categories" class="card">
                 Edit Categories
@@ -17,10 +17,21 @@ include("header.php");
                 Edit Products
             </a>
         </div>
+
+    </div>
+    <div class="col text-center mt-4">
+        <h3>News & Company</h3>
+            <div class="row">
         <div class="col text-center">
             <a href="edit-news" class="card">
                 Edit News
             </a>
         </div>
-    </div>
+        <div class="col text-center">
+            <a href="edit-company" class="card">
+               Edit Company's Information
+            </a>
+        </div>
+</div>
+</div>
 </div>
