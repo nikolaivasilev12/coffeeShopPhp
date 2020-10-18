@@ -57,7 +57,7 @@ if(isset($_POST['saveHours'])) {
                 <input type="submit" name="saveCompEmail">
             </form>
 
-            <!-- workworkdays loop -->
+            <!-- work days loop -->
             <h4 class="mt-4">Working time of the Company</h4>
             <?php
             foreach($index->getWorkdays() as $value){
