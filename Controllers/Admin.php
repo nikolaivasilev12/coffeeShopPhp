@@ -30,11 +30,6 @@ class Admin extends Controller {
         return (self::query("SELECT email FROM companydata"));
     }
 
-    /* Getting WORKHOURS  */
-    public function getWorkHours() {
-        
-    }
-
     public function updateCategory($name, $description, $categoryID) { 
         $name = trim($name);
         $description = trim($description);
@@ -72,18 +67,29 @@ class Admin extends Controller {
 
         /* Edit company's Desc, address, phone no., email */
     public function updateCompDesc($companyDescription){
+        $companyDescription = trim($companyDescription);
         self::query("UPDATE companydata SET companyDescription = '{$companyDescription}'");
     }
     public function updateCompAddress($companyAddress){
+        $companyAddress = trim($companyAddress);
         self::query("UPDATE companydata SET adress = '{$companyAddress}'");
     }
     public function updateCompPhone($companyPhone){
+        $companyPhone = trim($companyPhone);
         self::query("UPDATE companydata SET phone = '{$companyPhone}'");
     }
     public function updateCompEmail($companyEmail){
+        $companyEmail = trim($companyEmail);
         self::query("UPDATE companydata SET email = '{$companyEmail}'");
     }
 
+    /* Updating Working Hours */
+    public function updateHours($startingHours, $closingHours, $ID){
+        $startingHours = trim($startingHours);
+        $closingHours = trim($closingHours);
+    self::query("UPDATE workdays SET startingHour = '{$startingHours}',
+    closingHour = '{$closingHours}' WHERE ID = ('{$ID}')");
+    }
 
     public function deleteCategory($categoryID) {
         self::query("DELETE FROM producthascategory WHERE categoryID = '{$categoryID}'");

@@ -55,3 +55,9 @@ Route::set('cartJS', function() {
 Route::set('handle-cart-ep', function() {
     Controller::loadCartHandler('handle-cart-ep');
 });
+Route::set('profile', function() {
+    Profile::CreateView('profile');
+});
+Route::set('edit-profile', function() {
+    Admin::CreateView('editProfile');
+});

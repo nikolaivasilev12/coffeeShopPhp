@@ -2,36 +2,33 @@
 include('header.php');
 $index=new Index();
 if(isset($_POST['saveCompDesc'])) {
-    $admin= new Admin();
+    $admin = new Admin();
     $admin->updateCompDesc($_POST['companyDescription']);
     print_r ($_POST);
 }
 
 if(isset($_POST['saveCompAddress'])) {
-    $admin= new Admin();
+    $admin = new Admin();
     $admin->updateCompAddress($_POST['companyAddress']);
     print_r ($_POST);
 }
 if(isset($_POST['saveCompPhone'])) {
-    $admin= new Admin();
+    $admin = new Admin();
     $admin->updateCompPhone($_POST['companyPhone']);
     print_r ($_POST);
 }
 if(isset($_POST['saveCompEmail'])) {
-    $admin= new Admin();
+    $admin = new Admin();
     $admin->updateCompEmail($_POST['companyEmail']);
+    print_r ($_POST);
+}
+if(isset($_POST['saveHours'])) {
+    $admin = new Admin();
+    $admin->updateHours($_POST['startingHours'], $_POST['closingHours'], $_POST['ID']);
     print_r ($_POST);
 }
 ?>
 
-<?php print_r($index->getCompanyData()['companyDescription'] . "<br>" )  ?>
-<?php print_r($index->getCompanyData()['adress'] . "<br>" ) ?>
-<?php print_r($index->getCompanyData()['phone'] . "<br>" ) ?>
-<?php print_r($index->getCompanyData()['email']);
-
-
-    print_r($index->getWorkdays());
-?>
 
 <div class="container">
             <h2 class="text-center">
@@ -60,18 +57,23 @@ if(isset($_POST['saveCompEmail'])) {
                 <input type="submit" name="saveCompEmail">
             </form>
 
-            <!-- workworkdays loop -->
-            <h4 class="mt-4">Work Hours of the Company</h4>
+            <!-- work days loop -->
+            <h4 class="mt-4">Working time of the Company</h4>
             <?php
-
             foreach($index->getWorkdays() as $value){
                 ?>
-                <div class="d-flex p-2">
-                <p><?php print_r($value['startingHour']) ?>&nbsp; - &nbsp; </p>
-                <p><?php print_r($value['closingHour']) ?></p>
-                <button name="workdays" type="submit" value="<?php print_r($value) ?>"><?php print_r($value['openDay']) ?></button>
+                <div class="wrapper justify-start d-flex p-2">
+                <p> <span class="font-weight-bold"><?php print_r($value['openDay']) ?> </span>
+                Opening at:&nbsp;
+                <form action="" method="POST">
+                <input type="hidden" name="ID" value="<?php print_r($value['ID']) ?>">
+                <input type="text" name="startingHours" value="<?php print_r($value['startingHour']) ?>">
+                <input type="text" name="closingHours" value="<?php print_r($value['closingHour']) ?>">
+                <button class="ml-5" name="saveHours" type="submit" value="<?php print_r($value) ?>">Submit</button>
+                </form>
+                </p>
                 </div>
-                <?php
+        <?php
         }
         ?>
         </div>

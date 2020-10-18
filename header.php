@@ -29,6 +29,9 @@ if (!isset($_SESSION)){
                 <li class="nav-item">
                     <a class="nav-link" href="about-us" >About us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile" >Profile</a>
+                </li>
                 <?php
                 if (isset($_SESSION['permission'])){
                     if($_SESSION['permission'] === 'admin') {?>

@@ -13,4 +13,5 @@ class Index extends Controller {
     public function getWorkdays() {
         return (self::query("SELECT * FROM workdays"));
     }
+    
 }
