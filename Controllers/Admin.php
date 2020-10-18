@@ -65,11 +65,11 @@ class Admin extends Controller {
          self::query("UPDATE news SET content = '{$content}' WHERE ID = 1");
     }
 
-    public function updateCompanyData($content){
-        self::query("UPDATE companydata SET companyDescription = '{$content['companyDescription']}', adress = '{$content['adress']}', phone = '{$content['phone']}',
-        email = '{$content['email']}' WHERE ID = 1");
-    }
-        /* Edit company's Desc, address, phone no., email */
+    /* Edit company's Desc, address, phone no., email */
+        public function updateCompanyData($content){
+            self::query("UPDATE companydata SET companyDescription = '{$content['companyDescription']}', adress = '{$content['adress']}', phone = '{$content['phone']}',
+            email = '{$content['email']}' WHERE ID = 1");
+        }
     // public function updateCompDesc($companyDescription){
     //     $companyDescription = trim($companyDescription);
     //     self::query("UPDATE companydata SET companyDescription = '{$companyDescription}'");
