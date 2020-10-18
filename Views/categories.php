@@ -23,38 +23,38 @@
             $productsObj = new Products();
             $productsByCategory = $productsObj->getProductByCategory($_GET['categoryID']);
             foreach ($productsByCategory as $value) { ?>
-                <div class="product-item">
-                    <?php echo(($value["name"])); ?>
-                        <form method="post" action="product?action=add&name=<?php echo(trim($value["name"])); ?>"> 
-                        <div><strong><?php echo $value["name"]; ?></strong></div>
-                        <div class="product-price"><?php echo $value["price"]." DKK"; ?></div>
-                        <div>
-                            <input type="text" name="quantity" value="1" size="2" />
-                            <input type="submit" value="Add to cart" class="addBtn" />
-                            <a href="product?productID=<?php echo($value['productID']) ?>" class="btn btn-primary">View Product</a></div>
-                        </form>
+                <div class="product-item card col-3 mx-2 my-2">
+                    <div class="product-image">
+                        <img src="data/laptop.jpg" id="<?php echo $value['productID']; ?>" class="product-img">
                     </div>
-                <?php
+                    <div>
+                        <strong><?php echo $value["name"]; ?></strong>
+                    </div>
+                    <div class="product-price"><?php echo $value["price"] . " DKK"; ?></div>
+
+                    <input type="button" id="add_<?php echo $value['productID']; ?>" value="Add to cart" class="btnAddAction" onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>')" />
+                    <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-primary">View Product</a>
+                </div>
+            <?php
             }
         } elseif (!isset($_GET['productID'])) {
             $productsByCategory = $productsObj->getProductByCategory(0);
             foreach ($productsByCategory as $value) { ?>
-                <div class="product-item">
-                    <?php echo(($value["name"])); ?>
-                        <form method="post" action="product?action=add&name=<?php echo(trim($value["name"])); ?>"> 
-                        <div><strong><?php echo $value["name"]; ?></strong></div>
-                        <div class="product-price"><?php echo $value["price"]." DKK"; ?></div>
-                        <div>
-                            <input type="text" name="quantity" value="1" size="2" />
-                            <input type="submit" value="Add to cart" class="addBtn" />
-                            <?php echo $value['productID']?>
-                            <a href="product?productID=<?php echo($value['productID']) ?>" class="btn btn-primary">View Product</a></div>
-                        </form>
+                <div class="product-item card col-3 mx-2 my-2">
+                    <div class="product-image">
+                        <img src="data/laptop.jpg" id="<?php echo $value['productID']; ?>" class="product-img">
                     </div>
-                <?php
+                    <div>
+                        <strong><?php echo $value["name"]; ?></strong>
+                    </div>
+                    <div class="product-price"><?php echo $value["price"] . " DKK"; ?></div>
+
+                    <input type="button" id="add_<?php echo $value['productID']; ?>" value="Add to cart" class="btnAddAction" onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>')" />
+                    <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-primary">View Product</a>
+                </div>
+        <?php
             }
         }
         ?>
     </div>
-
 </div>

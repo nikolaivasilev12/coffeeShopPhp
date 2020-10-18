@@ -11,11 +11,23 @@ if (isset($_GET["productID"])) {
 <div class="container">
     <div class="row justify-content-center">
         <?php if (!isset($_GET["productID"])) {
-            include('components/cart.php');
             ?>
-            <a href="checkout">
-                <button class="btn btn-primary" "> Checkout</button>
-            </a>
+            <div class="col-12" id="shopping-cart" tabindex="1">
+                <div id="tbl-cart">
+                    <div id="txt-heading">
+                        <h2>Your Shopping Cart</h2>
+                        <div id="close"></div>
+                    </div>
+                    <div id="cart-item">
+                        <?php require_once 'components/cart.php'; ?>
+                        </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <a href="checkout">
+                    <button class="btn btn-primary" "> Checkout</button>
+                </a>
+            </div>
             <?php
         }
         else { ?>
@@ -129,3 +141,5 @@ if (isset($_GET["productID"])) {
             ?>
                 </div>
     </div>
+    
+<script src="cartJS"></script>

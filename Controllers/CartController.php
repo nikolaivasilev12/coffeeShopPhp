@@ -1,12 +1,11 @@
-
 <?php
-
-class CartController extends Controller
+namespace Phppot;
+class CartController
 {
     public $cartSessionItemCount = 0;
     function __construct()
     {
-        if (! empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
+        if (!empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
             $this->cartSessionItemCount = count($_SESSION["cart_item"]);
         }
     }

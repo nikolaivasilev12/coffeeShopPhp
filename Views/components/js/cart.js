@@ -16,7 +16,7 @@ function cartAction(action, product_code, productTitle, productPrice) {
 		}
 	}
 	jQuery.ajax({
-		url : "components/handle-cart-ep.php",
+		url : "handle-cart-ep",
 		data : queryString,
 		type : "POST",
 		success : function(data) {
@@ -34,7 +34,7 @@ function updatePrice(obj) {
 	queryString = 'action=edit&code=' + code + '&quantity=' + quantity;
 	$.ajax({
 		type : 'post',
-		url : "ajax/handle-cart-ep.php",
+		url : "handle-cart-ep",
 		data : queryString,
 		success : function(data) {
 			$("#total").text(data);

@@ -8,6 +8,12 @@ class Controller extends DBController {
     public static function CreateChat($viewName) {
       require_once("$viewName.html");
     }
+    public static function loadJS($viewName) {
+      require_once("Views/components/js/$viewName.js");
+    }
+    public static function loadCartHandler($viewName) {
+      require_once("Views/components/$viewName.php");
+    }
     public function array_flatten($array) { 
         if (!is_array($array)) { 
           return false; 

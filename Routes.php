@@ -40,9 +40,6 @@ Route::set('edit-news', function() {
 Route::set('edit-company', function() {
     Admin::CreateView('editCompanyInfo');
 });
-Route::set('cart', function() {
-    CartController::CreateView('cart');
-});
 Route::set('chat', function() {
     Controller::CreateChat('chat');
 });
@@ -50,5 +47,11 @@ Route::set('botman', function() {
     Controller::CreateView('botman');
 });
 Route::set('checkout', function() {
-    CartController::CreateView('checkout');
+    Controller::CreateView('checkout');
+});
+Route::set('cartJS', function() {
+    Controller::loadJS('cart');
+});
+Route::set('handle-cart-ep', function() {
+    Controller::loadCartHandler('handle-cart-ep');
 });

@@ -1,10 +1,8 @@
 <?php
 namespace Phppot;
-
-use \Phppot\Cart;
-
-require_once __DIR__ . './../Model/Cart.php';
-$cartModel = new Cart();
+use \Phppot\CartController;
+require_once __DIR__ . '/../../Controllers/CartController.php';
+$cartModel = new CartController();
 session_start();
 
 if (! empty($_POST["action"])) {
@@ -25,4 +23,4 @@ if (! empty($_POST["action"])) {
             break;
     }
 }
-require_once '../view/shopping-cart.php';
+require_once 'cart.php';
