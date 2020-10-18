@@ -65,23 +65,27 @@ class Admin extends Controller {
          self::query("UPDATE news SET content = '{$content}' WHERE ID = 1");
     }
 
+    public function updateCompanyData($content){
+        self::query("UPDATE companydata SET companyDescription = '{$content['companyDescription']}', adress = '{$content['adress']}', phone = '{$content['phone']}',
+        email = '{$content['email']}' WHERE ID = 1");
+    }
         /* Edit company's Desc, address, phone no., email */
-    public function updateCompDesc($companyDescription){
-        $companyDescription = trim($companyDescription);
-        self::query("UPDATE companydata SET companyDescription = '{$companyDescription}'");
-    }
-    public function updateCompAddress($companyAddress){
-        $companyAddress = trim($companyAddress);
-        self::query("UPDATE companydata SET adress = '{$companyAddress}'");
-    }
-    public function updateCompPhone($companyPhone){
-        $companyPhone = trim($companyPhone);
-        self::query("UPDATE companydata SET phone = '{$companyPhone}'");
-    }
-    public function updateCompEmail($companyEmail){
-        $companyEmail = trim($companyEmail);
-        self::query("UPDATE companydata SET email = '{$companyEmail}'");
-    }
+    // public function updateCompDesc($companyDescription){
+    //     $companyDescription = trim($companyDescription);
+    //     self::query("UPDATE companydata SET companyDescription = '{$companyDescription}'");
+    // }
+    // public function updateCompAddress($companyAddress){
+    //     $companyAddress = trim($companyAddress);
+    //     self::query("UPDATE companydata SET adress = '{$companyAddress}'");
+    // }
+    // public function updateCompPhone($companyPhone){
+    //     $companyPhone = trim($companyPhone);
+    //     self::query("UPDATE companydata SET phone = '{$companyPhone}'");
+    // }
+    // public function updateCompEmail($companyEmail){
+    //     $companyEmail = trim($companyEmail);
+    //     self::query("UPDATE companydata SET email = '{$companyEmail}'");
+    // }
 
     /* Updating Working Hours */
     public function updateHours($startingHours, $closingHours, $ID){
