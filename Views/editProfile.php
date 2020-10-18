@@ -2,6 +2,9 @@
 include('header.php');
 $profileObj = new Profile();
 $profile = $profileObj->getProfileData($_SESSION['customerID']);
+if (isset($_POST['submit'])) {
+    $profileObj->updateProfile($_SESSION['customerID'], $_POST);
+}
 // if (isset($_POST['saveCustomerEmail'])) {
 //     $profile->updateCustomerEmail($_POST['customerEmail']);
 //     print_r($_POST);
@@ -23,11 +26,6 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
 //     print_r($_POST);
 // }
 ?>
-
-
-
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="mt-5 col-md-5 card">
@@ -44,20 +42,20 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <label class="labels">Name</label>
-                            <input type="text" class="form-control" placeholder="first name" value="<?php echo ($profile['fname']) ?>">
+                            <input name="fname" type="text" class="form-control" placeholder="first name" value="<?php echo ($profile['fname']) ?>">
                         </div>
                         <div class="col-md-6">
                             <label class="labels">Last name</label>
-                            <input type="text" class="form-control" value="<?php echo ($profile['lname']) ?>" placeholder="Doe">
+                            <input name="lname" type="text" class="form-control" value="<?php echo ($profile['lname']) ?>" placeholder="Doe">
                         </div>
                     </div>
                     <div class="row mt-3 justify-content-start">
                         <div class="col-md-12">
                             <label class="labels">Email</label>
-                            <input type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['email']) ?>">
+                            <input name="email" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['email']) ?>">
                         </div>
                         <div class="mt-4 col-12 text-left">
-                            <input class="btn btn-primary profile-button" type="submit" value="Save Profile"></input>
+                            <input class="btn btn-primary profile-button" name="submit" type="submit" value="Save Profile"></input>
                         </div>
                     </div>
                 </form>

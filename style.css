@@ -2,7 +2,6 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    font-family: Roboto;
 }
 .contact-title {
     color: rgb(59, 44, 44);
@@ -19,7 +18,7 @@ form {
     margin-top: 50px;
 }
 
-.form-control {
+/* .form-control {
     width: 600px;
     background: transparent;
     border: none;
@@ -28,7 +27,7 @@ form {
     color: rgb(39, 24, 24);
     font-size: 18px;
     margin-bottom: 16px;
-}
+} */
 
 /*FOR MESSAGE FIELD HEIGHT*/
 .form-control-message {
@@ -69,14 +68,14 @@ form .submit:hover {
 #shopping-cart table td{background-color:#FFFFFF;}
 #shopping-cart table th{text-align:left;}
 #shopping-cart {margin-bottom:30px;}
-
+/* 
 .heading{
     padding: 10px 10px;
     border-radius: 2px;
     color: #FFF;
     background: #443939;
     margin-bottom:10px;
-}
+} */
 a.removeBtn{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;}
 a.removeBtn:visited{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;}
 

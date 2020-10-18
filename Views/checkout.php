@@ -68,7 +68,7 @@ if (isset($_POST["checkout-btn"])) {
             </div>
         </form>
     </div>
-    <script src="cartJS"></script>
+    <script src="cartJS" type="text/javascript"></script>
     <script>
         function checkout() {
 

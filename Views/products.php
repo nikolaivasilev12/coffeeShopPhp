@@ -23,9 +23,9 @@ if (isset($_GET["productID"])) {
                         </div>
                 </div>
             </div>
-            <div class="col-12">
-                <a href="checkout">
-                    <button class="btn btn-primary" "> Checkout</button>
+            <div class="col-12 text-right">
+                <a href="checkout" class="btn btn-primary btn-lg">
+                    Checkout
                 </a>
             </div>
             <?php
@@ -142,4 +142,4 @@ if (isset($_GET["productID"])) {
                 </div>
     </div>
     
-<script src="cartJS"></script>
+<script src="cartJS" type="text/javascript" ></script>

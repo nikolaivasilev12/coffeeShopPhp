@@ -41,8 +41,8 @@
             $productsByCategory = $productsObj->getProductByCategory(0);
             foreach ($productsByCategory as $value) { ?>
                 <div class="product-item card col-3 mx-2 my-2">
-                    <div class="product-image">
-                        <img src="data/laptop.jpg" id="<?php echo $value['productID']; ?>" class="product-img">
+                    <div class="image">
+                        <img src="https://purepng.com/public/uploads/large/purepng.com-coffee-beanscoffee-beanscoffeestone-fruitpeaberry-1411527241519iq7rh.png" id="<?php echo $value['productID']; ?>" width="150">
                     </div>
                     <div>
                         <strong><?php echo $value["name"]; ?></strong>
