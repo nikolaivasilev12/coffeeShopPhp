@@ -1,65 +1,66 @@
 <?php
 include('header.php');
-$profile=new Profile();
-print_r($_SESSION['customerID']);
-if(isset($_POST['saveCustomerEmail'])) {
-    $profile->updateCustomerEmail($_POST['customerEmail']);
-    print_r ($_POST);
-}
-if(isset($_POST['saveCustomerPass'])) {
-    $profile->updateCustomerPass($_POST['customerPassword']);
-    print_r ($_POST);
-}
-if(isset($_POST['saveCustomerfName'])) {
-    $profile->updateCustomerfName($_POST['customerfName']);
-    print_r ($_POST);
-}
-if(isset($_POST['saveCustomerlName'])) {
-    $profile->updateCustomerlName($_POST['customerlName']);
-    print_r ($_POST);
-}
-if(isset($_POST['saveCustomerphoneNr'])) {
-    $profile->updateCustomerphoneNr($_POST['customerphoneNr']);
-    print_r ($_POST);
-}
+$profileObj = new Profile();
+$profile = $profileObj->getProfileData($_SESSION['customerID']);
+// if (isset($_POST['saveCustomerEmail'])) {
+//     $profile->updateCustomerEmail($_POST['customerEmail']);
+//     print_r($_POST);
+// }
+// if (isset($_POST['saveCustomerPass'])) {
+//     $profile->updateCustomerPass($_POST['customerPassword']);
+//     print_r($_POST);
+// }
+// if (isset($_POST['saveCustomerfName'])) {
+//     $profile->updateCustomerfName($_POST['customerfName']);
+//     print_r($_POST);
+// }
+// if (isset($_POST['saveCustomerlName'])) {
+//     $profile->updateCustomerlName($_POST['customerlName']);
+//     print_r($_POST);
+// }
+// if (isset($_POST['saveCustomerphoneNr'])) {
+//     $profile->updateCustomerphoneNr($_POST['customerphoneNr']);
+//     print_r($_POST);
+// }
 ?>
 
 
 
 
-   
+
 <div class="container">
-            <h2 class="text-center">
-            EDIT YOUR PROFILE
-            </h2>
     <div class="row justify-content-center">
-        <div class="col-4 text-center">
-            <h4 class="mt-4">Email</h4>
-            <form action="" method="post">
-                <input type="text" name="customerEmail" value="<?php print_r($profile->getCustomerEmail($_SESSION['customerID'])[0]['email']);  ?>">
-                <input type="submit" class="btn btn-primary" type="submit" name="saveCustomerEmail">
-            </form>
-            <h4 class="mt-4">Password</h4>
-            <form action="" method="post">
-                <input type="text" name="customerPassword" value="<?php print_r($profile->getCustomerPassword($_SESSION['customerID'])[0]['password']);  ?>">
-                <input class="btn btn-primary" type="submit" name="saveCustomerPassword">
-            </form>
-            <h4 class="mt-4">Your First Name</h4>
-            <form  action="" method="post">
-                <input type="text" name="customerfName" value="<?php print_r($profile->getCustomerfName($_SESSION['customerID'])[0]['fname']);  ?>">
-                <input class="btn btn-primary" type="submit" name="saveCustomerfName">
-            </form>
-            <h4 class="mt-4">Your Last Name</h4>
-            <form action="" method="post">
-                <input type="text" name="customerlName" value="<?php print_r($profile->getCustomerlName($_SESSION['customerID'])[0]['lname']);  ?>">
-                <input class="btn btn-primary" type="submit" name="saveCustomerlName">
-            </form>
-            <h4 class="mt-4">Your Phone Number</h4>
-            <form action="" method="post">
-                <input type="text" name="customerPhone" value="<?php print_r($profile->getCustomerphoneNr($_SESSION['customerID'])[0]['phoneNr']);  ?>">
-                <input class="btn btn-primary" type="submit" name="saveCustomerphoneNr">
-            </form>
+        <div class="mt-5 col-md-5 card">
+            <div class="p-3 py-5">
+                <div class="row">
+                <div class="col-7 mb-3">
+                    <h3 class="text-left">Edit your profile</h3>
+                </div>
+                <div class="col-2 text-right">
+                    <input class="btn btn-outline-primary profile-button" type="submit" value="Change Password"></input>
+                </div>
+                </div>
+                <form action="" method="post">
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="labels">Name</label>
+                            <input type="text" class="form-control" placeholder="first name" value="<?php echo ($profile['fname']) ?>">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Last name</label>
+                            <input type="text" class="form-control" value="<?php echo ($profile['lname']) ?>" placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="row mt-3 justify-content-start">
+                        <div class="col-md-12">
+                            <label class="labels">Email</label>
+                            <input type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['email']) ?>">
+                        </div>
+                        <div class="mt-4 col-12 text-left">
+                            <input class="btn btn-primary profile-button" type="submit" value="Save Profile"></input>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
