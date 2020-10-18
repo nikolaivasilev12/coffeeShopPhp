@@ -23,6 +23,11 @@ class Profile extends Controller {
         return (self::query("SELECT phoneNr FROM customer
         WHERE customerID = ('{$customerID}')"));
      }
+
+     
+    public function getProfileData($customerID) {
+        return $this->array_flatten(self::query("SELECT * FROM customer WHERE customerID = ('{$customerID}')"));
+    }
    
    
 
