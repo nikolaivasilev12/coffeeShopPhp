@@ -5,13 +5,13 @@ if ($session->logged_in()) {
     $redirect = new Redirector("index");
 }
 if (isset($_POST['submit'])) { // Form has been submitted.
-    $newUser = new NewUser($_POST['user'],$_POST['pass']);
+    $newUser = new NewUser($_POST['email'], $_POST['pass'], $_POST['username'],);
     $msg = $newUser->message;
     $redirect = new Redirector("login");
 }
 ?>
 <html>
-<head>
+<head>`
     <meta http-equiv="Content-Type" content="text/html"/>
 </head>
 <?php
@@ -19,8 +19,10 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 ?>
 <h2>Create New User</h2>
 <form action="" method="post">
+    Email Address:
+    <input type="text" name="email" maxlength="30"/>
     Username:
-    <input type="text" name="user" maxlength="30"/>
+    <input type="text" name="username" maxlength="30"/>
     Password:
     <input type="password" name="pass" maxlength="30"/>
     <input type="submit" name="submit" value="Create"/>

@@ -10,7 +10,8 @@ CREATE TABLE CUSTOMER
     `password` VARCHAR(250) NOT NULL,
     `fname` VARCHAR(255) NOT NULL,
     `lname` VARCHAR (255) NOT NULL,
-    `phoneNr` CHAR(11) NOT NULL
+    `phoneNr` CHAR(11) NOT NULL,
+    `username` VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE PERMISSION
@@ -127,26 +128,26 @@ CREATE TABLE NEWS
 
 
 -- Customer
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('fludovico0@hp.com', 'wBNDeBzreW', 'Frank', 'Ludovico', '948-602-7488');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('nharkin1@mediafire.com', 'hleuL7mbA', 'Norean', 'Harkin', '794-557-0884');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('gdelucia2@drupal.org', 'gdxqT1g8i', 'Goldia', 'Delucia', '600-107-6051');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('kgillard3@cbslocal.com', 'vIfARV3JJb', 'Kizzie', 'Gillard', '162-322-0203');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('olamonby4@yandex.ru', 'wMgWfnJrw', 'Ozzie', 'Lamonby', '779-126-2506');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('tpearcey5@yandex.ru', '5GMiut', 'Tova', 'Pearcey', '986-132-1958');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('scheshire6@seesaa.net', 'iKNRMJ7', 'Selena', 'Cheshire', '201-239-1993');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('rpiddington7@unicef.org', 'Lnltyk', 'Rafferty', 'Piddington', '208-714-4124');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('drubenczyk8@delicious.com', 'p0sIkGBCxp', 'Daven', 'Rubenczyk', '974-471-2436');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('dcunney9@discuz.net', '38Pbt1h', 'Dyana', 'Cunney', '199-398-0068');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('dbomba@amazon.co.uk', 'WIGbRl2tcrh', 'Dolf', 'Bomb', '895-922-9585');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('bkinnerkb@drupal.org', 'rwpRBW9GGe', 'Berti', 'Kinnerk', '218-571-8572');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('ppettifordc@fastcompany.com', 'juCr7efv', 'Pepi', 'Pettiford', '341-540-1443');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('bledamund@ucla.edu', 'QDHi8FTVlMH', 'Bentley', 'Ledamun', '149-694-1052');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('rwheildone@feedburner.com', 'xgrIbb', 'Rayna', 'Wheildon', '325-535-6569');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('krudigerf@nasa.gov', 'QdNkcFC8EDb', 'Kenna', 'Rudiger', '127-621-1776');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('nescofierg@hao123.com', 'a5uQEC6njNzH', 'Noll', 'Escofier', '711-254-8837');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('jmacevillyh@tamu.edu', 'IuK5h25', 'Johnnie', 'MacEvilly', '616-724-1665');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('tpilleri@scientificamerican.com', 'ulPbqQ3', 'Theodora', 'Piller', '331-647-0092');
-insert into CUSTOMER (email, password, fname, lname, phoneNr) values ('klaiblej@answers.com', '0lLDJvG1PU', 'Kirstin', 'Laible', '308-757-4382');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('fludovico0@hp.com', 'wBNDeBzreW', 'Frank', 'Ludovico', '948-602-7488', 'dogman');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('nharkin1@mediafire.com', 'hleuL7mbA', 'Norean', 'Harkin', '794-557-0884', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('gdelucia2@drupal.org', 'gdxqT1g8i', 'Goldia', 'Delucia', '600-107-6051', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('kgillard3@cbslocal.com', 'vIfARV3JJb', 'Kizzie', 'Gillard', '162-322-0203', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('olamonby4@yandex.ru', 'wMgWfnJrw', 'Ozzie', 'Lamonby', '779-126-2506', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('tpearcey5@yandex.ru', '5GMiut', 'Tova', 'Pearcey', '986-132-1958', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('scheshire6@seesaa.net', 'iKNRMJ7', 'Selena', 'Cheshire', '201-239-1993', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('rpiddington7@unicef.org', 'Lnltyk', 'Rafferty', 'Piddington', '208-714-4124', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('drubenczyk8@delicious.com', 'p0sIkGBCxp', 'Daven', 'Rubenczyk', '974-471-2436', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('dcunney9@discuz.net', '38Pbt1h', 'Dyana', 'Cunney', '199-398-0068', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('dbomba@amazon.co.uk', 'WIGbRl2tcrh', 'Dolf', 'Bomb', '895-922-9585', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('bkinnerkb@drupal.org', 'rwpRBW9GGe', 'Berti', 'Kinnerk', '218-571-8572', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('ppettifordc@fastcompany.com', 'juCr7efv', 'Pepi', 'Pettiford', '341-540-1443', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('bledamund@ucla.edu', 'QDHi8FTVlMH', 'Bentley', 'Ledamun', '149-694-1052', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('rwheildone@feedburner.com', 'xgrIbb', 'Rayna', 'Wheildon', '325-535-6569', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('krudigerf@nasa.gov', 'QdNkcFC8EDb', 'Kenna', 'Rudiger', '127-621-1776', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('nescofierg@hao123.com', 'a5uQEC6njNzH', 'Noll', 'Escofier', '711-254-8837', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('jmacevillyh@tamu.edu', 'IuK5h25', 'Johnnie', 'MacEvilly', '616-724-1665', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('tpilleri@scientificamerican.com', 'ulPbqQ3', 'Theodora', 'Piller', '331-647-0092', 'mahdewd');
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('klaiblej@answers.com', '0lLDJvG1PU', 'Kirstin', 'Laible', '308-757-4382', 'mahdewd');
 
 -- PERMISSION
 insert into PERMISSION (`name`) values ('customer');
