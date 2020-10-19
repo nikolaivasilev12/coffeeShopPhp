@@ -31,7 +31,7 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
                             <h6>Email Address:</h6>
                             <input type="text" name="email" placeholder="Your Email" maxlength="30"/> <br><br>
                             <h6> Username:</h6>
-                            <input type="text" name="user" placeholder="Your Username" maxlength="30"/> <br><br>
+                            <input type="text" name="username" placeholder="Your Username" maxlength="30"/> <br><br>
                             <h6>Password:</h6>
                             <input  type="password" name="pass" placeholder="Your Password" maxlength="30"/> <br> <br>
                             <div class="text-center">
