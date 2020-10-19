@@ -1,4 +1,5 @@
 <?php
+require('cookies.php');
 $PageTitle = "Coffee Shop";
 if (!isset($_SESSION)){
     $session = new SessionHandle();
