@@ -41,15 +41,19 @@ if (isset($_POST['submit'])) {
                 <form action="" method="post">
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <label class="labels">Name</label>
-                            <input name="fname" type="text" class="form-control" placeholder="first name" value="<?php echo ($profile['fname']) ?>">
+                            <label class="labels">First Name</label>
+                            <input name="fname" type="text" class="form-control" placeholder="John" value="<?php echo ($profile['fname']) ?>">
                         </div>
                         <div class="col-md-6">
-                            <label class="labels">Last name</label>
+                            <label class="labels">Last Name</label>
                             <input name="lname" type="text" class="form-control" value="<?php echo ($profile['lname']) ?>" placeholder="Doe">
                         </div>
                     </div>
                     <div class="row mt-3 justify-content-start">
+                        <div class="col-md-12">
+                            <label class="labels">Phone No.</label>
+                            <input name="phoneNr" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['phoneNr']) ?>">
+                        </div>
                         <div class="col-md-12">
                             <label class="labels">Email</label>
                             <input name="email" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['email']) ?>">

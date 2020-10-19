@@ -1,12 +1,13 @@
-<?php 
+<?php
 
 class Profile extends Controller {
-   
+
     public function getProfileData($customerID) {
         return $this->array_flatten(self::query("SELECT * FROM customer WHERE customerID = ('{$customerID}')"));
     }
+/** Comments work here use this syntax */
     public function updateProfile($customerID, $profileData) {
-        return self::query("UPDATE customer SET fname = '{$profileData['fname']}', lname = '{$profileData['lname']}', email = '{$profileData['email']}'
+        return self::query("UPDATE customer SET fname = '{$profileData['fname']}', lname = '{$profileData['lname']}', phoneNr = '{$profileData['phoneNr']}', email = '{$profileData['email']}'
         WHERE customerID = ('{$customerID}')");
     }
 
@@ -33,7 +34,7 @@ class Profile extends Controller {
     //     return (self::query("SELECT phoneNr FROM customer
     //     WHERE customerID = ('{$customerID}')"));
     //  }
-    
+
         /* Edit customer's email, password, names., email */
     // public function updateCustomerEmail($customerEmail){
     //     self::query("UPDATE customer SET email = '{$customerEmail}'");

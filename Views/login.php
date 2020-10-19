@@ -12,7 +12,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
 }
 // START FORM PROCESSING
 if (isset($_POST['submit'])) { // Form has been submitted.
-    $login = new LoginUser($_POST['email'],$_POST['password']);
+    $login = new LoginUser($_POST['username'],$_POST['password']);
     $msg = $login->message;
 }
 ?>
@@ -28,7 +28,7 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 ?>
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Log In</h1> 
+        <h1>Log In</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-4 mb-3">
@@ -36,8 +36,8 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-right">
                         <form class="text-left" action="" method="post">
-                            <h6>Email:</h6>
-                            <input type="text" name="email" placeholder="Your Email" maxlength="30"/> <br><br>
+                            <h6>Username:</h6>
+                            <input type="text" name="username" placeholder="Your Username" maxlength="30"/> <br><br>
                             <h6>Password:</h6>
                             <input type="password" name="password" placeholder="Your Password" maxlength="30"/> <br> <br>
                             <div class="text-center">

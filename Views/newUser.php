@@ -5,13 +5,13 @@ if ($session->logged_in()) {
     $redirect = new Redirector("index");
 }
 if (isset($_POST['submit'])) { // Form has been submitted.
-    $newUser = new NewUser($_POST['user'],$_POST['pass']);
+    $newUser = new NewUser($_POST['email'], $_POST['pass'], $_POST['username'],);
     $msg = $newUser->message;
     $redirect = new Redirector("login");
 }
 ?>
 <html>
-<head>
+<head>`
     <meta http-equiv="Content-Type" content="text/html"/>
 </head>
 <?php
@@ -20,7 +20,7 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Create New User</h1> 
+        <h1>Create New User</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-4 mb-3">
@@ -28,8 +28,10 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-right">
                     <form class="text-left" action="" method="post">
+                            <h6>Email Address:</h6>
+                            <input type="text" name="email" placeholder="Your Email" maxlength="30"/> <br><br>
                             <h6> Username:</h6>
-                            <input type="text" name="user" placeholder="Your Email" maxlength="30"/> <br><br>
+                            <input type="text" name="user" placeholder="Your Username" maxlength="30"/> <br><br>
                             <h6>Password:</h6>
                             <input  type="password" name="pass" placeholder="Your Password" maxlength="30"/> <br> <br>
                             <div class="text-center">
