@@ -72,8 +72,4 @@ class CartController
         unset($_SESSION["cart_item"]);
         $this->cartSessionItemCount = 0;
     }
-
-    function saveOrder($order) {
-        print_r($order);
-    }
 }

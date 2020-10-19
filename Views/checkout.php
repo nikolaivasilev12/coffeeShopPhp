@@ -1,22 +1,27 @@
 <?php
-namespace Phppot;
+namespace Phppot {
 use \Phppot\CartController;
 require_once __DIR__ . '/../Controllers/CartController.php';
 session_start();
 include('header.php');
-print_r($_SESSION);
+}
+namespace {
 if (isset($_POST["checkout-btn"])) {
     $order_number = rand(100, 999);
-    $cartObj = new CartController;
-    $cartItem = $_SESSION['cart_item'];
-    $order = json_encode($_POST + [$cartItem]);
-    $cartObj->saveOrder($order);
-    $cartObj->emptyCart();
+    $orderObj = new Order;
+    if(isset($_SESSION["cart_item"])) {
+        $cartItem = $_SESSION['cart_item'];
+    } else {
+        $cartItem = array();
+    }
+    $orderDetails = $_POST;
+    $orderObj->saveOrder($orderDetails, $cartItem);
+    // $cartObj->emptyCart();
 }
 ?>
-<style>
-    <?php include 'style.css'; ?>
-</style>
+    <style>
+        <?php include 'style.css'; ?>
+    </style>
 <HTML>
 <BODY>
     <div class="container">
@@ -72,6 +77,7 @@ if (isset($_POST["checkout-btn"])) {
 
             <div class="row">
                 <div class="col">
+                    <input type="hidden" class="btn btn-primary" name="customerID" value="<?php echo($_SESSION['customerID']) ?>">
                     <input type="submit" class="btn btn-primary" name="checkout-btn" value="Checkout">
                 </div>
             </div>
@@ -129,3 +135,6 @@ if (isset($_POST["checkout-btn"])) {
 </BODY>
 
 </HTML>
+<?php 
+}
+?>
