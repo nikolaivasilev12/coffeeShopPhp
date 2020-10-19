@@ -1,8 +1,17 @@
 <?php
+namespace Phppot;
+use \Phppot\CartController;
+require_once __DIR__ . '/../Controllers/CartController.php';
 session_start();
 include('header.php');
+print_r($_SESSION);
 if (isset($_POST["checkout-btn"])) {
     $order_number = rand(100, 999);
+    $cartObj = new CartController;
+    $cartItem = $_SESSION['cart_item'];
+    $order = json_encode($_POST + [$cartItem]);
+    $cartObj->saveOrder($order);
+    $cartObj->emptyCart();
 }
 ?>
 <style>
@@ -63,12 +72,11 @@ if (isset($_POST["checkout-btn"])) {
 
             <div class="row">
                 <div class="col">
-                    <input type="submit" class="btn btn-primary"value="Checkout">
+                    <input type="submit" class="btn btn-primary" name="checkout-btn" value="Checkout">
                 </div>
             </div>
         </form>
     </div>
-    <script src="cartJS" type="text/javascript"></script>
     <script>
         function checkout() {
 
@@ -79,7 +87,7 @@ if (isset($_POST["checkout-btn"])) {
             $("#shopping-cart").removeClass("error-field");
             $("#cart-error-message").hide();
 
-            var firstName = $("#first-name").val();
+            var firstName = $("#fname").val();
             var cartItem = $("#cart-item-count").val();
             var email = $("#email").val();
             var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;

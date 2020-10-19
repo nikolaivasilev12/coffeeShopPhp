@@ -142,4 +142,3 @@ if (isset($_GET["productID"])) {
                 </div>
     </div>
     
-<script src="cartJS" type="text/javascript" ></script>

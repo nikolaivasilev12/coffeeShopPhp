@@ -23,7 +23,8 @@ class CartController
             'code' => $productCode,
             'name' => $productTitle,
             'quantity' => $poductQuantity,
-            'price' => $productPrice
+            'price' => $productPrice,
+            'total' => $poductQuantity * $productPrice
         );
 
         $_SESSION["cart_item"][$productCode] = $cartItem;
@@ -70,5 +71,9 @@ class CartController
     {
         unset($_SESSION["cart_item"]);
         $this->cartSessionItemCount = 0;
+    }
+
+    function saveOrder($order) {
+        print_r($order);
     }
 }
