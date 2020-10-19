@@ -95,6 +95,7 @@ if (isset($_POST['submit'])) {
                         <form action="" method="POST">
                             <input type="hidden" name="ID" value="<?php print_r($value['ID']) ?>">
                             <input type="text" name="startingHours" value="<?php print_r($value['startingHour']) ?>">
+                            Closing at:&nbsp;
                             <input type="text" name="closingHours" value="<?php print_r($value['closingHour']) ?>">
                             <button class="ml-5" name="saveHours" type="submit" value="<?php print_r($value) ?>">Submit</button>
                         </form>

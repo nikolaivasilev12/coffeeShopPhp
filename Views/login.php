@@ -12,7 +12,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
 }
 // START FORM PROCESSING
 if (isset($_POST['submit'])) { // Form has been submitted.
-    $login = new LoginUser($_POST['email'],$_POST['password']);
+    $login = new LoginUser($_POST['username'],$_POST['password']);
     $msg = $login->message;
 }
 ?>
@@ -26,19 +26,35 @@ if (isset($_POST['submit'])) { // Form has been submitted.
 <?php
 if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 ?>
-
-<h2>Please login</h2>
-<form action="" method="post">
-    Email:
-    <input type="text" name="email" maxlength="30"/>
-    Password:
-    <input type="password" name="password" maxlength="30"/>
-    <input type="submit" name="submit" value="Login"/>
-</form>
-<a href="new-user">
-    <div>
-        Create a new account
+<div class="container">
+    <div class="row justify-content-center">
+        <h1>Log In</h1>
     </div>
-</a>
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-right">
+                        <form class="text-left" action="" method="post">
+                            <h6>Username:</h6>
+                            <input type="text" name="username" placeholder="Your Username" maxlength="30"/> <br><br>
+                            <h6>Password:</h6>
+                            <input type="password" name="password" placeholder="Your Password" maxlength="30"/> <br> <br>
+                            <div class="text-center">
+                            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="submit" value="Login"/> <br><br>
+                            </div>
+                        </form>
+                    <a href="new-user">
+                    <div>
+                        Create a new account
+                    </div>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+
