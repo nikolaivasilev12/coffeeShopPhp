@@ -17,6 +17,7 @@ if (isset($_POST['submit'])) { // Form has been submitted.
 <?php
 if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 ?>
+
 <div class="container">
     <div class="row justify-content-center">
         <h1>Create New User</h1> 
@@ -26,20 +27,20 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-right">
-                        <form class="text-left" action="" method="post">
-                            <h6>Username:</h6>
-                            <input type="text" name="email" placeholder="Your Email" maxlength="30"/> <br><br>
+                    <form class="text-left" action="" method="post">
+                            <h6> Username:</h6>
+                            <input type="text" name="user" placeholder="Your Email" maxlength="30"/> <br><br>
                             <h6>Password:</h6>
-                            <input type="password" name="pass" placeholder="Your Password" maxlength="30"/> <br> <br>
+                            <input  type="password" name="pass" placeholder="Your Password" maxlength="30"/> <br> <br>
                             <div class="text-center">
                             <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="submit" value="Create"/> <br><br>
                             </div>
                         </form>
-                    <a href="login">
-                    <div>
-                        Log In Here
-                    </div>
-                    </a>
+                            <a href="login">
+                                <div>
+                                    Login Here
+                                </div>
+                            </a>
                     </div>
                 </div>
             </div>
