@@ -1,20 +1,24 @@
 <?php
 
-class Order extends Controller {
+class Order extends Controller
+{
 
-    function saveOrder($order, $cartItem) {
-        
-        self::query("INSERT INTO `order` (customerID, adressID) VALUES ('{$order['customerID']}', 1)");
+    function saveOrder($order, $cartItem)
+    {
+
+        self::query("INSERT INTO `order` (customerID) VALUES ('{$order['customerID']}')");
         $orderID = self::query("SELECT * FROM `order` ORDER BY orderID DESC LIMIT 1");
-        foreach($cartItem as $row => $innerArray) {
+
+        foreach ($cartItem as $row => $innerArray) {
             self::query("INSERT INTO `orderhasproduct` (price, `productID`, `amount`, `orderID`) 
             VALUES ('{$innerArray['price']}', '{$innerArray['code']}', '{$innerArray['quantity']}', '{$orderID[0]['orderID']}');");
-            print_r($innerArray); echo "<br/>";
-            print_r($orderID[0]['orderID']); echo "<br/>";
         };
-        echo ('<br/>');
-        // print_r($cartItem);
+
+        $postalCodeExists = self::query("SELECT 1 FROM postalcode WHERE postalCode = '{$order['zipcode']}'");
+
+        if (!!$postalCodeExists !== true) {
+            self::query("INSERT INTO postalcode (postalCode, city) VALUES ('{$order['zipcode']}', '{$order['city']}')");
+        }
+        self::query("INSERT INTO adress (street, postalCode) VALUES ('{$order['adress']}', '{$order['zipcode']}')");
     }
 }
-
-?>

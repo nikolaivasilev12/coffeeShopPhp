@@ -59,7 +59,7 @@ CREATE TABLE `ORDER`
 (
     `orderID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     customerID INT NOT NULL,
-    adressID INT NOT NULL,
+    adressID INT,
     `date` DATETIME NOT NULL,
     FOREIGN KEY (customerID) REFERENCES CUSTOMER (customerID),
     FOREIGN KEY (adressID) REFERENCES ADRESS (adressID)
@@ -221,26 +221,26 @@ insert into ADRESS (postalCode, street) values (19, '3308 Morning Parkway');
 insert into ADRESS (postalCode, street) values (20, '22348 Meadow Vale Hill');
 
 -- `Order`
-insert into `ORDER` (customerID, adressID, `date`) values (1, 1, '2020-04-05 03:25:19');
-insert into `ORDER` (customerID, adressID, `date`) values (2, 2, '2020-07-30 11:37:24');
-insert into `ORDER` (customerID, adressID, `date`) values (3, 3, '2020-08-28 14:51:11');
-insert into `ORDER` (customerID, adressID, `date`) values (4, 4, '2020-07-20 08:04:16');
-insert into `ORDER` (customerID, adressID, `date`) values (5, 5, '2020-05-11 01:28:33');
-insert into `ORDER` (customerID, adressID, `date`) values (6, 6, '2020-02-02 05:43:49');
-insert into `ORDER` (customerID, adressID, `date`) values (7, 7, '2020-02-18 22:50:20');
-insert into `ORDER` (customerID, adressID, `date`) values (8, 8, '2020-01-23 08:08:42');
-insert into `ORDER` (customerID, adressID, `date`) values (9, 9, '2020-07-24 00:47:30');
-insert into `ORDER` (customerID, adressID, `date`) values (10, 10, '2020-09-19 21:55:55');
-insert into `ORDER` (customerID, adressID, `date`) values (11, 11, '2020-03-26 14:23:49');
-insert into `ORDER` (customerID, adressID, `date`) values (12, 12, '2020-02-26 04:44:30');
-insert into `ORDER` (customerID, adressID, `date`) values (13, 13, '2020-04-21 10:39:37');
-insert into `ORDER` (customerID, adressID, `date`) values (14, 14, '2019-10-08 15:48:53');
-insert into `ORDER` (customerID, adressID, `date`) values (15, 15, '2020-06-11 03:40:07');
-insert into `ORDER` (customerID, adressID, `date`) values (16, 16, '2020-09-07 17:56:10');
-insert into `ORDER` (customerID, adressID, `date`) values (17, 17, '2020-09-18 00:14:48');
-insert into `ORDER` (customerID, adressID, `date`) values (18, 18, '2020-02-14 20:28:02');
-insert into `ORDER` (customerID, adressID, `date`) values (19, 19, '2020-03-31 07:02:29');
-insert into `ORDER` (customerID, adressID, `date`) values (20, 20, '2019-11-25 16:24:33');
+insert into `ORDER` (customerID,  `date`) values (1, '2020-04-05 03:25:19');
+insert into `ORDER` (customerID,  `date`) values (2, '2020-07-30 11:37:24');
+insert into `ORDER` (customerID,  `date`) values (3, '2020-08-28 14:51:11');
+insert into `ORDER` (customerID,  `date`) values (4, '2020-07-20 08:04:16');
+insert into `ORDER` (customerID,  `date`) values (5, '2020-05-11 01:28:33');
+insert into `ORDER` (customerID,  `date`) values (6, '2020-02-02 05:43:49');
+insert into `ORDER` (customerID,  `date`) values (7, '2020-02-18 22:50:20');
+insert into `ORDER` (customerID,  `date`) values (8, '2020-01-23 08:08:42');
+insert into `ORDER` (customerID,  `date`) values (9, '2020-07-24 00:47:30');
+insert into `ORDER` (customerID,  `date`) values (10, '2020-09-19 21:55:55');
+insert into `ORDER` (customerID,  `date`) values (11, '2020-03-26 14:23:49');
+insert into `ORDER` (customerID,  `date`) values (12, '2020-02-26 04:44:30');
+insert into `ORDER` (customerID,  `date`) values (13, '2020-04-21 10:39:37');
+insert into `ORDER` (customerID,  `date`) values (14, '2019-10-08 15:48:53');
+insert into `ORDER` (customerID,  `date`) values (15, '2020-06-11 03:40:07');
+insert into `ORDER` (customerID,  `date`) values (16, '2020-09-07 17:56:10');
+insert into `ORDER` (customerID,  `date`) values (17, '2020-09-18 00:14:48');
+insert into `ORDER` (customerID,  `date`) values (18, '2020-02-14 20:28:02');
+insert into `ORDER` (customerID,  `date`) values (19, '2020-03-31 07:02:29');
+insert into `ORDER` (customerID,  `date`) values (20, '2019-11-25 16:24:33');
 
 -- ORDERHASPRODUCT
 insert into `ORDERHASPRODUCT` (price, productID, amount, orderID) values (617.3, 1, 12, 1);
