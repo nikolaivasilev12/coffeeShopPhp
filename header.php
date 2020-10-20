@@ -70,6 +70,24 @@ if (!isset($_SESSION)) {
 <html>
 
 <body>
+    <?php
+    if (isset($_SESSION['permission'])) { ?>
+    <script>
+        var botmanWidget = {
+            frameEndpoint: 'chat',
+            introMessage: 'Hello, I am a Chatbot',
+            chatServer: 'botman',
+            title: 'My Chatbot',
+            mainColor: '#456765',
+            bubbleBackground: '#ff76f4',
+            aboutText: '',
+            bubbleAvatarUrl: '',
+        };
+    </script>
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+    <?php
+    }
+    ?>
     <script src="cartJS" type="application/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
