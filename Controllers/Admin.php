@@ -5,8 +5,9 @@ class Admin extends Controller {
     public function createCategory($name, $description){
         $name = trim($name);
         $description = trim($description);
+        $params = array($name, $description);
         self::query("INSERT INTO category (name, description)
-        VALUES ('{$name}', '{$description}')");
+        VALUES ( ? , ? )", $params);
     }
     public function getCategories() {
         return (self::query("SELECT * FROM category"));
@@ -33,8 +34,9 @@ class Admin extends Controller {
     public function updateCategory($name, $description, $categoryID) { 
         $name = trim($name);
         $description = trim($description);
-        self::query("UPDATE category SET name = '{$name}', description = '{$description}' 
-        WHERE categoryID = ('{$categoryID}')");
+        $params = array($name, $description, $categoryID);
+        self::query("UPDATE category SET name = ? , description = ? 
+        WHERE categoryID = ? ", $params);
     }
     public function updateProductDetails($name, $description, $price, $stock, $origin, $type, $productID) {
         $name = trim($name);
@@ -42,79 +44,72 @@ class Admin extends Controller {
         $price = trim($price);
         $stock = trim($stock);
         $origin = trim($origin);
-        self::query("UPDATE product SET name = '{$name}', description = '{$description}',
-        price = '{$price}', stock = '{$stock}', origin = '{$origin}', type = '{$type}', isSpecial = NULL
-        WHERE productID = '{$productID}'");
+        $params = array($name, $description, $price, $stock, $origin, $type, $productID);
+        self::query("UPDATE product SET name = ? , description = ? ,
+        price = ?, stock = ?, origin = ? , type = ? , isSpecial = NULL
+        WHERE productID = ? ", $params);
     }
     public function updateProductIsSpecial ($productID, $isSpecial) {
-        self::query("UPDATE product SET isSpecial = '{$isSpecial}'
-        WHERE productID = '{$productID}'");
+        $params = array($isSpecial, $productID);
+        self::query("UPDATE product SET isSpecial = ?
+        WHERE productID = ? ", $params);
     }
     public function updateProductCategory($productID, $categoryID) {
         $productHasCategory = self::query("SELECT * FROM producthascategory
         WHERE productID = '{$productID}'");
         if($productHasCategory){
-            self::query("UPDATE producthascategory SET productID = '{$productID}', categoryID = '{$categoryID}'
-            WHERE productID = '{$productID}'");
+            $params = array($productID, $categoryID, $productID);
+            self::query("UPDATE producthascategory SET productID = ? , categoryID = ?
+            WHERE productID = ? ", $params);
         } else {
+            $paramsElse = array($productID, $categoryID);
             self::query("INSERT INTO producthascategory (productID, categoryID)
-            VALUES ('{$productID}', '{$categoryID}')");
+            VALUES ( ? , ? )", $paramsElse);
         }
     }
     public function updateNews($content){
-         self::query("UPDATE news SET content = '{$content}' WHERE ID = 1");
+        $params = array($content);
+        self::query("UPDATE news SET content = ? WHERE ID = 1", $params);
     }
 
     /* Edit company's Desc, address, phone no., email */
         public function updateCompanyData($content){
-            self::query("UPDATE companydata SET companyDescription = '{$content['companyDescription']}', adress = '{$content['adress']}', phone = '{$content['phone']}',
-            email = '{$content['email']}' WHERE ID = 1");
+            $params = array($content['companyDescription'], $content['adress'], $content['phone'], $content['email']);
+            self::query("UPDATE companydata SET companyDescription = ? , adress = ? , phone = ? ,
+            email = ? WHERE ID = 1", $params);
         }
-    // public function updateCompDesc($companyDescription){
-    //     $companyDescription = trim($companyDescription);
-    //     self::query("UPDATE companydata SET companyDescription = '{$companyDescription}'");
-    // }
-    // public function updateCompAddress($companyAddress){
-    //     $companyAddress = trim($companyAddress);
-    //     self::query("UPDATE companydata SET adress = '{$companyAddress}'");
-    // }
-    // public function updateCompPhone($companyPhone){
-    //     $companyPhone = trim($companyPhone);
-    //     self::query("UPDATE companydata SET phone = '{$companyPhone}'");
-    // }
-    // public function updateCompEmail($companyEmail){
-    //     $companyEmail = trim($companyEmail);
-    //     self::query("UPDATE companydata SET email = '{$companyEmail}'");
-    // }
 
     /* Updating Working Hours */
     public function updateHours($startingHours, $closingHours, $ID){
         $startingHours = trim($startingHours);
         $closingHours = trim($closingHours);
-    self::query("UPDATE workdays SET startingHour = '{$startingHours}',
-    closingHour = '{$closingHours}' WHERE ID = ('{$ID}')");
+        $params = array($startingHours, $closingHours, $ID);
+        self::query("UPDATE workdays SET startingHour = ? ,
+        closingHour = ? WHERE ID = ? ", $params);
     }
 
     public function deleteCategory($categoryID) {
-        self::query("DELETE FROM producthascategory WHERE categoryID = '{$categoryID}'");
-        self::query("DELETE FROM category WHERE categoryID = '{$categoryID}'");
+        $params = array($categoryID);
+        self::query("DELETE FROM producthascategory WHERE categoryID = ? ", $params);
+        self::query("DELETE FROM category WHERE categoryID = ? ", $params);
     }
     public function deleteProduct($productID) {
+        $params = array($productID);
         $productHasCategory = self::query("SELECT * FROM producthascategory
-        WHERE productID = '{$productID}'");
+        WHERE productID = ? ", $params);
         $productHasOrder = self::query("SELECT * FROM orderhasproduct
-        WHERE productID = '{$productID}'");
+        WHERE productID = ? ", $params);
         $productHasRating = self::query("SELECT * FROM rating
-        WHERE productID = '{$productID}'");
+        WHERE productID = ? ", $params);
         if($productHasCategory){
-            self::query("DELETE FROM producthascategory WHERE productID = '{$productID}'");
+            self::query("DELETE FROM producthascategory WHERE productID = ? ", $params);
         } 
         if ($productHasOrder) {
-            self::query("DELETE FROM orderhasproduct WHERE productID = '{$productID}'");
+            self::query("DELETE FROM orderhasproduct WHERE productID = ? ", $params);
         } 
         if ($productHasRating) {
-            self::query("DELETE FROM rating WHERE productID = '{$productID}'");
+            self::query("DELETE FROM rating WHERE productID = ? ", $params);
         } 
-        self::query("DELETE FROM product WHERE productID = '{$productID}'");
+        self::query("DELETE FROM product WHERE productID = ? ", $params);
     }
 }
