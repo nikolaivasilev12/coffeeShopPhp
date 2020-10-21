@@ -61,3 +61,9 @@ Route::set('profile', function() {
 Route::set('edit-profile', function() {
     Admin::CreateView('editProfile');
 });
+Route::set('rating', function() {
+    Rating::CreateView('rating');
+});
+Route::set('rating', function() {
+    Rating::CreateView('rating');
+});
