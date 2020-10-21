@@ -13,12 +13,13 @@ class NewUser extends Controller
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
         // Create customer
-        self::query("INSERT INTO `customer` (email, `username`, `password`) VALUES ('{$email}', '{$username}', '{$hashed_password}');");
+        $customerParams = array($email, $username, $hashed_password);
+        self::query("INSERT INTO `customer` (email, `username`, `password`) VALUES ( ? , ? , ? )", $customerParams);
 
         // Select customerID
         $customerID = $this->array_flatten(self::query("SELECT customerID FROM `customer` ORDER BY customerID DESC LIMIT 1"));
 
         // Add customer permission
-        self::query("INSERT INTO `customer_permission` (customerID, permissionID) VALUES ('{$customerID['customerID']}', 1)");
+        self::query("INSERT INTO `customer_permission` (customerID, permissionID) VALUES ( ? , 1)", array($customerID['customerID']));
     }
 }
