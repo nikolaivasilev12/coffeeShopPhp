@@ -5,9 +5,9 @@ class NewUser extends Controller
     public $message;
     public function __construct($email, $password, $username)
     {
-        // perform validations on the form data
-        $email = trim($email);
-        $username = trim($username);
+        // perform validations on the form data and Sanitizing
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $username = filter_var($username, FILTER_SANITIZE_STRING);
         $password = trim($password);
         $iterations = ['cost' => 15];
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);

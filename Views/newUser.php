@@ -9,6 +9,15 @@ if (isset($_POST['submit'])) { // Form has been submitted.
     $msg = $newUser->message;
     $redirect = new Redirector("login");
 }
+if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = test_input($_POST["email"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format";
+    }
+  }
 ?>
 <html>
 <head>`
@@ -27,15 +36,15 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-right">
-                    <form class="text-left" action="" method="post">
+                    <form class="text-left" action="" method="POST">
                             <h6>Email Address:</h6>
-                            <input type="text" name="email" placeholder="Your Email" maxlength="30"/> <br><br>
+                            <input type="text" name="email" placeholder="Your Email" maxlength="30" required/> <br><br>
                             <h6> Username:</h6>
-                            <input type="text" name="username" placeholder="Your Username" maxlength="30"/> <br><br>
+                            <input type="text" name="username" placeholder="Your Username" maxlength="30" required/> <br><br>
                             <h6>Password:</h6>
-                            <input  type="password" name="pass" placeholder="Your Password" maxlength="30"/> <br> <br>
+                            <input  type="password" name="pass" placeholder="Your Password" maxlength="30" required/> <br> <br>
                             <div class="text-center">
-                            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="submit" value="Create"/> <br><br>
+                            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="submit" value="Create" onclick="ValidateEmail(document.form1.email)"/> <br><br>
                             </div>
                         </form>
                             <a href="login">
@@ -51,3 +60,15 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 </div>
 </body>
 </html>
+
+<script>
+
+</script>
+
+<?php
+/* Kim's regexp */
+$regExp = "/^[A-z0-9_-]+([.][A-z0-9_]+)*[@][A-z0-9_-]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/";
+
+
+
+?>
