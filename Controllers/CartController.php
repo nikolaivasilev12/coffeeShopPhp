@@ -1,5 +1,7 @@
 <?php
+
 namespace Phppot;
+
 class CartController
 {
     public $cartSessionItemCount = 0;
@@ -15,7 +17,7 @@ class CartController
         if (isset($_POST)) {
             $productCode = $_POST["code"];
             $productTitle = $_POST["productTitle"];
-            $poductQuantity = $_POST["quantity"];
+            $poductQuantity = 1;
             $productPrice = $_POST["productPrice"];
         }
 
@@ -27,15 +29,23 @@ class CartController
             'total' => $poductQuantity * $productPrice
         );
 
+
+        if (!empty($_SESSION["cart_item"])) {
+            foreach ($_SESSION["cart_item"] as $k => $v) {
+                if ($_SESSION["cart_item"][$k]['code'] == $cartItem['code']) {
+                    return $_SESSION["cart_item"][$k]['quantity']++;
+                }
+            }
+        }
         $_SESSION["cart_item"][$productCode] = $cartItem;
-        if (! empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
+        if (!empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
             $this->cartSessionItemCount = count($_SESSION["cart_item"]);
         }
     }
 
     function editCart()
     {
-        if (! empty($_SESSION["cart_item"])) {
+        if (!empty($_SESSION["cart_item"])) {
             $total_price = 0;
             foreach ($_SESSION["cart_item"] as $k => $v) {
                 if ($_POST["code"] == $k) {
@@ -46,14 +56,14 @@ class CartController
             return $total_price;
         }
 
-        if (! empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
+        if (!empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
             $this->cartSessionItemCount = count($_SESSION["cart_item"]);
         }
     }
 
     function removeFromCart()
     {
-        if (! empty($_SESSION["cart_item"])) {
+        if (!empty($_SESSION["cart_item"])) {
             foreach ($_SESSION["cart_item"] as $k => $v) {
                 if ($_POST["code"] == $k)
                     unset($_SESSION["cart_item"][$k]);
@@ -62,7 +72,7 @@ class CartController
             }
         }
 
-        if (! empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
+        if (!empty($_SESSION["cart_item"]) && is_array($_SESSION["cart_item"])) {
             $this->cartSessionItemCount = count($_SESSION["cart_item"]);
         }
     }

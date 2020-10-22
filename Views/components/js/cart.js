@@ -4,7 +4,7 @@ function cartAction(action, product_code, productTitle, productPrice) {
 		switch (action) {
 		case "add":
 			queryString = 'action=' + action + '&code=' + product_code
-					+ '&quantity=' + 1 + '&productTitle=' + productTitle
+					 + '&productTitle=' + productTitle
 					+ '&productPrice=' + productPrice;
 			break;
 		case "remove":
