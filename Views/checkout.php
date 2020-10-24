@@ -14,9 +14,10 @@ if (isset($_POST["checkout-btn"])) {
     } else {
         $cartItem = array();
     }
+    print_r($cartItem);
     $orderDetails = $_POST;
     $orderObj->saveOrder($orderDetails, $cartItem);
-    // $cartObj->emptyCart();
+    $cartObj->emptyCart();
 }
 ?>
     <style>

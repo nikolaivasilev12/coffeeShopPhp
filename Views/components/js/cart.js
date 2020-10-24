@@ -1,11 +1,12 @@
-function cartAction(action, product_code, productTitle, productPrice) {
+function cartAction(action, product_code, productTitle, productPrice, inStock) {
 	var queryString = "";
 	if (action != "") {
 		switch (action) {
 		case "add":
 			queryString = 'action=' + action + '&code=' + product_code
 					 + '&productTitle=' + productTitle
-					+ '&productPrice=' + productPrice;
+					+ '&productPrice=' + productPrice
+					+ '&inStock=' + inStock;
 			break;
 		case "remove":
 			queryString = 'action=' + action + '&code=' + product_code;
