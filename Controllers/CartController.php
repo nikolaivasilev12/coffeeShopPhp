@@ -53,7 +53,7 @@ class CartController
             foreach ($_SESSION["cart_item"] as $k => $v) {
                 if ($_POST["code"] == $k && $_SESSION["cart_item"][$k]['quantity'] < $_SESSION["cart_item"][$k]['inStock']) {
                     $_SESSION["cart_item"][$k]["quantity"] = $_POST["quantity"];
-                } elseif ($_POST["quantity"] <= $_SESSION["cart_item"][$k]["inStock"]) {
+                } elseif ($_POST["code"] == $k && $_POST["quantity"] <= $_SESSION["cart_item"][$k]["inStock"]) {
                     $_SESSION["cart_item"][$k]["quantity"] = $_POST["quantity"];
                 }
                 $total_price = $total_price + ($_SESSION["cart_item"][$k]["quantity"] * $_SESSION["cart_item"][$k]["price"]);

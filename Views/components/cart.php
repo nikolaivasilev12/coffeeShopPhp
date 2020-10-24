@@ -49,13 +49,13 @@ if ($cartModel->cartSessionItemCount > 0) {
 						Empty Cart
 					</a>
 					<?php
-					if (isset($_SESSION['permission'])) {
+					if (isset($_SESSION['permission']) && $_GET['url'] != 'checkout') {
 					?>
 						<a href="checkout" class="btn btn-primary">
 							Checkout
 						</a>
 					<?php
-					} else {
+					} elseif ($_GET['url'] !== 'checkout') {
 					?>
 						<p class="text-danger h5">
 							You need an account to complete your order!
