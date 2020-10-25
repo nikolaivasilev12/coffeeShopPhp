@@ -18,43 +18,49 @@ if (isset($_POST['submit'])) { // Form has been submitted.
 ?>
 
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html"/>
+    <meta http-equiv="Content-Type" content="text/html" />
 </head>
+
 <body>
 
-<?php
+    <?php
 if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 ?>
-<div class="container">
-    <div class="row justify-content-center">
-        <h1>Log In</h1>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex flex-column align-items-center text-right">
-                        <form class="text-left" action="" method="post">
-                            <h6>Username:</h6>
-                            <input type="text" name="username" placeholder="Your Username" maxlength="30"/> <br><br>
-                            <h6>Password:</h6>
-                            <input type="password" name="password" placeholder="Your Password" maxlength="30"/> <br> <br>
-                            <div class="text-center">
-                            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="submit" value="Login"/> <br><br>
-                            </div>
-                        </form>
-                    <a href="new-user">
-                    <div>
-                        Create a new account
-                    </div>
-                    </a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1>Log In</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Username</label>
+                                    <input type="username" name="username" class="form-control" id="exampleInputEmail1"
+                                        placeholder="Enter Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Password</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Password"
+                                        required>
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                            </form>
+                            <a href="new-user">
+                                <div>
+                                    Create a new account
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
-</html>
 
+</html>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Admin extends Controller {
 
@@ -31,11 +31,11 @@ class Admin extends Controller {
         return (self::query("SELECT email FROM companydata"));
     }
 
-    public function updateCategory($name, $description, $categoryID) { 
+    public function updateCategory($name, $description, $categoryID) {
         $name = trim($name);
         $description = trim($description);
         $params = array($name, $description, $categoryID);
-        self::query("UPDATE category SET name = ? , description = ? 
+        self::query("UPDATE category SET name = ? , description = ?
         WHERE categoryID = ? ", $params);
     }
     public function updateProductDetails($name, $description, $price, $stock, $origin, $type, $productID) {
@@ -103,13 +103,13 @@ class Admin extends Controller {
         WHERE productID = ? ", $params);
         if($productHasCategory){
             self::query("DELETE FROM producthascategory WHERE productID = ? ", $params);
-        } 
+        }
         if ($productHasOrder) {
             self::query("DELETE FROM orderhasproduct WHERE productID = ? ", $params);
-        } 
+        }
         if ($productHasRating) {
             self::query("DELETE FROM rating WHERE productID = ? ", $params);
-        } 
+        }
         self::query("DELETE FROM product WHERE productID = ? ", $params);
     }
 }

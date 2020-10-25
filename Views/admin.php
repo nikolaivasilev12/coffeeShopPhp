@@ -3,9 +3,9 @@ include("header.php");
 ?>
 <div class="container">
     <div class="row justify-content-center">
-        <h1>ADMIN</h1>
+        <h1>ADMIN PANEL</h1>
     </div>
-        <h3 class="mt-4">Product Controls</h3>
+        <h3 class="mt-5 text-center">Product Controls</h3>
         <div class="row">
         <div class="col text-center">
             <a href="edit-categories" class="card">
@@ -15,6 +15,11 @@ include("header.php");
         <div class="col text-center">
             <a href="edit-products" class="card">
                 Edit Products
+            </a>
+        </div>
+        <div class="col text-center">
+            <a href="new-product" class="card">
+                Add Product
             </a>
         </div>
 

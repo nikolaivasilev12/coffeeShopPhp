@@ -61,3 +61,6 @@ Route::set('profile', function() {
 Route::set('edit-profile', function() {
     Admin::CreateView('editProfile');
 });
+Route::set('new-product', function() {
+    Admin::CreateView('newProduct');
+});
