@@ -5,7 +5,7 @@ class LoginUser extends Controller
     public function __construct($username, $password)
     {
         $db = new DBController();
-        $username = trim($username);
+        $username = filter_var($username, FILTER_SANITIZE_STRING);
         $password = trim($password);
         $query = self::query("SELECT customerID, email, `password`, fname, `username` FROM customer WHERE username = '{$username}' LIMIT 1");
         $checkPermission = self::query("SELECT customerID, permissionID FROM customer_permission WHERE customerID = '{$query[0]['customerID']}'");

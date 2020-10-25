@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) { // Form has been submitted.
     $msg = $newUser->message;
     $redirect = new Redirector("login");
 }
-if (empty($_POST["email"])) {
+elseif (empty($_POST["email"])) {
     $emailErr = "Email is required";
   } else {
     $email = test_input($_POST["email"]);
@@ -24,7 +24,7 @@ if (empty($_POST["email"])) {
     <meta http-equiv="Content-Type" content="text/html"/>
 </head>
 <?php
-if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
+if (!empty($email)) {echo "<p>" . $msg . "</p>";}
 ?>
 
 <div class="container">
@@ -38,13 +38,13 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
                     <div class="d-flex flex-column align-items-center text-right">
                     <form class="text-left" action="" method="POST">
                             <h6>Email Address:</h6>
-                            <input type="text" name="email" placeholder="Your Email" maxlength="30" required/> <br><br>
+                            <input type="text" name="email" placeholder="Your Email" maxlength="30" :rules="rules" required/> <br><br>
                             <h6> Username:</h6>
                             <input type="text" name="username" placeholder="Your Username" maxlength="30" required/> <br><br>
                             <h6>Password:</h6>
                             <input  type="password" name="pass" placeholder="Your Password" maxlength="30" required/> <br> <br>
                             <div class="text-center">
-                            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="submit" value="Create" onclick="ValidateEmail(document.form1.email)"/> <br><br>
+                            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="submit" value="Create" /> <br><br>
                             </div>
                         </form>
                             <a href="login">
@@ -68,7 +68,5 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
 <?php
 /* Kim's regexp */
 $regExp = "/^[A-z0-9_-]+([.][A-z0-9_]+)*[@][A-z0-9_-]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/";
-
-
 
 ?>
