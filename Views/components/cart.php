@@ -31,7 +31,7 @@ if ($cartModel->cartSessionItemCount > 0) {
 					<td><input type="number" name="quantity" class="quantity" value="<?php echo $item['quantity']; ?>" data-code='<?php echo $item["code"]; ?>' size=2 onChange="updatePrice(this)" /> <input type="hidden" class='total' name="total" value="<?php echo $item["price"]; ?>" /></td>
 					<td class="prc text-right" id="price" <?php echo $i; ?>><?php echo $item["price"]; ?></td>
 					<?php $i++; ?>
-					<td class="text-right"><a onClick="cartAction('remove','<?php echo $item["code"]; ?>')" class="btnRemoveAction"><img src="./view/images/icon-delete.png" alt="Remove Item" /></a></td>
+					<td class="text-right"><a onClick="cartAction('remove','<?php echo $item["code"]; ?>')" class="btn btn-secondary">Remove Item</a></td>
 				</tr>
 			<?php
 				$item_total += ($item["price"] * $item['quantity']);
@@ -49,13 +49,13 @@ if ($cartModel->cartSessionItemCount > 0) {
 						Empty Cart
 					</a>
 					<?php
-					if (isset($_SESSION['permission'])) {
+					if (isset($_SESSION['permission']) && $_GET['url'] != 'checkout') {
 					?>
 						<a href="checkout" class="btn btn-primary">
 							Checkout
 						</a>
 					<?php
-					} else {
+					} elseif ($_GET['url'] !== 'checkout') {
 					?>
 						<p class="text-danger h5">
 							You need an account to complete your order!

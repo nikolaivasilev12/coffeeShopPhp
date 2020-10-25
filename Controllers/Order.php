@@ -5,14 +5,16 @@ class Order extends Controller
 
     function saveOrder($order, $cartItem)
     {
-
-        self::query("INSERT INTO `order` (customerID) VALUES ( ? ) ", array($order['customerID']));
+        $currentDateTime = new DateTime();
+        self::query("INSERT INTO `order` (customerID, `date`) VALUES ( ? , ? ) ", array($order['customerID'], $currentDateTime->format('Y-m-d H:i:s')));
         $orderID = self::query("SELECT * FROM `order` ORDER BY orderID DESC LIMIT 1");
-
         foreach ($cartItem as $row => $innerArray) {
             $orderHasProductParams = array($innerArray['price'], $innerArray['code'], $innerArray['quantity'], $orderID[0]['orderID']);
             self::query("INSERT INTO `orderhasproduct` (price, `productID`, `amount`, `orderID`) 
             VALUES ( ? , ? , ? , ? )", $orderHasProductParams);
+            $productLeftInStock = $innerArray['inStock'] - $innerArray['quantity'];
+            $productLeftInStockParams = array($productLeftInStock, $innerArray['code']);
+            self::query("UPDATE `product` SET stock = ? WHERE productID = ?", $productLeftInStockParams);
         };
         
         $postalCodeExists = self::query("SELECT 1 FROM postalcode WHERE postalCode = ? ", array($order['zipcode']));

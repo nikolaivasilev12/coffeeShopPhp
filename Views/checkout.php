@@ -4,9 +4,10 @@ use \Phppot\CartController;
 require_once __DIR__ . '/../Controllers/CartController.php';
 session_start();
 include('header.php');
+$cartObj = new CartController();
 }
 namespace {
-if (isset($_POST["checkout-btn"])) {
+if (isset($_POST['checkout-btn'])) {
     $order_number = rand(100, 999);
     $orderObj = new Order;
     if(isset($_SESSION["cart_item"])) {
@@ -16,7 +17,7 @@ if (isset($_POST["checkout-btn"])) {
     }
     $orderDetails = $_POST;
     $orderObj->saveOrder($orderDetails, $cartItem);
-    // $cartObj->emptyCart();
+    $cartObj->emptyCart();
 }
 ?>
     <style>
@@ -50,10 +51,6 @@ if (isset($_POST["checkout-btn"])) {
                 must not be emty to checkout</div> -->
             <div id="shopping-cart" tabindex="1">
                 <div id="tbl-cart">
-                    <div id="txt-heading">
-                        <h2>Your Shopping Cart</h2>
-                        <div id="close"></div>
-                    </div>
                     <div id="cart-item">
                         <?php require_once 'components/cart.php'; ?>
                     </div>

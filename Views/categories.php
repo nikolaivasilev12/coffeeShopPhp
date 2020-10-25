@@ -24,15 +24,29 @@
             $productsByCategory = $productsObj->getProductByCategory($_GET['categoryID']);
             foreach ($productsByCategory as $value) { ?>
                 <div class="product-item card col-3 mx-2 my-2">
-                    <div class="product-image">
-                        <img src="data/laptop.jpg" id="<?php echo $value['productID']; ?>" class="product-img">
+                    <div class="product-image"><img src="https://purepng.com/public/uploads/large/purepng.com-coffee-beanscoffee-beanscoffeestone-fruitpeaberry-1411527241519iq7rh.png" id="<?php echo $value['productID']; ?>" width="150">
                     </div>
                     <div>
                         <strong><?php echo $value["name"]; ?></strong>
                     </div>
                     <div class="product-price"><?php echo $value["price"] . " DKK"; ?></div>
+                    <?php if ($value['stock'] == 0) { ?>
+                        <p class="mt-4">
+                            <strong>Out of stock</strong>
+                        </p>
+                        <?php
+                    } else { ?>
+                        <p>
+                            Currently in stock:
+                            <strong>
+                                <?php echo $value["stock"]; ?>
+                            </strong>
+                        </p>
+                        <input type="button" id="add_<?php echo $value['productID']; ?>" value="Add to cart" class="btnAddAction" onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["price"]; ?>')" />
 
-                    <input type="button" id="add_<?php echo $value['productID']; ?>" value="Add to cart" class="btnAddAction" onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>')" />
+                    <?php
+                    }
+                    ?>
                     <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-primary">View Product</a>
                 </div>
             <?php
@@ -48,8 +62,23 @@
                         <strong><?php echo $value["name"]; ?></strong>
                     </div>
                     <div class="product-price"><?php echo $value["price"] . " DKK"; ?></div>
+                    <?php if ($value['stock'] == 0) { ?>
+                        <p class="mt-4">
+                            <strong>Out of stock</strong>
+                        </p>
+                    <?php
+                    } else { ?>
+                        <p>
+                            Currently in stock:
+                            <strong>
+                                <?php echo $value["stock"]; ?>
+                            </strong>
+                        </p>
+                        <input type="button" id="add_<?php echo $value['productID']; ?>" value="Add to cart" class="btnAddAction" onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["stock"]; ?>')" />
 
-                    <input type="button" id="add_<?php echo $value['productID']; ?>" value="Add to cart" class="btnAddAction" onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>')" />
+                    <?php
+                    }
+                    ?>
                     <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-primary">View Product</a>
                 </div>
         <?php
