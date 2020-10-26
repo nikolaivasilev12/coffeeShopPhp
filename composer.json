@@ -1,6 +1,7 @@
 {
     "require": {
         "botman/botman": "^2.6",
-        "botman/driver-web": "^1.5"
+        "botman/driver-web": "^1.5",
+        "stripe/stripe-php": "^7.61"
     }
 }

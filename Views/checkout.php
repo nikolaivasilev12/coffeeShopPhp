@@ -7,18 +7,30 @@ include('header.php');
 $cartObj = new CartController();
 }
 namespace {
-if (isset($_POST['checkout-btn'])) {
-    $order_number = rand(100, 999);
-    $orderObj = new Order;
+require_once('config.php');
+if (isset($_POST['checkout'])) {
+    require_once __DIR__ . '/../Controllers/Order.php';
+    $orderObj = new Order();
     if(isset($_SESSION["cart_item"])) {
         $cartItem = $_SESSION['cart_item'];
     } else {
         $cartItem = array();
     }
     $orderDetails = $_POST;
-    $orderObj->saveOrder($orderDetails, $cartItem);
-    $cartObj->emptyCart();
+    $orderObj->stripeCheckout($orderDetails, $cartItem);
 }
+// if (isset($_POST['checkout-btn'])) {
+//     $order_number = rand(100, 999);
+//     $orderObj = new Order;
+//     if(isset($_SESSION["cart_item"])) {
+//         $cartItem = $_SESSION['cart_item'];
+//     } else {
+//         $cartItem = array();
+//     }
+//     $orderDetails = $_POST;
+//     $orderObj->saveOrder($orderDetails, $cartItem);
+//     $cartObj->emptyCart();
+// }
 ?>
     <style>
         <?php include 'style.css'; ?>
@@ -44,9 +56,13 @@ if (isset($_POST['checkout-btn'])) {
                 <?php require_once 'components/product-gallery.php'; ?>
             </div>
             <div class="row justify-content-center my-5">
-                <?php require_once 'components/billing-details.php'; ?>
+                <?php
+                //  require_once 'components/billing-details.php';
+                ?>
             </div>
-
+            <?php 
+                require_once('payment.php')
+            ?>
             <!-- <div class="cart-error-message" id="cart-error-message">Cart
                 must not be emty to checkout</div> -->
             <div id="shopping-cart" tabindex="1">

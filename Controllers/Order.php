@@ -29,4 +29,41 @@ class Order extends Controller
         $getLastAddress = $this->array_flatten(self::query("SELECT * FROM adress ORDER BY adressID DESC LIMIT 1"));
         self::query("UPDATE `order` SET adressID = ? WHERE orderID = ?", array($getLastAddress['adressID'], $orderID[0]['orderID']));
     }
+
+    public static function stripeCheckout($orderDetails, $cartItem) {
+        require_once('config.php');
+        // \Stripe\Stripe::setApiKey($stripe['secret_key']);
+        // $stripe = new \Stripe\StripeClient($stripe['secret_key']);
+        foreach ($cartItem as $row => $innerArray) {
+            print_r($innerArray);
+            echo("</br>");
+            $product = \Stripe\Product::create([
+                'id' => $innerArray['code'],
+                'name' => $innerArray['name']
+            ]);
+            $price = \Stripe\Price::create([
+                'product' => $innerArray['code'],
+                'unit_amount' => intval($innerArray['price']),
+                'currency' => 'dkk',
+            ]);
+        }
+        $customer = \Stripe\Customer::create([
+            'email' => 'jenny.rosen@example.com',
+            'payment_method' => 'pm_card_visa',
+            'invoice_settings' => [
+                'default_payment_method' => 'pm_card_visa',
+            ],
+        ]);
+        $session = \Stripe\Checkout\Session::create([
+            'customer' => 'cus_IH5oxB4VQFYOXD',
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price' => 'price_1HgXb3FLc5XDnLnpSefhMhOp',
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => 'https://example.com/success',
+            'cancel_url' => 'https://example.com/cancel',
+            ]);
+    }
 }

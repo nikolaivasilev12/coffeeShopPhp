@@ -1,7 +1,3 @@
-<html>
-<body>
-
-
 <?php
 
 class Products extends Categories
@@ -29,8 +25,5 @@ class Products extends Categories
    
 }
 ?>
-
-</body>
-</html>
 
 

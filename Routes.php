@@ -61,3 +61,6 @@ Route::set('profile', function() {
 Route::set('edit-profile', function() {
     Admin::CreateView('editProfile');
 });
+Route::set('charge', function() {
+    Order::stripeCheckout();
+});
