@@ -1,7 +1,7 @@
 <?php
 
 class Products extends Categories
-{   
+{
     public function getAllProducts() {
       return self::query("SELECT * FROM product");
     }
@@ -22,7 +22,6 @@ class Products extends Categories
     public function getProductDetails($productID) {
       return $this->array_flatten(self::query("SELECT * FROM product WHERE productID = '{$productID}'"));
     }
-   
 }
 ?>
 

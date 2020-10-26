@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 class Admin extends Controller {
 
+    /* Create a new 'Category' */
     public function createCategory($name, $description){
         $name = trim($name);
         $description = trim($description);
@@ -9,6 +10,22 @@ class Admin extends Controller {
         self::query("INSERT INTO category (name, description)
         VALUES ( ? , ? )", $params);
     }
+
+    /* Create a new 'Product' */
+    public function createProduct($name, $description, $price, $stock, $origin, $type, $isSpecial){
+        $name = trim($name);
+        $description = trim($description);
+        $price = trim($price);
+        $stock = trim($stock);
+        $origin = trim($origin);
+        $type = trim($type);
+        $isSpecial = trim($isSpecial);
+        $params = array($name, $description, $price, $stock, $origin, $type, $isSpecial);
+
+        self::query("INSERT INTO product (name, description, price, stock, origin, type, isSpecial)
+        VALUES ( ? , ? , ? , ? , ? , ? , ? )", $params);
+    }
+
     public function getCategories() {
         return (self::query("SELECT * FROM category"));
     }
@@ -31,11 +48,11 @@ class Admin extends Controller {
         return (self::query("SELECT email FROM companydata"));
     }
 
-    public function updateCategory($name, $description, $categoryID) { 
+    public function updateCategory($name, $description, $categoryID) {
         $name = trim($name);
         $description = trim($description);
         $params = array($name, $description, $categoryID);
-        self::query("UPDATE category SET name = ? , description = ? 
+        self::query("UPDATE category SET name = ? , description = ?
         WHERE categoryID = ? ", $params);
     }
     public function updateProductDetails($name, $description, $price, $stock, $origin, $type, $productID) {
@@ -103,13 +120,13 @@ class Admin extends Controller {
         WHERE productID = ? ", $params);
         if($productHasCategory){
             self::query("DELETE FROM producthascategory WHERE productID = ? ", $params);
-        } 
+        }
         if ($productHasOrder) {
             self::query("DELETE FROM orderhasproduct WHERE productID = ? ", $params);
-        } 
+        }
         if ($productHasRating) {
             self::query("DELETE FROM rating WHERE productID = ? ", $params);
-        } 
+        }
         self::query("DELETE FROM product WHERE productID = ? ", $params);
     }
 }

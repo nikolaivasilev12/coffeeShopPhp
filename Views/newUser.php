@@ -9,13 +9,25 @@ if (isset($_POST['submit'])) { // Form has been submitted.
     $msg = $newUser->message;
     $redirect = new Redirector("login");
 }
+
+/* This might not be working - check later */
+elseif (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = test_input($_POST["email"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format";
+    }
+  }
 ?>
 <html>
+
 <head>`
-    <meta http-equiv="Content-Type" content="text/html"/>
+    <meta http-equiv="Content-Type" content="text/html" />
 </head>
 <?php
-if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
+if (!empty($email)) {echo "<p>" . $msg . "</p>";}
 ?>
 
 <div class="container">
@@ -26,23 +38,28 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
         <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex flex-column align-items-center text-right">
-                    <form class="text-left" action="" method="post">
-                            <h6>Email Address:</h6>
-                            <input type="text" name="email" placeholder="Your Email" maxlength="30"/> <br><br>
-                            <h6> Username:</h6>
-                            <input type="text" name="username" placeholder="Your Username" maxlength="30"/> <br><br>
-                            <h6>Password:</h6>
-                            <input  type="password" name="pass" placeholder="Your Password" maxlength="30"/> <br> <br>
-                            <div class="text-center">
-                            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="submit" value="Create"/> <br><br>
+                    <div class="d-flex flex-column align-items-center">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="exampleInputEmail1">Email Address</label>
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter Email" required>
+                                <label class="font-weight-bold">Username</label>
+                                <input type="text" name="username" class="form-control" id="exampleInputEmail1"
+                                    placeholder="Enter Username" required>
                             </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Password</label>
+                                <input type="password" name="pass" class="form-control" required
+                                    placeholder="Enter Password">
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Create</button>
                         </form>
-                            <a href="login">
-                                <div>
-                                    Login Here
-                                </div>
-                            </a>
+                        <a href="login">
+                            <div>
+                                Login Here
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -50,4 +67,15 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
     </div>
 </div>
 </body>
+
 </html>
+
+<script>
+
+</script>
+
+<?php
+/* Kim's regexp */
+$regExp = "/^[A-z0-9_-]+([.][A-z0-9_]+)*[@][A-z0-9_-]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/";
+
+?>
