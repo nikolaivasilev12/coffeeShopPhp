@@ -5,6 +5,7 @@ if ($session->logged_in()) {
     $redirect = new Redirector("index");
 }
 if (isset($_POST['submit'])) { // Form has been submitted.
+    require_once('Classes/Redirector.php');
     $newUser = new NewUser($_POST['email'], $_POST['pass'], $_POST['username'],);
     $msg = $newUser->message;
     $redirect = new Redirector("login");
