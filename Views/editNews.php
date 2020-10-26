@@ -1,6 +1,9 @@
 <?php
 include('header.php');
 $index=new Index();
+if (!$session->logged_in()) {
+    $redirect = new Redirector("index");
+}
 if(isset($_POST['saveNews'])) {
     $admin= new Admin();
     $admin->updateNews($_POST['content']);

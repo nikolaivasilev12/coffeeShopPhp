@@ -9,6 +9,8 @@ if (isset($_POST['submit'])) { // Form has been submitted.
     $msg = $newUser->message;
     $redirect = new Redirector("login");
 }
+
+/* This might not be working - check later */
 elseif (empty($_POST["email"])) {
     $emailErr = "Email is required";
   } else {
