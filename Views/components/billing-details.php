@@ -48,5 +48,13 @@
 			<div id="email-info"></div>
 			<input class="input-box-330" type="text" name="email" id="email">
 		</div>
+		<input type="hidden" class="btn btn-primary" name="customerID" value="<?php echo ($_SESSION['customerID']) ?>">
+	</div>
+	<div class="row justify-content-center">
+		<div class="col">
+			<button style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em" id="checkout-button" role="link" name="submit" type="submit">
+				Proceed to payment
+			</button>
+		</div>
 	</div>
 </div>

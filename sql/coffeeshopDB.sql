@@ -11,7 +11,8 @@ CREATE TABLE CUSTOMER
     `fname` VARCHAR(255) NOT NULL,
     `lname` VARCHAR (255) NOT NULL,
     `phoneNr` CHAR(11) NOT NULL,
-    `username` VARCHAR(255) NOT NULL
+    `username` VARCHAR(255) NOT NULL,
+    `stripeID` VARCHAR(255)
 );
 
 CREATE TABLE PERMISSION

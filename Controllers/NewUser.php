@@ -5,6 +5,7 @@ class NewUser extends Controller
     public $message;
     public function __construct($email, $password, $username)
     {
+        require_once('config.php');
         // perform validations on the form data and Sanitizing
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         $username = filter_var($username, FILTER_SANITIZE_STRING);
@@ -13,8 +14,11 @@ class NewUser extends Controller
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
         // Create customer
-        $customerParams = array($email, $username, $hashed_password);
-        self::query("INSERT INTO `customer` (email, `username`, `password`) VALUES ( ? , ? , ? )", $customerParams);
+        $customer = \Stripe\Customer::create([
+            'email' => $email
+        ]);
+        $customerParams = array($email, $username, $hashed_password, $customer['id']);
+        self::query("INSERT INTO `customer` (email, `username`, `password`, `stripeID`) VALUES ( ? , ? , ? , ?)", $customerParams);
 
         // Select customerID
         $customerID = $this->array_flatten(self::query("SELECT customerID FROM `customer` ORDER BY customerID DESC LIMIT 1"));

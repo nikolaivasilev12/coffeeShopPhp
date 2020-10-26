@@ -23,7 +23,7 @@ Route::set('product', function() {
     Products::CreateView('Products');
 });
 Route::set('new-user', function() {
-    NewUser::CreateView('NewUser');
+    NewUser::CreateView('newUser');
 });
 Route::set('admin', function() {
     Admin::CreateView('Admin');
@@ -64,3 +64,10 @@ Route::set('edit-profile', function() {
 Route::set('new-product', function() {
     Admin::CreateView('newProduct');
 });
+Route::set('checkout-success', function() {
+    Controller::CreateView('checkoutSuccess');
+});
+Route::set('checkout-fail', function() {
+    Controller::CreateView('checkoutFail');
+});
+
