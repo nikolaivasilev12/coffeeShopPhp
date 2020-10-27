@@ -52,7 +52,7 @@
 	</div>
 	<div class="row justify-content-center">
 		<div class="col">
-			<button style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em" id="checkout-button" role="link" name="submit" type="submit">
+			<button class="btn btn-primary my-3" id="checkout-button" role="link" name="submit" type="submit">
 				Proceed to payment
 			</button>
 		</div>
