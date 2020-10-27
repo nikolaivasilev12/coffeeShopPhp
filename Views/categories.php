@@ -81,13 +81,14 @@ if (isset($_GET['categoryID'])) {
                     <?php echo $value["stock"]; ?>
                 </strong>
             </p>
-            <input type="button" id="add_<?php echo $value['productID']; ?>" value="Add to cart" class="btnAddAction"
-                onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["stock"]; ?>')" />
-
+            <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-primary" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
+                onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["price"]; ?>')">
+                Add to cart
+            </button>
             <?php
 }
         ?>
-            <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-primary">View Product</a>
+            <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-outline-primary">View Product</a>
         </div>
         <?php
 }
