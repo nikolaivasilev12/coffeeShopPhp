@@ -12,14 +12,22 @@ if (isset($_GET["productID"])) {
     <div class="row justify-content-center">
         <?php if (!isset($_GET["productID"])) {
         ?>
-            <div class="col-12" id="shopping-cart" tabindex="1">
-                <div id="tbl-cart">
-                    
-                    <div id="cart-item">
-                        <?php require_once 'components/cart.php'; ?>
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-8" id="shopping-cart" tabindex="1">
+                    <div id="tbl-cart">
+                        <div id="cart-item">
+                            <?php require_once 'components/cart.php'; ?>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="row justify-content-end">
+                <button class="btn btn-warning mt-2" id="show-cart" onclick="myFunction()" type="button">
+                    Show cart
+                </button>
+            </div>
+        </div>
         <?php
         } else { ?>
     </div>
@@ -132,3 +140,20 @@ if (isset($_GET["productID"])) {
     ?>
         </div>
 </div>
+<script>
+$(document).ready(function(){
+    // hide shopping-cart on page load
+    $('#shopping-cart').hide();
+});
+function myFunction() {
+  var x = document.getElementById("shopping-cart");
+  var y = document.getElementById("show-cart")
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.innerHTML = "Hide Cart";
+  } else {
+    x.style.display = "none";
+    y.innerHTML = "Show Cart";
+  }
+}
+</script>
