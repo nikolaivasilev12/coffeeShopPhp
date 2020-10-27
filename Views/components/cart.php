@@ -40,7 +40,7 @@ if ($cartModel->cartSessionItemCount > 0) {
 			<tr id="tot">
 				<td class="text-right" colspan="3">
 					<strong>
-						Total (USD):
+						Total (DKK):
 					</strong>
 					<span id="total"><?php echo $item_total; ?></span>
 				</td>
