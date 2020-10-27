@@ -31,7 +31,10 @@ namespace {
 
     <BODY>
         <div class="container">
-            <h1>Checkout</h1>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h1>Checkout</h1>
+                </div>
 
             <form action="" method="post" onsubmit="">
 
@@ -53,8 +56,8 @@ namespace {
                 require_once('payment.php')
                 ?>
                 <div id="shopping-cart" tabindex="1">
-                    <div id="tbl-cart">
-                        <div id="cart-item">
+                    <div class="row justify-content-center" id="tbl-cart">
+                        <div class="col-8" id="cart-item">
                             <?php require_once 'components/cart.php'; ?>
                         </div>
                     </div>
@@ -82,6 +85,7 @@ namespace {
                     </div>
                 </div>
             </form>
+            </div>
         </div>
             <?php
             require_once('config.php');

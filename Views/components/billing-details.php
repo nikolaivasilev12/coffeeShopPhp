@@ -1,4 +1,4 @@
-<div class="col-8">
+<div class="col">
 	<div class="row justify-content-center">
 		<h3>
 			Billing details
