@@ -94,7 +94,6 @@ $index = new Index();
     </div>
     </div>
 </div>
-
-
-
-
+<?php
+include("footer.php");
+?>
