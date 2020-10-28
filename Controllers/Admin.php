@@ -27,7 +27,7 @@ class Admin extends Controller {
     }
 
     public function getCategories() {
-        return (self::query("SELECT * FROM category"));
+        return $this->array_flatten(self::query("SELECT * FROM category"));
     }
     public function getProducts() {
         return (self::query("SELECT * FROM product"));
@@ -83,6 +83,13 @@ class Admin extends Controller {
             self::query("INSERT INTO producthascategory (productID, categoryID)
             VALUES ( ? , ? )", $paramsElse);
         }
+    }
+    public function addProductToCategory($productID, $categoryID) {
+        $productHasCategory = self::query("SELECT * FROM producthascategory
+        WHERE productID = '{$productID}'");
+            $paramsElse = array($productID, $categoryID);
+            self::query("INSERT INTO producthascategory (productID, categoryID)
+            VALUES ( ? , ? )", $paramsElse);
     }
     public function updateNews($content){
         $params = array($content);
