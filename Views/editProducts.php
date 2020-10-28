@@ -1,5 +1,8 @@
 <?php
 include("header.php");
+if($_SESSION['permission'] != 'admin') {
+    new Redirector('index');
+}
 $admin = new Admin();
 $catObj = new Categories();
 if (isset($_GET['productID'])) {

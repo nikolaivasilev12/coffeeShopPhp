@@ -1,5 +1,8 @@
 <?php
 include("header.php");
+if($_SESSION['permission'] != 'admin') {
+    new Redirector('index');
+}
 ?>
 <div class="container">
     <div class="row justify-content-center">

@@ -1,6 +1,9 @@
 <?php
 include("header.php");
 $admin = new Admin();
+if ($_SESSION['permission'] != 'admin') {
+    new Redirector('index');
+}
 if (isset($_POST['update'])) {
     $admin->updateCategory($_POST['name'], $_POST['description'], $_POST['categoryID']);
 }

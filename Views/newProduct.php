@@ -2,8 +2,8 @@
 include("header.php");
 $admin = new Admin();
 /* If user trying to reach page without loggin in - this prevents them */
-if (!$session->logged_in()) {
-    $redirect = new Redirector("index");
+if($_SESSION['permission'] != 'admin') {
+    new Redirector('index');
 }
 
 /* add new product */

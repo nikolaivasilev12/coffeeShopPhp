@@ -11,6 +11,9 @@ namespace Phppot {
 }
 
 namespace {
+    if ($_SESSION['permission'] !== 'customer' && $_SESSION['permission'] !== 'admin') {
+        new Redirector('index');
+    }
 ?>
     <style>
         <?php include 'style.css'; ?>
