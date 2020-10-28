@@ -8,8 +8,12 @@ if ($_SESSION['permission'] != 'admin') {
 }
 /* Add new product */
 if (isset($_POST['add'])) {
-    $admin->createProduct($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial']);
-    $admin->addProductToCategory($_POST['productID'], $_POST['categoryID']);
+    $admin->createProduct($_POST['name'], $_POST['description'], $_POST['price'],
+    $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial']);
+
+
+    /* $admin->addProductToCategory($_POST['productID'], $_POST['categoryID']); */
+
     /* JS alert message */
     $PHPtext = "Product Successfully Added!";
 }

@@ -21,10 +21,21 @@ class Admin extends Controller {
         $type = trim($type);
         $isSpecial = trim($isSpecial);
         $params = array($name, $description, $price, $stock, $origin, $type, $isSpecial);
-
         self::query("INSERT INTO product (name, description, price, stock, origin, type, isSpecial)
         VALUES ( ? , ? , ? , ? , ? , ? , ? )", $params);
+
+        /* Getting most recent productID */
+        $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
+        print_r($productID);
+
+        /* categoryID not being catched yet */
+        
+        /* Binding productID and CategoryID in the producthascategory table */
+         self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , 1)", array($productID['productID']));
     }
+
+
+
 
     public function getCategories() {
         return $this->array_flatten(self::query("SELECT * FROM category"));
@@ -83,13 +94,6 @@ class Admin extends Controller {
             self::query("INSERT INTO producthascategory (productID, categoryID)
             VALUES ( ? , ? )", $paramsElse);
         }
-    }
-    public function addProductToCategory($productID, $categoryID) {
-        $productHasCategory = self::query("SELECT * FROM producthascategory
-        WHERE productID = '{$productID}'");
-            $paramsElse = array($productID, $categoryID);
-            self::query("INSERT INTO producthascategory (productID, categoryID)
-            VALUES ( ? , ? )", $paramsElse);
     }
     public function updateNews($content){
         $params = array($content);
