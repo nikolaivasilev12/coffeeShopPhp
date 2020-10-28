@@ -52,7 +52,7 @@ namespace {
                 <div class="col-5">
                     <div class="row">
                         <?php
-                        require_once('payment.php')
+                            include('Views/components/payment.php')
                         ?>
                     </div>
                 </div>
