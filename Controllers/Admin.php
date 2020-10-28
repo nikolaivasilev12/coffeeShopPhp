@@ -35,6 +35,13 @@ class Admin extends Controller {
     public function getOrders() {
         return (self::query("SELECT * FROM `order`"));
     }
+    public function getOrderTotal ($orderID) {
+        return self::query("SELECT amount, price from orderhasproduct WHERE orderID = ?", array($orderID));
+    }
+    public function getOrderById($orderId) {
+        return (self::query("SELECT * FROM `order` WHERE orderID = ( ? )", array($orderId)));
+    }
+
 
 
     /* Getting Company's DATA FIRST */
