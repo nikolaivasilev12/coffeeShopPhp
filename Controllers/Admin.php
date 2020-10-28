@@ -32,6 +32,9 @@ class Admin extends Controller {
     public function getProducts() {
         return (self::query("SELECT * FROM product"));
     }
+    public function getOrders() {
+        return (self::query("SELECT * FROM `order`"));
+    }
 
 
     /* Getting Company's DATA FIRST */
