@@ -32,7 +32,7 @@ if (!isset($_SESSION)) {
                 </li>
                 <?php
                 if (isset($_SESSION['permission'])) {
-                    if ($_SESSION['permission'] === 'customer') { ?>
+                    if ($_SESSION['permission'] === 'customer' || $_SESSION['permission'] === 'admin') { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="profile">Profile</a>
                         </li>
