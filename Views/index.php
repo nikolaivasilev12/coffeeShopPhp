@@ -86,11 +86,12 @@ $index = new Index();
     </div>
     <div class="row justify-content-center mt-4">
         <div class="col">
-            <h1 align="center">News</h1>
-            <?php
-            echo('<p class="text-center">'.
-                $index->getNews()['content']. '</p>');
-            ?>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                <h1 class="display-4">News</h1>
+                <p class="lead"><?php echo($index->getNews()['content']) ?></p>
+            </div>
+        </div>
     </div>
     </div>
 </div>
