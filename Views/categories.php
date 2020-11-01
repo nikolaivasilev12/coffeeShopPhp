@@ -49,7 +49,7 @@ if (isset($_GET['categoryID'])) {
             </p>
             </a>
             <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-orange" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
-                onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["price"]; ?>')">
+                onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>', '<?php echo $value["stock"]; ?>')">
                 Add to cart
             </button>
             <?php
@@ -86,7 +86,7 @@ if (isset($_GET['categoryID'])) {
             </p>
             </a>
             <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-orange" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
-                onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["price"]; ?>')">
+                onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["stock"]; ?>')">
                 Add to cart
             </button>
             <?php
