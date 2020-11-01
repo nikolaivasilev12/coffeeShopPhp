@@ -71,6 +71,7 @@ if (!isset($_GET['orderID'])) {
     $getCustomer = $admin->getCustomerById($selectedOrder[0]['customerID']);
     $adress = $admin->getOrderAdress($selectedOrder[0]['adressID']);
     $products = $admin->getProductsByOrderId($_GET['orderID']);
+    $orderTotal = $admin->getOrderTotal($_GET['orderID']);
 ?>
     <div class="container">
         <div class="row pt-5 mt-5 justify-content-around">
@@ -149,7 +150,8 @@ if (!isset($_GET['orderID'])) {
                                 <th scope="col">Product ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Individual Price</th>
-                                <th scope="col">Origin</th>
+                                <th scope="col">Quantity</th>
+                                <th style="width:170px;" scope="col">Origin</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -165,12 +167,39 @@ if (!isset($_GET['orderID'])) {
                                         ?>
                                         DKK
                                     </td>
+                                    <td>
+                                        <?php
+                                        echo ($orderTotal[$key]['amount']);
+                                        ?>
+                                    </td>
                                     <td><?php echo $value['origin'] ?></td>
                                 </tr>
-                            <?php
+                                <?php
                             }
                             ?>
                         </tbody>
+                        <th/>
+                        <th/>
+                        <th/>
+                        <th/>
+                        <th>
+                            Total:
+                            <?php
+                            $sum = 0;
+                            $arrayLength = count($orderTotal);
+                            foreach ($orderTotal as $keyInner => $valueInner) {
+                                $amount = $valueInner['price'] * $valueInner['amount'];
+                                if ($arrayLength <= 1) {
+                                    echo ($amount);
+                                } else {
+                                    $sum += $amount;
+                                }
+                            };
+                            if ($arrayLength > 1) {
+                                echo ($sum);
+                            }
+                            ?> DKK
+                        </th>
                     </table>
                 </div>
             </div>
