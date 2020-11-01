@@ -75,11 +75,11 @@ if (!isset($_SESSION)) {
     <script>
         var botmanWidget = {
             frameEndpoint: 'chat',
-            introMessage: 'Hello, I am a Chatbot',
+            introMessage: 'Hello, I am the all knowing coffee robot!',
             chatServer: 'botman',
-            title: 'My Chatbot',
-            mainColor: '#456765',
-            bubbleBackground: '#ff76f4',
+            title: 'The all knowing coffee robot',
+            mainColor: 'orange',
+            bubbleBackground: 'orange',
             aboutText: '',
             bubbleAvatarUrl: '',
         };

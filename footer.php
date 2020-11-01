@@ -7,8 +7,7 @@ if (!isset($_SESSION)) {
 <html>
 <body>
     <div class="container">
-        <div class="row" id="background" style="color: #F4FAFF; justify-content: center;
-  align-items: center;">
+        <div class="row" id="background" style="background: url(data:image/png;base64,<?php echo base64_encode(file_get_contents("assets/footer.jpg")); ?>);">
             <div class="col text-center" style="font-weight: 300; ">
             <p>"<?php echo($index->getCompanyData()['companyDescription']); ?>"</p>
             </div>
@@ -48,11 +47,14 @@ if (!isset($_SESSION)) {
 </html>
 <style>
 #background {
-    background: url("https://scontent.faar2-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/122551051_4786173088090077_747681848141860092_n.jpg?_nc_cat=102&ccb=2&_nc_sid=ae9488&_nc_ohc=d4ggOw64ldsAX-6-Pmj&_nc_ht=scontent.faar2-1.fna&tp=7&oh=1c9e11befdf3c746f49624401921269e&oe=5FB8ED80");
+    /* background: url("https://scontent.faar2-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/122551051_4786173088090077_747681848141860092_n.jpg?_nc_cat=102&ccb=2&_nc_sid=ae9488&_nc_ohc=d4ggOw64ldsAX-6-Pmj&_nc_ht=scontent.faar2-1.fna&tp=7&oh=1c9e11befdf3c746f49624401921269e&oe=5FB8ED80"); */
     height: 380px; /* You must set a specified height */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /
+    background-size: cover; 
+    color: #F4FAFF; 
+    justify-content: center;
+    align-items: center; 
 }
 .hours {
     display: grid; 
