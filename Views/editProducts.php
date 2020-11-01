@@ -25,13 +25,10 @@ if (isset($_POST['delete'])) {
 }
 ?>
 <div class="container">
-    <div class="row justify-content-center mt-4">
-        <h2>ADMIN</h2>
+    <div class="row justify-content-center mt-5 mb-4">
+        <h2>Edit Products</h2>
     </div>
     <div class="row justify-content-center">
-        <div class="col-12">
-            <h2>Products</h2>
-        </div>
         <?php
         if (!isset($_GET['productID'])) {
             foreach ($admin->getProducts() as $value) {

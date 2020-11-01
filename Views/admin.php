@@ -5,8 +5,8 @@ if ($_SESSION['permission'] != 'admin') {
 }
 ?>
 <div class="container">
-    <div class="row justify-content-center">
-        <h1>ADMIN PANEL</h1>
+    <div class="row justify-content-center mt-5">
+        <h1>Admin Panel</h1>
     </div>
     <div class="row">
         <div class="col text-center">

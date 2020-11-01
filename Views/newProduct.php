@@ -19,7 +19,7 @@ if (isset($_POST['add'])) {
     alert(JavaScriptAlert); // Your PHP alert!
 </script>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
         <div class="col text-center">
             <h2>Add New Product</h2>
             <form method="POST">
