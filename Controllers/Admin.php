@@ -27,10 +27,6 @@ class Admin extends Controller {
         /* Getting most recent productID */
         $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
 
-        /* Printing id for testing */
-        print_r($productID);
-        print_r('category id: ' . $category);
-
         /* Binding productID and CategoryID in the producthascategory table */
          self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , ?)", array($productID['productID'], $category));
     }
@@ -39,7 +35,7 @@ class Admin extends Controller {
 
 
     public function getCategories() {
-        return $this->array_flatten(self::query("SELECT * FROM category"));
+        return (self::query("SELECT * FROM category"));
     }
     public function getProducts() {
         return (self::query("SELECT * FROM product"));
