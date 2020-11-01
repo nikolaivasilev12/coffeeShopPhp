@@ -6,8 +6,8 @@ if (!isset($_SESSION)) {
 ?>
 <html>
 <body>
-    <div class="container-fluid" style="margin-top: 50px;">
-        <div class="row" id="background" style="color: #F9F8F0; justify-content: center; align-items: center;">
+    <div class="container-fluid px-0">
+        <div class="row mx-0" id="background" style="color: #F9F8F0; justify-content: center; align-items: center;">
             <div class="col" style="text-align: center; font-weight: 300; margin-left: 5%;">
                 <div style="display: inline-block; text-align: left;">
                     <h5 style="font-weight: 700; font-family: Marcellus; text-transform: uppercase;">About Us:</h5>
@@ -50,7 +50,7 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center" style="background-color: #0B0501; color: #5D5A57;">
+        <div class="row mx-0 justify-content-center" style="background-color: #0B0501; color: #5D5A57;">
             <p>© Copyright 2020 Coffee Shop. All rights Reserved. Designed by Niko, Simas & Ugne</p>
         </div>
     </div>
