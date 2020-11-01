@@ -108,7 +108,7 @@ CREATE TABLE COMPANYDATA
     `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `companyDescription` TEXT,
     `adress` VARCHAR(255),
-    `phone` INT,
+    `phone` VARCHAR(255),
     `email` VARCHAR(255)
 );
 
@@ -300,7 +300,7 @@ insert into RATING (productID, customerID, ratingValue) values (9, 9, 2);
 insert into RATING (productID, customerID, ratingValue) values (10, 10, 3);
 
 -- COMPANYDATA
-insert into COMPANYDATA (companyDescription, adress, phone, email) values ('Espresso House is a Swedish coffee chain owned by JAB Holding Company. We are passionate about coffee, people and the environment - and to create the worlds best coffee experience for the worlds best guest. With such an ambition, one must be able to offer really good coffee in a cozy environment. ', '9941 Sachtjen Alley', '799-589-5427', 'calkin0@bigcartel.com');
+insert into COMPANYDATA (companyDescription, adress, phone, email) values ('Espresso House is a Swedish coffee chain owned by JAB Holding Company. We are passionate about coffee, people and the environment - and to create the worlds best coffee experience for the worlds best guest. With such an ambition, one must be able to offer really good coffee in a cozy environment. ', 'Bohrs 6 Vej, Esbjerg 6700, Denmark', '+45 799589574', 'coffee@shop.com');
 
 -- WORKDAYS
 insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Monday');
@@ -308,8 +308,8 @@ insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:0
 insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Wednesday');
 insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Thursday');
 insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Friday');
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Saturday');
-insert into WORKDAYS (startingHour, closingHour, openDay) values ('07:00', '19:00', 'Sunday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('10:00', '15:00', 'Saturday');
+insert into WORKDAYS (startingHour, closingHour, openDay) values ('10:00', '15:00', 'Sunday');
 
 -- NEWS
 insert into NEWS (content, date) values (' I am da news part yo. Pellentesque ultrices mattis odio.', '2020-09-15 15:24:35');

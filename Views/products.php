@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+$index = new Index();
 $productsObj = new Products();
 if (isset($_GET["productID"])) {
     $productDetails = $productsObj->getProductDetails($_GET["productID"]);
@@ -131,6 +132,8 @@ if (isset($_GET["productID"])) {
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+        
+
     <?php
             }
         }
@@ -140,6 +143,9 @@ if (isset($_GET["productID"])) {
     ?>
         </div>
 </div>
+<?php
+include("footer.php");
+?>
 <script>
 $(document).ready(function(){
     // hide shopping-cart on page load

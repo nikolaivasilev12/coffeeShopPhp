@@ -44,6 +44,37 @@ class Admin extends Controller {
     public function getProducts() {
         return (self::query("SELECT * FROM product"));
     }
+    public function getOrders() {
+        return (self::query("SELECT * FROM `order`"));
+    }
+    public function getOrderTotal ($orderID) {
+        return self::query("SELECT amount, price from orderhasproduct WHERE orderID = ? ", array($orderID));
+    }
+    public function getOrderById($orderId) {
+        return (self::query("SELECT * FROM `order` WHERE orderID = ? ", array($orderId)));
+    }
+    public function getOrderAdress($adressId) {
+        $adress = self::query("SELECT * FROM `adress` WHERE adressID = ? ", array($adressId));
+        if(!empty($adress[0]['postalCode'])){
+            $city = self::query("SELECT * FROM `postalcode` WHERE postalCode = ? ", array($adress[0]['postalCode']));
+            return array($this->array_flatten($adress), $this->array_flatten($city));
+        } else {
+            return;
+        }
+    }
+    public function getCustomerById($customerID) {
+        return self::query("SELECT fname, lname, email, phoneNr FROM `customer` WHERE customerID = ? ", array($customerID));
+    }
+    public function getProductsByOrderId ($orderID) {
+        $products = array();
+        $productID = (self::query("SELECT productID from orderhasproduct WHERE orderID = ? ", array($orderID)));
+        foreach ($productID as $product) {
+            $productDetails = $this->array_flatten(self::query("SELECT * FROM `product`WHERE productID = ? ", array($product['productID'])));
+            array_push($products, $productDetails);
+        }
+        return $products;
+    }
+
 
 
     /* Getting Company's DATA FIRST */

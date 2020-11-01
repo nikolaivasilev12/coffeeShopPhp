@@ -51,7 +51,7 @@ if ($cartModel->cartSessionItemCount > 0) {
 					<?php
 					if (isset($_SESSION['permission']) && $_GET['url'] != 'checkout') {
 					?>
-						<a href="checkout" class="btn btn-primary">
+						<a href="checkout" class="btn btn-orange">
 							Checkout
 						</a>
 					<?php
@@ -74,3 +74,7 @@ if ($cartModel->cartSessionItemCount > 0) {
 <?php
 }
 ?>
+<style>
+	.btn-orange{background-color:#976C42;color: #FFF;}
+	.btn-orange:hover{background-color:#49291F;color: #FFF;}
+</style>

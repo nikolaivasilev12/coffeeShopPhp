@@ -32,7 +32,7 @@ if (!isset($_SESSION)) {
                 </li>
                 <?php
                 if (isset($_SESSION['permission'])) {
-                    if ($_SESSION['permission'] === 'customer') { ?>
+                    if ($_SESSION['permission'] === 'customer' || $_SESSION['permission'] === 'admin') { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="profile">Profile</a>
                         </li>
@@ -51,16 +51,16 @@ if (!isset($_SESSION)) {
                 }
                 ?>
             </ul>
-            <form class="form-inline my-2 my-lg-0 px-4">
+            <!-- <form class="form-inline my-2 my-lg-0 px-4">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
             <?php
             if (isset($_SESSION['permission'])) { ?>
                 <button type="button" class="btn btn-danger"><a class="link" href="logout">Logout!</a> </button>
             <?php
             } else { ?>
-                <button type="button" class="btn btn-primary"><a class="link" href="login">Login!</a> </button>
+                <button type="button" class="btn btn-orange"><a class="link" href="login">Login!</a> </button>
             <?php
             }
             ?>
@@ -75,11 +75,11 @@ if (!isset($_SESSION)) {
     <script>
         var botmanWidget = {
             frameEndpoint: 'chat',
-            introMessage: 'Hello, I am a Chatbot',
+            introMessage: 'Hello, I am the all knowing coffee robot!',
             chatServer: 'botman',
-            title: 'My Chatbot',
-            mainColor: '#456765',
-            bubbleBackground: '#ff76f4',
+            title: 'The all knowing coffee robot',
+            mainColor: 'orange',
+            bubbleBackground: 'orange',
             aboutText: '',
             bubbleAvatarUrl: '',
         };
@@ -101,4 +101,7 @@ if (!isset($_SESSION)) {
         text-decoration: none !important;
         color: #ffffff !important;
     }
+    
+    .btn-orange{background-color:#976C42;color: #FFF;}
+    .btn-orange:hover{background-color:#49291F;color: #FFF;}
 </style>

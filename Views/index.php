@@ -3,73 +3,73 @@ include("header.php");
 $index = new Index();
 ?>
 
-<div class="container">
+<div class="container-fluid">
     <?php
     if (isset($_SESSION['permission'])) {
     ?>
-     <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>
-     <?php
+        <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>
+    <?php
     }
-     ?>
-    <h1 align="center">Special products</h1>
-    <div class="row justify-content-center">
-        <div id="carouselHome" class="carousel slide" data-ride="carousel">
+    ?>
+    <h1 align="center" class="mt-4 mb-3">Special products</h1>
+    <div class="row mx-0 justify-content-center">
+        <div id="carouselHome" class="carousel slide d-block w-50 w-md-100" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
                 <?php
                 $i = 1;
                 foreach ($index->getSpecialProducts() as $value) {
-                    echo ('<li data-target="#carouselHome" data-slide-to="' . $i . '"></li>');
+                ?>
+                    <li data-target="#carouselHome" data-slide-to="<?php echo $i; ?>"></li>
+                <?php
                     $i++;
                 }
                 ?>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <?php
-                    foreach ($index->getSpecialProducts() as $value) {
-                        $i = 0;
-                        echo ('
-                        <div class="d-block w-100">
-                            <div class="card" style="width: 18rem; background-color:gray">
-                                <div class="card-body">
+                <?php
+                foreach ($index->getSpecialProducts() as $value) {
+                    $i = 0;
+                ?>
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg" alt="">
+                        <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
+                            <div class="card-body">
                                 Category:
-                                    <h5 class="card-title">' . $value['name'] . '</h5>
-                                    <p class="card-text">' . $value['description'] . '</p>
-                                    <p class="card-text">Price:' . $value['price'] . '</p>
-                                    <a href="product?productID=' . $value['productID'] . '" class="btn btn-primary">View Product</a>
-                                </div>
+                                <h5 class="card-title"><?php echo $value['name'] ?></h5>
+                                <p class="card-text"><?php echo $value['description'] ?></p>
+                                <p class="card-text">Price: <?php echo $value['price'] ?></p>
+                                <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-orange">View Product</a>
                             </div>
                         </div>
-                        ');
-                        $i++;
-                        if ($i > 0) {
-                            break;
-                        }
+                    </div>
+                <?php
+                    $i++;
+                    if ($i > 0) {
+                        break;
                     }
-                    ?>
-                </div>
+                }
+                ?>
                 <?php
                 $counter = false;
                 foreach ($index->getSpecialProducts() as $value) {
                     if (!$counter) {
                         $counter = true;
                     } else {
-                        echo ('
+                ?>
                         <div class="carousel-item">
-                        <div class="d-block w-100">
-                            <div class="card" style="width: 18rem; background-color:gray">
+                            <img class="d-block w-100" src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg" alt="">
+                            <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                                 <div class="card-body">
-                                Category:
-                                    <h5 class="card-title">' . $value['name'] . '</h5>
-                                    <p class="card-text">' . $value['description'] . '</p>
-                                    <p class="card-text">Price:' . $value['price'] . '</p>
-                                    <a href="product?productID=' . $value['productID'] . '" class="btn btn-primary">View Product</a>
+                                    Category:
+                                    <h5 class="card-title"><?php echo $value['name'] ?></h5>
+                                    <p class="card-text"><?php echo $value['description'] ?></p>
+                                    <p class="card-text">Price: <?php echo $value['price'] ?></p>
+                                    <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-orange">View Product</a>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        ');
+                <?php
                     }
                 }
                 ?>
@@ -84,16 +84,36 @@ $index = new Index();
             </a>
         </div>
     </div>
-    <div class="row justify-content-center mt-4">
-        <div class="col">
-            <h1 align="center">News</h1>
-            <?php
-            echo('<p class="text-center">'.
-                $index->getNews()['content']. '</p>');
-            ?>
-    </div>
+
+    <div class="jumbotron jumbotron-fluid mb-0 mt-5">
+        <div class="container">
+            <h1 class="display-4">News</h1>
+            <p class="lead"><?php echo ($index->getNews()['content']) ?></p>
+        </div>
     </div>
 </div>
 <?php
 include("footer.php");
 ?>
+<style>
+    .container-fluid {
+        padding: 0 0 0 0;
+    }
+
+    .carousel-inner {
+        height: 600px;
+    }
+    
+    .carousel-item,
+    img {
+        height: 100% !important;
+        width: 100% !important;
+    }
+    .btn-orange{background-color:#976C42;color: #FFF;}
+    .btn-orange:hover{background-color:#49291F;color: #FFF;}
+    @media (max-width: 1100px) {
+    .w-md-100 {
+        width: 100% !important;
+    }
+    }
+</style>

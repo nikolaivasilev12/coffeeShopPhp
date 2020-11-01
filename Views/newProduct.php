@@ -11,9 +11,6 @@ if (isset($_POST['add'])) {
     $admin->createProduct($_POST['name'], $_POST['description'], $_POST['price'],
     $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial'], $_POST['category']);
 
-
-    /* $admin->addProductToCategory($_POST['productID'], $_POST['categoryID']); */
-
     /* JS alert message */
     $PHPtext = "Product Successfully Added!";
 }
@@ -24,7 +21,7 @@ var JavaScriptAlert = <?php echo json_encode($PHPtext); ?>;
 alert(JavaScriptAlert); // PHP alert
 </script>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
         <div class="col text-center">
             <h2>Add New Product</h2>
             <form method="POST">
@@ -34,16 +31,16 @@ alert(JavaScriptAlert); // PHP alert
                         <input name="name" type="text" class="form-control" placeholder="Product Name" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="font-weight-bold">Product Description</label>
-                    <input name="description" type="text" class="form-control" placeholder="Product Description"
-                        required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Product Description</label>
+                        <textarea name="description" type="text" class="form-control" placeholder="Product Description" required></textarea>
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="font-weight-bold">Country of Product Origin</label>
-                        <input name="origin" type="text" class="form-control" placeholder="Country of Product Origin"
-                            required>
+                        <input name="origin" type="text" class="form-control" placeholder="Country of Product Origin" required>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
@@ -52,8 +49,7 @@ alert(JavaScriptAlert); // PHP alert
                         </div>
                         <div class="form-group col-md-4">
                             <label class="font-weight-bold">Price</label>
-                            <input name="price" type="number" step="any" class="form-control" placeholder="Price"
-                                required>
+                            <input name="price" type="number" step="any" class="form-control" placeholder="Price" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label class="font-weight-bold">Stock</label>
