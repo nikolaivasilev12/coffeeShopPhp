@@ -1,10 +1,10 @@
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Choose a Category</h1>
+        <h1 style="margin-bottom: 3%;">Choose a Category</h1>
     </div>
     <div class="row justify-content-center">
         <a href="product?categoryID=0">
-            <button name="category" type="submit" value="0">All</button>
+            <button style="margin: 5px;" class="btn btn-outline-dark" name="category" type="submit" value="0">All</button>
         </a>
 
         <?php
@@ -12,7 +12,7 @@
     foreach ($catArr->getCategory() as $value) {
     echo ('
                 <a href="product?categoryID=' . $value['categoryID'] . '">
-                    <button name="category" type="submit" value="' . $value['categoryID'] . '">' . $value['name'] . '</button>
+                    <button class="btn btn-outline-dark" style="margin: 5px;" name="category" type="submit" value="' . $value['categoryID'] . '">' . $value['name'] . '</button>
                 </a>
                 ');
             }
@@ -24,11 +24,12 @@ if (isset($_GET['categoryID'])) {
     $productsObj = new Products();
     $productsByCategory = $productsObj->getProductByCategory($_GET['categoryID']);
     foreach ($productsByCategory as $value) {?>
-        <div class="product-item card col-3 mx-2 my-2">
+    <a href="product?productID=<?php echo $value['productID'] ?>" class="custom-card">
+        <div class="product-item card col-3 mx-2 my-2 shadow p-3 mb-5 bg-white rounded">
             <div class="product-image">
             <img
-            src="https://purepng.com/public/uploads/large/purepng.com-coffee-beanscoffee-beanscoffeestone-fruitpeaberry-1411527241519iq7rh.png"
-            id="<?php echo $value['productID']; ?>" width="150">
+            src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+            id="<?php echo $value['productID']; ?>" width="100%;">
             </div>
             <div>
                 <strong><?php echo $value["name"]; ?></strong>
@@ -46,24 +47,26 @@ if (isset($_GET['categoryID'])) {
                     <?php echo $value["stock"]; ?>
                 </strong>
             </p>
-            <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-primary" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
+            </a>
+            <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-orange" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
                 onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["price"]; ?>')">
                 Add to cart
             </button>
             <?php
 }
         ?>
-            <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-outline-primary">View Product</a>
+            <a href="product?productID=<?php echo $value['productID'] ?>"></a>
         </div>
         <?php
 }
 } elseif (!isset($_GET['productID'])) {
     $productsByCategory = $productsObj->getProductByCategory(0);
     foreach ($productsByCategory as $value) {?>
-        <div class="product-item card col-3 mx-2 my-2">
+        <a href="product?productID=<?php echo $value['productID'] ?>" class="custom-card">
+        <div class="product-item card col-3 mx-2 my-2 shadow p-3 mb-5 bg-white rounded">
             <div class="image">
-                <img src="https://purepng.com/public/uploads/large/purepng.com-coffee-beanscoffee-beanscoffeestone-fruitpeaberry-1411527241519iq7rh.png"
-                    id="<?php echo $value['productID']; ?>" width="150">
+                <img src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+                    id="<?php echo $value['productID']; ?>" width="100%">
             </div>
             <div>
                 <strong><?php echo $value["name"]; ?></strong>
@@ -81,15 +84,17 @@ if (isset($_GET['categoryID'])) {
                     <?php echo $value["stock"]; ?>
                 </strong>
             </p>
-            <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-primary" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
+            </a>
+            <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-orange" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
                 onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["price"]; ?>')">
                 Add to cart
             </button>
             <?php
 }
         ?>
-            <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-outline-primary">View Product</a>
+            <a href="product?productID=<?php echo $value['productID'] ?>"></a>
         </div>
+      
         <?php
 }
 }
@@ -99,3 +104,10 @@ if (isset($_GET['categoryID'])) {
 <script> 
 $("[data-toggle=popover]").popover();
 </script>
+
+<style>
+
+.btn-orange{background-color:#976C42;color: #FFF;}
+.btn-orange:hover{background-color:#49291F;color: #FFF;}
+
+</style>

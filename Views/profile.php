@@ -1,9 +1,10 @@
 <?php
 include("header.php");
+$index = new Index();
 $profileObj = new Profile();
 $profile = $profileObj->getProfileData($_SESSION['customerID']);
 ?>
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <h1>PROFILE</h1>
     </div>
@@ -31,7 +32,7 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
                                 <?php
                                 }
                                 ?></p>
-                            <a class="btn btn-primary" href="edit-profile">
+                            <a class="btn btn-orange" href="edit-profile">
                                 Edit Personal Information
                             </a>
                         </div>
@@ -39,3 +40,9 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
                 </div>
             </div>
         </div>
+        <?php
+include("footer.php");
+?>
+<style>
+.btn-orange{background-color:#976C42;color: #FFF;}
+.btn-orange:hover{background-color:#49291F;color: #FFF;}</style>

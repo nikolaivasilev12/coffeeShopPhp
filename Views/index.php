@@ -11,7 +11,7 @@ $index = new Index();
      <?php
     }
      ?>
-    <h1 align="center">Special products</h1>
+    <h1 align="center" style="margin-bottom: 3%;">Special products</h1>
     <div class="row justify-content-center">
         <div id="carouselHome" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
