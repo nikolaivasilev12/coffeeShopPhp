@@ -43,8 +43,12 @@ class Admin extends Controller {
     }
     public function getOrderAdress($adressId) {
         $adress = self::query("SELECT * FROM `adress` WHERE adressID = ? ", array($adressId));
-        $city = self::query("SELECT * FROM `postalcode` WHERE postalCode = ? ", array($adress[0]['postalCode']));
-        return array($this->array_flatten($adress), $this->array_flatten($city));
+        if(!empty($adress[0]['postalCode'])){
+            $city = self::query("SELECT * FROM `postalcode` WHERE postalCode = ? ", array($adress[0]['postalCode']));
+            return array($this->array_flatten($adress), $this->array_flatten($city));
+        } else {
+            return;
+        }
     }
     public function getCustomerById($customerID) {
         return self::query("SELECT fname, lname, email, phoneNr FROM `customer` WHERE customerID = ? ", array($customerID));

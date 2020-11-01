@@ -8,7 +8,7 @@ if (!isset($_GET['orderID'])) {
     $ordersList = $admin->getOrders();
 ?>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-12">
             <h2>Orders</h2>
         </div>
         <div class="row">
@@ -73,11 +73,11 @@ if (!isset($_GET['orderID'])) {
     $products = $admin->getProductsByOrderId($_GET['orderID']);
 ?>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4 mb-3">
+        <div class="row pt-5 mt-5 justify-content-around">
+            <div class="col-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
+                        <div  iv class="d-flex flex-column align-items-center text-center">
                             <p class="h3">
                                 Client Data
                             </p>
@@ -107,24 +107,36 @@ if (!isset($_GET['orderID'])) {
                             </p>
                             <p class="h5">
                                 <?php
-                                print_r($adress[0]['street'])
+                                if(isset($adress[0]['street'])){
+                                    print_r($adress[0]['street']);
+                                } else {
+                                    echo('No street provided');
+                                }
                                 ?>
                             </p>
                             <p class="h5">
                                 <?php
-                                print_r($adress[1]['city'])
+                                if(isset($adress[1]['city'])){
+                                    print_r($adress[1]['city']);
+                                } else {
+                                    echo('No city provided');
+                                }
                                 ?>
                             </p>
                             <p class="h5">
                                 <?php
-                                print_r($adress[0]['postalCode'])
+                                if(isset($adress[0]['postalCode'])) {
+                                    print_r($adress[0]['postalCode']);
+                                } else {
+                                    echo('No postal code provided');
+                                }
                                 ?>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col d-flex align-items-start">
+            <div class="col-6 d-flex align-items-start">
                 <div class="row text-center">
                     <div class="col">
                         <h2 class="text-center">
@@ -164,14 +176,37 @@ if (!isset($_GET['orderID'])) {
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
-                Status: <strong>Delivering</strong>
-                <button class="btn btn-primary">
+            <div class="col-4 text-center">
+                <p>
+                    Status: <strong id="order_status">Accepted</strong>
+                </p>
+                <button onclick="updateOrderStatus()" class="btn btn-primary">
                     Update Status
                 </button>
             </div>
         </div>
     </div>
+    <script type="text/javascript"> 
+    function updateOrderStatus() {
+        var currentValue = document.getElementById('order_status').innerHTML;
+        switch(currentValue) {
+        case 'Accepted':
+            document.getElementById('order_status').innerHTML = 'Awaiting Shippment'
+            break;
+        case 'Awaiting Shippment':
+            document.getElementById('order_status').innerHTML = 'Shipped'
+            break;
+        case 'Shipped':
+            document.getElementById('order_status').innerHTML = 'Completed'
+            break;
+        case 'Completed':
+            document.getElementById('order_status').innerHTML = 'Accepted'
+            break;
+        default:
+            document.getElementById('order_status').innerHTML = 'Accepted'
+        }
+    }
+    </script>
 <?php
 }
 ?>
