@@ -1,8 +1,6 @@
-  
 <?php
 class DBController
 {
-        
     private static function con() {
     $user = "admin";
     $pass = "123456";

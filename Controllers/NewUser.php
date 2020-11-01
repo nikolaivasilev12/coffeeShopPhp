@@ -11,7 +11,7 @@ class NewUser extends Controller
         $password = trim($password);
         $iterations = ['cost' => 15];
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
-        
+
         // Create customer
         require_once('config.php');
         $customer = \Stripe\Customer::create([

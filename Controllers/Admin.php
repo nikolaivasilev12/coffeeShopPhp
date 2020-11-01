@@ -12,7 +12,7 @@ class Admin extends Controller {
     }
 
     /* Create a new 'Product' */
-    public function createProduct($name, $description, $price, $stock, $origin, $type, $isSpecial){
+    public function createProduct($name, $description, $price, $stock, $origin, $type, $isSpecial, $category){
         $name = trim($name);
         $description = trim($description);
         $price = trim($price);
@@ -21,13 +21,25 @@ class Admin extends Controller {
         $type = trim($type);
         $isSpecial = trim($isSpecial);
         $params = array($name, $description, $price, $stock, $origin, $type, $isSpecial);
-
         self::query("INSERT INTO product (name, description, price, stock, origin, type, isSpecial)
         VALUES ( ? , ? , ? , ? , ? , ? , ? )", $params);
+
+        /* Getting most recent productID */
+        $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
+
+        /* Printing id for testing */
+        print_r($productID);
+        print_r('category id: ' . $category);
+
+        /* Binding productID and CategoryID in the producthascategory table */
+         self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , ?)", array($productID['productID'], $category));
     }
 
+
+
+
     public function getCategories() {
-        return (self::query("SELECT * FROM category"));
+        return $this->array_flatten(self::query("SELECT * FROM category"));
     }
     public function getProducts() {
         return (self::query("SELECT * FROM product"));

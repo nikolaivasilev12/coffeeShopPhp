@@ -1,22 +1,24 @@
 <?php
-include("header.php");
+include "header.php";
 $admin = new Admin();
-/* If user trying to reach page without having permissions - this prevents them */
+$category = new Categories();
+/* If user trying to reach page without loggin in - this prevents them */
 if ($_SESSION['permission'] != 'admin') {
     new Redirector('index');
 }
-
-/* add new product */
+/* Add new product */
 if (isset($_POST['add'])) {
-    $admin->createProduct($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial']);
+    $admin->createProduct($_POST['name'], $_POST['description'], $_POST['price'],
+    $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial'], $_POST['category']);
 
     /* JS alert message */
     $PHPtext = "Product Successfully Added!";
 }
+
 ?>
 <script>
-    var JavaScriptAlert = <?php echo json_encode($PHPtext); ?>;
-    alert(JavaScriptAlert); // Your PHP alert!
+var JavaScriptAlert = <?php echo json_encode($PHPtext); ?>;
+alert(JavaScriptAlert); // PHP alert
 </script>
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -60,11 +62,26 @@ if (isset($_POST['add'])) {
                                 <option value="1">Yes</option>
                             </select>
                         </div>
+                        <div class="form-group col-md-4">
+                            <label class="font-weight-bold">Product Category</label>
+                            <select name="category" class="form-control">
+                        <?php
+                            foreach ($category->getCategory() as $category) {
+                                echo
+                                    ('<option
+                                        name="category" type="submit"
+                                    value="'. $category['categoryID'] . '">' . $category['name'] .
+                                    '</option>');
+                            }
+                        ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-row col-md-6 mt-5">
                         <button type="submit" name="add" class="btn btn-primary">Create</button>
                     </div>
             </form>
         </div>
+
     </div>
 </div>
