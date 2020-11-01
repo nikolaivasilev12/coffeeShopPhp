@@ -1,5 +1,4 @@
 <?php
-
 Route::set('index.php', function() {
     Index::CreateView('Index');
 });
@@ -70,4 +69,8 @@ Route::set('checkout-success', function() {
 Route::set('checkout-fail', function() {
     Controller::CreateView('checkoutFail');
 });
+Route::set('orders', function() {
+    Admin::CreateView('orders');
+});
+
 

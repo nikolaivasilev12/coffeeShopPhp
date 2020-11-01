@@ -62,7 +62,10 @@ if (!isset($_SESSION)) {
     height: 380px; /* You must set a specified height */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /
+    background-size: cover; 
+    color: #F4FAFF; 
+    justify-content: center;
+    align-items: center; 
 }
 .hours {
     display: grid; 

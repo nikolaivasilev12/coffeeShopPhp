@@ -1,5 +1,8 @@
 <?php
 include('header.php');
+if($_SESSION['permission'] != 'admin') {
+    new Redirector('index');
+}
 $index = new Index();
 if (isset($_POST['submit'])) {
     $admin = new Admin();

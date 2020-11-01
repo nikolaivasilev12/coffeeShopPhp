@@ -32,7 +32,7 @@ if (!isset($_SESSION)) {
                 </li>
                 <?php
                 if (isset($_SESSION['permission'])) {
-                    if ($_SESSION['permission'] === 'customer') { ?>
+                    if ($_SESSION['permission'] === 'customer' || $_SESSION['permission'] === 'admin') { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="profile">Profile</a>
                         </li>
@@ -75,11 +75,11 @@ if (!isset($_SESSION)) {
     <script>
         var botmanWidget = {
             frameEndpoint: 'chat',
-            introMessage: 'Hello, I am a Chatbot',
+            introMessage: 'Hello, I am the all knowing coffee robot!',
             chatServer: 'botman',
-            title: 'My Chatbot',
-            mainColor: '#456765',
-            bubbleBackground: '#ff76f4',
+            title: 'The all knowing coffee robot',
+            mainColor: 'orange',
+            bubbleBackground: 'orange',
             aboutText: '',
             bubbleAvatarUrl: '',
         };
