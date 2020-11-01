@@ -12,7 +12,7 @@ class Admin extends Controller {
     }
 
     /* Create a new 'Product' */
-    public function createProduct($name, $description, $price, $stock, $origin, $type, $isSpecial){
+    public function createProduct($name, $description, $price, $stock, $origin, $type, $isSpecial, $category){
         $name = trim($name);
         $description = trim($description);
         $price = trim($price);
@@ -26,12 +26,13 @@ class Admin extends Controller {
 
         /* Getting most recent productID */
         $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
-        print_r($productID);
 
-        /* categoryID not being catched yet */
-        
+        /* Printing id for testing */
+        print_r($productID);
+        print_r('category id: ' . $category);
+
         /* Binding productID and CategoryID in the producthascategory table */
-         self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , 1)", array($productID['productID']));
+         self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , ?)", array($productID['productID'], $category));
     }
 
 

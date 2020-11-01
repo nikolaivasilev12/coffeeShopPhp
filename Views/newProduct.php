@@ -9,7 +9,7 @@ if ($_SESSION['permission'] != 'admin') {
 /* Add new product */
 if (isset($_POST['add'])) {
     $admin->createProduct($_POST['name'], $_POST['description'], $_POST['price'],
-    $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial']);
+    $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial'], $_POST['category']);
 
 
     /* $admin->addProductToCategory($_POST['productID'], $_POST['categoryID']); */
@@ -69,17 +69,12 @@ alert(JavaScriptAlert); // PHP alert
                         <div class="form-group col-md-4">
                             <label class="font-weight-bold">Product Category</label>
                             <select name="category" class="form-control">
-
-                            <!-- First you run the query that inserts the product then you run a query that will
-                            select productID from the last inserted product (and store it in a variable)
-                            then add this productID to the join table
-                            (productHasCategory I think) With the categoryID -->
                         <?php
-                            foreach ($category->getCategory() as $value) {
+                            foreach ($category->getCategory() as $category) {
                                 echo
                                     ('<option
-                                        name="category" type="submit" value="'
-                                    . $value['categoryID'] . '">' . $value['name'] .
+                                        name="category" type="submit"
+                                    value="'. $category['categoryID'] . '">' . $category['name'] .
                                     '</option>');
                             }
                         ?>
