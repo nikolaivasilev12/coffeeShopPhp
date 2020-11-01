@@ -10,14 +10,14 @@ if(isset($_POST['saveNews'])) {
 }
 ?>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
         <div class="col text-center">
             <h2>
                 Edit News
             </h2>
             <form action="" method="post">
                 <input type="text" name="content" value="<?php echo($index->getNews()['content'])?>">
-                <input type="submit" name="saveNews">
+                <input type="submit" class="btn btn-primary" name="saveNews">
             </form>
         </div>
     </div>

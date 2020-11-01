@@ -8,7 +8,7 @@ if (!isset($_GET['orderID'])) {
     $ordersList = $admin->getOrders();
 ?>
     <div class="container">
-        <div class="row justify-content-center mt-12">
+        <div class="row justify-content-center mt-5 mb-3">
             <h2>Orders</h2>
         </div>
         <div class="row">
