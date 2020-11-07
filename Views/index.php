@@ -32,7 +32,19 @@ $index = new Index();
                     $i = 0;
                 ?>
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg" alt="">
+                        <img class="d-block w-100" 
+                        <?php 
+                        if (isset($value['image'])) 
+                        { ?>
+                            src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
+                        <?php
+                        } else {
+                        ?>
+                            src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+                        <?php
+                        }
+                        ?> 
+                        alt="">
                         <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                             <div class="card-body">
                                 Category:
@@ -58,7 +70,19 @@ $index = new Index();
                     } else {
                 ?>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg" alt="">
+                            <img class="d-block w-100" 
+                            <?php 
+                            if (isset($value['image'])) 
+                            { ?>
+                                src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
+                            <?php
+                            } else {
+                            ?>
+                                src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+                            <?php
+                            }
+                            ?> 
+                            alt="">
                             <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                                 <div class="card-body">
                                     Category:

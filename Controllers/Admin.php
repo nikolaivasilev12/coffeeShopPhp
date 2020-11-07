@@ -73,7 +73,15 @@ class Admin extends Controller {
         return (self::query("SELECT * FROM category"));
     }
     public function getProducts() {
-        return (self::query("SELECT * FROM product"));
+        $products = (self::query("SELECT * FROM product"));
+         /* Check if each product contains an image and if it does add an image to the product's inner array */
+        foreach ($products as $key => $product) {
+        $productImage = $this->array_flatten(self::query("SELECT `name` FROM `image` WHERE productID = ? ", array($product['productID'])));
+        if (!empty($productImage['name'])){
+            $products[$key]['image'] = $productImage['name'];
+        }
+        }
+        return $products;
     }
     public function getOrders() {
         return (self::query("SELECT * FROM `order`"));

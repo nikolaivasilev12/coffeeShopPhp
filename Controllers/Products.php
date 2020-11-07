@@ -37,7 +37,13 @@ class Products extends Categories
       }
     }
     public function getProductDetails($productID) {
-      return $this->array_flatten(self::query("SELECT * FROM product WHERE productID = '{$productID}'"));
+      $productDetails = $this->array_flatten(self::query("SELECT * FROM product WHERE productID = '{$productID}'"));
+      $productImage = $this->array_flatten(self::query("SELECT `name` FROM `image` WHERE productID = ? ", array($productID)));
+      /* Check if this product contains an image and if it does add an image to the productDetails array */
+      if (!empty($productImage['name'])){
+        $productDetails['image'] = $productImage['name'];
+      }
+      return $productDetails;
     }
     public function getProductImage($productID) {
       return $this->array_flatten(self::query("SELECT * FROM `image` WHERE productID = '{$productID}'"));
