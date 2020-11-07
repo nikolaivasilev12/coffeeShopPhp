@@ -10,11 +10,13 @@ if ($_SESSION['permission'] != 'admin') {
 if (isset($_POST['add'])) {
     $admin->createProduct($_POST['name'], $_POST['description'], $_POST['price'],
     $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial'], $_POST['category']);
+    if (isset($_FILES['file'])) {
+        $admin->uploadProductImage($_FILES);
+    }
 
     /* JS alert message */
     $PHPtext = "Product Successfully Added!";
 }
-
 ?>
 <script>
 var JavaScriptAlert = <?php echo json_encode($PHPtext); ?>;
@@ -24,7 +26,7 @@ alert(JavaScriptAlert); // PHP alert
     <div class="row justify-content-center mt-5">
         <div class="col text-center">
             <h2>Add New Product</h2>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="form-row mt-5">
                     <div class="form-group col-md-6">
                         <label class="font-weight-bold">Product Name</label>
@@ -77,11 +79,11 @@ alert(JavaScriptAlert); // PHP alert
                             </select>
                         </div>
                     </div>
+                    <input type="file" name="file">
                     <div class="form-row col-md-6 mt-5">
                         <button type="submit" name="add" class="btn btn-primary">Create</button>
                     </div>
             </form>
         </div>
-
     </div>
 </div>

@@ -31,6 +31,41 @@ class Admin extends Controller {
          self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , ?)", array($productID['productID'], $category));
     }
 
+    public function uploadProductImage($uploadFile) {
+        if (isset($uploadFile)){
+            $file = $uploadFile['file'];
+            $fileName = $uploadFile['file']['name'];
+            $fileTmpName = $uploadFile['file']['tmp_name'];
+            $fileSize = $uploadFile['file']['size'];
+            $fileError = $uploadFile['file']['error'];
+            $fileType = $uploadFile['file']['type'];
+        
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+        
+            $allowed = array('jpg', 'jpeg', 'gif', 'png');
+            if (in_array($fileActualExt, $allowed)) {
+                if ($fileError === 0) {
+                    if ($fileSize < 1000000) {
+                        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                        $fileDestination = 'uploads/' . $fileNameNew;
+                        move_uploaded_file($fileTmpName, $fileDestination);
+                        $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
+                        $params = array($fileNameNew, $productID['productID']);
+                        self::query("INSERT INTO `image` (`name`, productID) VALUES ( ? , ? )", $params);
+
+                    } else {
+                        echo "Your file is too big!";
+                    }
+                } else {
+                    echo "There was an error uploading your file!";
+                }
+            } else {
+                echo "You cannot upload files of this type!";
+            }
+        }
+    }
+
 
 
 
@@ -38,7 +73,15 @@ class Admin extends Controller {
         return (self::query("SELECT * FROM category"));
     }
     public function getProducts() {
-        return (self::query("SELECT * FROM product"));
+        $products = (self::query("SELECT * FROM product"));
+         /* Check if each product contains an image and if it does add an image to the product's inner array */
+        foreach ($products as $key => $product) {
+        $productImage = $this->array_flatten(self::query("SELECT `name` FROM `image` WHERE productID = ? ", array($product['productID'])));
+        if (!empty($productImage['name'])){
+            $products[$key]['image'] = $productImage['name'];
+        }
+        }
+        return $products;
     }
     public function getOrders() {
         return (self::query("SELECT * FROM `order`"));
@@ -157,6 +200,8 @@ class Admin extends Controller {
         WHERE productID = ? ", $params);
         $productHasRating = self::query("SELECT * FROM rating
         WHERE productID = ? ", $params);
+        $productHasImage = self::query("SELECT * FROM `image`
+        WHERE productID = ? ", $params);
         if($productHasCategory){
             self::query("DELETE FROM producthascategory WHERE productID = ? ", $params);
         }
@@ -165,6 +210,17 @@ class Admin extends Controller {
         }
         if ($productHasRating) {
             self::query("DELETE FROM rating WHERE productID = ? ", $params);
+        }
+        if ($productHasImage) {
+            /* Delete image column from db */
+            self::query("DELETE FROM `image` WHERE productID = ? ", $params);
+            /* Delete image file from server */
+                $filename = $productHasImage[0]['name'];
+                if (file_exists('uploads/' . $filename)) {
+                  unlink('uploads/' .$filename);
+                } else {
+                  echo 'Could not delete '.$filename.', file does not exist';
+                }
         }
         self::query("DELETE FROM product WHERE productID = ? ", $params);
     }

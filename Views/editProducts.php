@@ -34,8 +34,58 @@ if (isset($_POST['delete'])) {
             foreach ($admin->getProducts() as $value) {
                 $productCategory = $catObj->getProductCategory($value['productID']);
         ?>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
+            <div class="product-item card col-3 mx-2 my-2 shadow p-3 mb-5 bg-white rounded">
+            <div class="product-image">
+            <img
+            <?php if (isset($value['image'])) 
+            { ?>
+                src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
+            <?php
+            } else {
+            ?>
+                src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+            <?php
+            }
+            ?>
+            id="<?php echo $value['productID']; ?>" width="100%;">
+            </div>
+            <div>
+                <strong><?php echo $value["name"]; ?></strong>
+            </div>
+            <div>
+                Category:
+            <strong>
+                <?php
+                if ($productCategory) {
+                    print_r($productCategory['name']);
+                } else { {
+                        print_r('<strong>Not set</strong>');
+                    }
+                }
+                ?>
+            </strong>
+            </div>
+            <div class="product-price"><?php echo $value["price"] . " DKK"; ?></div>
+            <?php if ($value['stock'] == 0) {?>
+            <p class="mt-4">
+                <strong>Out of stock</strong>
+            </p>
+            <?php
+} else {?>
+            <p>
+                Currently in stock:
+                <strong>
+                    <?php echo $value["stock"]; ?>
+                </strong>
+            </p>
+            </a>
+            <a href="edit-products?productID=<?php echo $value['productID'] ?>" class="btn btn-orange">Edit Product</a>
+            <?php
+}
+        ?>
+            <a href="product?productID=<?php echo $value['productID'] ?>"></a>
+        </div>
+                    <!-- <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             Category:
                             <strong>
@@ -53,8 +103,7 @@ if (isset($_POST['delete'])) {
                             <p class="card-text"><?php echo $value['price'] ?></p>
                             <a href="edit-products?productID=<?php echo $value['productID'] ?>" class="btn btn-primary">Edit Product</a>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
             <?php
             }
         } else {
