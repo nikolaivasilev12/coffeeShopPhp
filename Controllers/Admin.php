@@ -31,6 +31,37 @@ class Admin extends Controller {
          self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , ?)", array($productID['productID'], $category));
     }
 
+    public function uploadImage($uploadFile) {
+        if (isset($uploadFile)){
+            $file = $uploadFile['file'];
+            $fileName = $uploadFile['file']['name'];
+            $fileTmpName = $uploadFile['file']['tmp_name'];
+            $fileSize = $uploadFile['file']['size'];
+            $fileError = $uploadFile['file']['error'];
+            $fileType = $uploadFile['file']['type'];
+        
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+        
+            $allowed = array('jpg', 'jpeg', 'gif', 'png');
+            if (in_array($fileActualExt, $allowed)) {
+                if ($fileError === 0) {
+                    if ($fileSize < 1000000) {
+                        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                        $fileDestination = 'uploads/' . $fileNameNew;
+                        move_uploaded_file($fileTmpName, $fileDestination);
+                    } else {
+                        echo "Your file is too big!";
+                    }
+                } else {
+                    echo "There was an error uploading your file!";
+                }
+            } else {
+                echo "You cannot upload files of this type!";
+            }
+        }
+    }
+
 
 
 
