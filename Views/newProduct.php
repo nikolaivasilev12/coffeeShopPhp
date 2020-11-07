@@ -8,11 +8,11 @@ if ($_SESSION['permission'] != 'admin') {
 }
 /* Add new product */
 if (isset($_POST['add'])) {
-    if (isset($_FILES['file'])) {
-        $admin->uploadImage($_FILES);
-    }
     $admin->createProduct($_POST['name'], $_POST['description'], $_POST['price'],
     $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['isSpecial'], $_POST['category']);
+    if (isset($_FILES['file'])) {
+        $admin->uploadProductImage($_FILES);
+    }
 
     /* JS alert message */
     $PHPtext = "Product Successfully Added!";

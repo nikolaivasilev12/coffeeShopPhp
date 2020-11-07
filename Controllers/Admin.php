@@ -31,7 +31,7 @@ class Admin extends Controller {
          self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , ?)", array($productID['productID'], $category));
     }
 
-    public function uploadImage($uploadFile) {
+    public function uploadProductImage($uploadFile) {
         if (isset($uploadFile)){
             $file = $uploadFile['file'];
             $fileName = $uploadFile['file']['name'];
@@ -50,6 +50,10 @@ class Admin extends Controller {
                         $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                         $fileDestination = 'uploads/' . $fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDestination);
+                        $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
+                        $params = array($fileNameNew, $productID['productID']);
+                        self::query("INSERT INTO `image` (`name`, productID) VALUES ( ? , ? )", $params);
+
                     } else {
                         echo "Your file is too big!";
                     }
