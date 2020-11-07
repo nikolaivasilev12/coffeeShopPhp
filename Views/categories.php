@@ -28,7 +28,16 @@ if (isset($_GET['categoryID'])) {
         <div class="product-item card col-3 mx-2 my-2 shadow p-3 mb-5 bg-white rounded">
             <div class="product-image">
             <img
-            src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+            <?php if (isset($value['image'])) 
+            { ?>
+                src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
+            <?php
+            } else {
+            ?>
+                src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+            <?php
+            }
+            ?>
             id="<?php echo $value['productID']; ?>" width="100%;">
             </div>
             <div>
@@ -65,7 +74,17 @@ if (isset($_GET['categoryID'])) {
         <a href="product?productID=<?php echo $value['productID'] ?>" class="custom-card">
         <div class="product-item card col-3 mx-2 my-2 shadow p-3 mb-5 bg-white rounded">
             <div class="image">
-                <img src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+                <img 
+                <?php if (isset($value['image'])) 
+                { ?>
+                    src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
+                <?php
+                } else {
+                ?>
+                    src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+                <?php
+                }
+                ?>
                     id="<?php echo $value['productID']; ?>" width="100%">
             </div>
             <div>

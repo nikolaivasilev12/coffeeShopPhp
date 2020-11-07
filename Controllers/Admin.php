@@ -192,6 +192,8 @@ class Admin extends Controller {
         WHERE productID = ? ", $params);
         $productHasRating = self::query("SELECT * FROM rating
         WHERE productID = ? ", $params);
+        $productHasImage = self::query("SELECT * FROM `image`
+        WHERE productID = ? ", $params);
         if($productHasCategory){
             self::query("DELETE FROM producthascategory WHERE productID = ? ", $params);
         }
@@ -200,6 +202,17 @@ class Admin extends Controller {
         }
         if ($productHasRating) {
             self::query("DELETE FROM rating WHERE productID = ? ", $params);
+        }
+        if ($productHasImage) {
+            /* Delete image column from db */
+            self::query("DELETE FROM `image` WHERE productID = ? ", $params);
+            /* Delete image file from server */
+                $filename = $productHasImage[0]['name'];
+                if (file_exists('uploads/' . $filename)) {
+                  unlink('uploads/' .$filename);
+                } else {
+                  echo 'Could not delete '.$filename.', file does not exist';
+                }
         }
         self::query("DELETE FROM product WHERE productID = ? ", $params);
     }
