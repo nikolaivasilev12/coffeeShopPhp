@@ -39,9 +39,18 @@ class Products extends Categories
     public function getProductDetails($productID) {
       $productDetails = $this->array_flatten(self::query("SELECT * FROM product WHERE productID = '{$productID}'"));
       $productImage = $this->array_flatten(self::query("SELECT `name` FROM `image` WHERE productID = ? ", array($productID)));
-      /* Check if this product contains an image and if it does add an image to the productDetails array */
+      /* Check if this product contains an image */
       if (!empty($productImage['name'])){
-        $productDetails['image'] = $productImage['name'];
+        /* If more than one image exists add each image to an inner array in productDetails called `images` and assign a key to each item in it */
+        if (count($productImage) > 2) {
+          foreach ($productImage as $key => $image) {
+            $productDetails['images'][$key] = $image;
+          }
+        /* Remove the initial productImage from productDetails with an index of `name` */
+          unset($productDetails['images']['name']);
+        } else {
+          $productDetails['image'] = $productImage['name'];
+        }
       }
       return $productDetails;
     }

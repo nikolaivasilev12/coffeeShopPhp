@@ -39,61 +39,79 @@ if (isset($_GET["productID"])) {
             </div>
         </div>
         <div class="row mt-4">
-            <!-- <div class="col-lg-1 text-center">
-                <ul class="nav nav-tabs row text-center pro-details" id="myTab" role="tablist">
-                    <li class="nav-item col-lg-12 mb-2">
-                        <img class="img-fluid active h-100" src="https://pbs.twimg.com/media/ENktSOKU0AA9Y-6.jpg" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" />
-                    </li>
-                    <li class="nav-item col-lg-12 mb-2">
-                        <img class="img-fluid h-100" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" src="https://pbs.twimg.com/media/ENktSOTUEAELNMN.jpg" />
-                    </li>
-                    <li class="nav-item col-lg-12 mb-2">
-                        <div style="height:50px">
-                            <img class="img-fluid h-100" src="https://pbs.twimg.com/media/ENktSONUEAAm6k1.jpg" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" />
-                        </div>
-                    </li>
-                    <li class="nav-item col-lg-12 mb-2">
-                        <img class="img-fluid h-100" src="https://pbs.twimg.com/media/EOYIp0FUYAA0uM1?format=jpg&name=360x360" id="product-tab" data-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="false" />
-                    </li>
-                    <li class="nav-item col-lg-12 mb-2">
-                        <img class="img-fluid h-100" src="https://pbs.twimg.com/media/EOYIp0DUUAA29Ft?format=jpg&name=small" id="productTwo-tab" data-toggle="tab" href="#productTwo" role="tab" aria-controls="productTwo" aria-selected="false" />
-                    </li>
-                    <li class="nav-item col-lg-12 mb-2">
-                        <img class="img-fluid h-100" src="https://pbs.twimg.com/media/EOYIp0JVUAANGFD?format=jpg&name=small" id="productThree-tab" data-toggle="tab" href="#productThree" role="tab" aria-controls="productThree" aria-selected="false" />
-                    </li>
-                </ul>
-            </div> -->
+            <div class="col-lg-1 text-center">
+                <?php
+                    if (isset($productDetails['images'])) 
+                    {
+                        ?>
+                        <ul class="nav nav-tabs row text-center pro-details" id="myTab" role="tablist">
+                            <?php
+                            foreach ($productDetails['images'] as $key => $image) {
+                            ?>
+                            <li class="nav-item col-lg-12 mb-2">
+                                <img class="img-fluid <?php if ($key == 0) { ?>
+                                    active 
+                                    <?php } ?> h-100" 
+                                    src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$image}")); ?>"
+                                    id="home-tab-<?php echo $key;?>" 
+                                    data-toggle="tab" 
+                                    href="#home-<?php echo $key;?>" 
+                                    role="tab" 
+                                    aria-controls="home-<?php echo $key; ?>"
+                                    aria-selected="<?php 
+                                    if ($key == 0) {
+                                    ?>true<?php
+                                    } else { ?>false<?php }
+                                    ?>" 
+                                />
+                            </li>
+                            <?php
+                            } 
+                            ?>
+                        </ul>
+                        <?php
+                    } 
+                    ?>
+            </div>
             <div class="col-lg-4 text-center border-right border-secondery">
                 <div class="tab-content row h-100 d-flex justify-content-center align-items-center" id="myTabContent">
-                    <div class="tab-pane fade show active col-lg-12" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <img class="img-fluid" 
-                        <?php if (isset($productDetails['image'])) 
-                        { ?>
-                            src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$productDetails['image']}")); ?>"
-                        <?php
-                        } else {
+                    <?php
+                    if (isset($productDetails['images'])) {
+                        foreach ($productDetails['images'] as $key => $image) {
                         ?>
-                            src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
-                        <?php
+                        <div 
+                            class="tab-pane fade<?php
+                            if ($key == 0) {
+                            ?> show active<?php
+                            }
+                            ?>
+                            col-lg-12"
+                            id="home-<?php echo $key; ?>" 
+                            role="tabpanel" 
+                            aria-labelledby="home-tab-<?php echo $key; ?>"
+                        >
+                            <img class="img-fluid" src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$image}")); ?>" />
+                        </div>
+                    <?php
                         }
+                    } else if (isset($productDetails['image'])) {
                         ?>
-                        />
-                    </div>
-                    <!-- <div class="tab-pane fade col-lg-12" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <img class="img-fluid" src="https://pbs.twimg.com/media/ENktSOTUEAELNMN.jpg" />
-                    </div>
-                    <div class="tab-pane fade col-lg-12" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        <img class="img-fluid" src="https://pbs.twimg.com/media/ENktSONUEAAm6k1.jpg" />
-                    </div>
-                    <div class="tab-pane fade col-lg-12" id="product" role="tabpanel" aria-labelledby="product-tab">
-                        <img class="img-fluid" src="https://pbs.twimg.com/media/EOYIp0FUYAA0uM1?format=jpg&name=360x360" />
-                    </div>
-                    <div class="tab-pane fade col-lg-12" id="productTwo" role="tabpanel" aria-labelledby="productTwo-tab">
-                        <img class="img-fluid" src="https://pbs.twimg.com/media/EOYIp0DUUAA29Ft?format=jpg&name=small" />
-                    </div>
-                    <div class="tab-pane fade col-lg-12" id="productThree" role="tabpanel" aria-labelledby="productThree-tab">
-                        <img class="img-fluid" src="https://pbs.twimg.com/media/EOYIp0JVUAANGFD?format=jpg&name=small" />
-                    </div> -->
+                        <div 
+                            class="tab-pane fade show active col-lg-12"
+                            id="home" 
+                            role="tabpanel" 
+                            aria-labelledby="home-tab"
+                        >
+                            <img class="img-fluid" src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$productDetails['image']}")); ?>" />
+                        </div>
+                    <?php
+                    } else {
+                        ?>
+                        <img src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+                        id="<?php echo $productDetails['productID']; ?>" width="100%">
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -118,7 +136,9 @@ if (isset($_GET["productID"])) {
     <?php
             $catObj = new Categories();
 
-            $getProductCategory = $catObj->getProductCategory($_GET["productID"])['categoryID'];
+            $getProductCategory = $catObj->getProductCategory($_GET["productID"]);
+            if (isset($getProductCategory['categoryID'])){
+                $getProductCategory = $catObj->getProductCategory($_GET["productID"])['categoryID'];
             if (count($productsObj->getProductByCategory($getProductCategory)) > 1) {
     ?>
         <div class="col-12 text-center mt-5 mb-3">
@@ -221,8 +241,9 @@ if (isset($_GET["productID"])) {
                 </a>
             </div>
         </div>
-<?php
-            }
+    <?php
+    }   
+    }
         }
         if (!isset($_GET['productID'])) {
             include('categories.php');
