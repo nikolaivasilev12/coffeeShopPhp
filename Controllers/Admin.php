@@ -245,7 +245,4 @@ class Admin extends Controller {
           echo 'Could not delete '.$filename.', file does not exist';
         }
     }
-    public static function addImageToProduct($productID, $image) {
-        self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , ?)", array($productID['productID'], $category));
-    }
 }

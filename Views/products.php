@@ -139,7 +139,10 @@ if (isset($_GET["productID"])) {
             $getProductCategory = $catObj->getProductCategory($_GET["productID"]);
             if (isset($getProductCategory['categoryID'])){
                 $getProductCategory = $catObj->getProductCategory($_GET["productID"])['categoryID'];
-            if (count($productsObj->getProductByCategory($getProductCategory)) > 1) {
+                $arr = array(
+                    'carouselCategory' => $getProductCategory
+                );
+                if (count($productsObj->getProductByCategory($arr)) > 1) {
     ?>
         <div class="col-12 text-center mt-5 mb-3">
             <h3>More products from the same category</h3>
@@ -151,7 +154,10 @@ if (isset($_GET["productID"])) {
                     <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
                     <?php
                     $i = 1;
-                    foreach ($productsObj->getProductByCategory($getProductCategory) as $value) {
+                    $arr = array(
+                        'carouselCategory' => $getProductCategory
+                    );
+                    foreach ($productsObj->getProductByCategory($arr) as $value) {
                     ?>
                         <li data-target="#carouselHome" data-slide-to="<?php echo $i; ?>"></li>
                     <?php
@@ -161,7 +167,10 @@ if (isset($_GET["productID"])) {
                 </ol>
                 <div class="carousel-inner">
                     <?php
-                    foreach ($productsObj->getProductByCategory($getProductCategory) as $value) {
+                    $arr = array(
+                        'carouselCategory' => $getProductCategory
+                    );
+                    foreach ($productsObj->getProductByCategory($arr) as $value) {
                         $i = 0;
                     ?>
                         <div class="carousel-item active">
@@ -197,7 +206,10 @@ if (isset($_GET["productID"])) {
                     ?>
                     <?php
                     $counter = false;
-                    foreach ($productsObj->getProductByCategory($getProductCategory) as $value) {
+                    $arr = array(
+                        'carouselCategory' => $getProductCategory
+                    );
+                    foreach ($productsObj->getProductByCategory($arr) as $value) {
                         if (!$counter) {
                             $counter = true;
                         } else {
