@@ -33,35 +33,47 @@ class Admin extends Controller {
 
     public function uploadProductImage($uploadFile) {
         if (isset($uploadFile)){
-            $file = $uploadFile['file'];
-            $fileName = $uploadFile['file']['name'];
-            $fileTmpName = $uploadFile['file']['tmp_name'];
-            $fileSize = $uploadFile['file']['size'];
-            $fileError = $uploadFile['file']['error'];
-            $fileType = $uploadFile['file']['type'];
-        
-            $fileExt = explode('.', $fileName);
-            $fileActualExt = strtolower(end($fileExt));
-        
-            $allowed = array('jpg', 'jpeg', 'gif', 'png');
-            if (in_array($fileActualExt, $allowed)) {
-                if ($fileError === 0) {
-                    if ($fileSize < 1000000) {
-                        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                        $fileDestination = 'uploads/' . $fileNameNew;
-                        move_uploaded_file($fileTmpName, $fileDestination);
-                        $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
-                        $params = array($fileNameNew, $productID['productID']);
-                        self::query("INSERT INTO `image` (`name`, productID) VALUES ( ? , ? )", $params);
+            if (isset($uploadFile['file'])){
+                $file = $uploadFile['file'];
+                $fileName = $uploadFile['file']['name'];
+                $fileTmpName = $uploadFile['file']['tmp_name'];
+                $fileSize = $uploadFile['file']['size'];
+                $fileError = $uploadFile['file']['error'];
+                $fileType = $uploadFile['file']['type'];
+            
+                $fileExt = explode('.', $fileName);
+                $fileActualExt = strtolower(end($fileExt));
+            
+                $allowed = array('jpg', 'jpeg', 'gif', 'png');
+                if (in_array($fileActualExt, $allowed)) {
+                    if ($fileError === 0) {
+                        if ($fileSize < 1000000) {
+                            $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                            $fileDestination = 'uploads/' . $fileNameNew;
+                            move_uploaded_file($fileTmpName, $fileDestination);
+                            /*  If we dont have a productID passed down we will get the last inserted product's productID, 
+                            assuming that the desired action will be to add an image to a newly created product */
+                            if(empty($uploadfile['productID'])){
+                                $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
+                                $params = array($fileNameNew, $productID['productID']);
+                            } 
+                            /*  If we have a productID passed down we will use it in the image table since the desired action in this
+                            scenario would be that we want to add an image to an existing product   */
+                            else if(!empty($uploadfile['productID'])) {
+                                $productID = $uploadFile['productID'];
+                                $params = array($fileNameNew, $productID);
+                            }
+                            self::query("INSERT INTO `image` (`name`, productID) VALUES ( ? , ? )", $params);
 
+                        } else {
+                            echo "Your file is too big!";
+                        }
                     } else {
-                        echo "Your file is too big!";
+                        echo "There was an error uploading your file!";
                     }
                 } else {
-                    echo "There was an error uploading your file!";
+                    echo "You cannot upload files of this type!";
                 }
-            } else {
-                echo "You cannot upload files of this type!";
             }
         }
     }
@@ -223,5 +235,17 @@ class Admin extends Controller {
                 }
         }
         self::query("DELETE FROM product WHERE productID = ? ", $params);
+    }
+    public function deleteProductImage($image) {
+        self::query("DELETE FROM `image` WHERE `name` = ?", array($image));
+        $filename = $image;
+        if (file_exists('uploads/' . $filename)) {
+          unlink('uploads/' .$filename);
+        } else {
+          echo 'Could not delete '.$filename.', file does not exist';
+        }
+    }
+    public static function addImageToProduct($productID, $image) {
+        self::query("INSERT INTO `producthascategory` (productID, categoryID) VALUES ( ? , ?)", array($productID['productID'], $category));
     }
 }

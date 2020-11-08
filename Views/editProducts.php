@@ -9,6 +9,16 @@ if (isset($_GET['productID'])) {
     $productsObj = new Products();
     $productDetails = $productsObj->getProductDetails($_GET["productID"]);
 }
+if (isset($_GET['image'])) {
+    $admin->deleteProductImage($_GET['image']);
+}
+if (isset($_FILES['file'])) {
+    $arr = array(
+        "file" => $_FILES['file'],
+        "productID" => $productDetails['productID']
+    );
+    $admin->uploadProductImage($arr);
+}
 if (isset($_POST['update'])) {
     if (isset($_POST['isSpecial'])) {
         $admin->updateProductDetails($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['productID']);
@@ -71,7 +81,7 @@ if (isset($_POST['delete'])) {
                 <strong>Out of stock</strong>
             </p>
             <?php
-} else {?>
+            } else {?>
             <p>
                 Currently in stock:
                 <strong>
@@ -81,29 +91,10 @@ if (isset($_POST['delete'])) {
             </a>
             <a href="edit-products?productID=<?php echo $value['productID'] ?>" class="btn btn-orange">Edit Product</a>
             <?php
-}
-        ?>
+            }
+            ?>
             <a href="product?productID=<?php echo $value['productID'] ?>"></a>
         </div>
-                    <!-- <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            Category:
-                            <strong>
-                                <?php
-                                if ($productCategory) {
-                                    print_r($productCategory['name']);
-                                } else { {
-                                        print_r('<strong>Not set</strong>');
-                                    }
-                                }
-                                ?>
-                            </strong>
-                            <h5 class="card-title"><?php echo $value['name'] ?></h5>
-                            <p class="card-text"><?php echo $value['description'] ?></p>
-                            <p class="card-text"><?php echo $value['price'] ?></p>
-                            <a href="edit-products?productID=<?php echo $value['productID'] ?>" class="btn btn-primary">Edit Product</a>
-                        </div>
-                    </div> -->
             <?php
             }
         } else {
@@ -195,8 +186,71 @@ if (isset($_POST['delete'])) {
             </form>
         </div>
     </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-5 mb-2">
+            <h3 class="text-center">Current Product Images</h3>
+        </div>
+        <?php 
+            if(isset($productDetails['images'])) {
+                foreach($productDetails['images'] as $key => $image) {
+            ?>
+            <div class="col-4">
+                <img class="d-block w-100" 
+                src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$image}")); ?>"
+                alt="">
+                <a href='edit-products?productID=<?php echo $productDetails['productID']; ?>&image=<?php echo $image; ?>' class="btn btn-danger">
+                    Delete Image
+                </a>
+            </div>
+            <?php
+                }
+            } else if (isset($productDetails['image'])) {
+               ?>
+            <div class="col-12">
+                <img class="d-block w-100" 
+                src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$productDetails['image']}")); ?>"
+                alt="">
+                <a href='edit-products?productID=<?php echo $productDetails['productID']; ?>&image=<?php echo $productDetails['image']; ?>' class="btn btn-danger">
+                    Delete Image
+                </a>
+            </div>
+               <?php
+            }
+        ?>
+        <div class="col-12 mt-5">
+            <h3>Upload Image</h3>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type='file' name="file" class="imageUpload"/>
+                <div class="imageOutput"></div>
+                <button type="submit" name="add" class="btn btn-primary">Upload Image</button>
+            </form>
+        </div>
+    </div>
 <?php
         }
 ?>
 </div>
 </div>
+<script>
+$images = $('.imageOutput')
+
+$(".imageUpload").change(function(event){
+    readURL(this);
+});
+
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        
+        $.each(input.files, function() {
+            var reader = new FileReader();
+            reader.onload = function (e) {           
+                $images.append('<img src="'+ e.target.result+'" width="500" />')
+            }
+            reader.readAsDataURL(this);
+        });
+        
+    }
+}
+</script>
