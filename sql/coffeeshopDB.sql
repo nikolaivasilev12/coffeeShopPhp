@@ -392,18 +392,6 @@ BEGIN
   INSERT INTO customer_permission (customerID, permissionID) VALUES (new.customerID, 1);
 END;//  
 
-<<<<<<< HEAD
 DELIMITER ;
-=======
--- DELIMITER //
--- Create Trigger update_username AFTER INSERT ON customer FOR EACH ROW
--- BEGIN
- --   UPDATE customer c
- --   SET c.username = NEW.username
---    WHERE c.customerID = NEW.customerID;
--- END //
---
--- DELIMITER ;
->>>>>>> 6e8efd053a2cd1d28910dcb50da17c3e6ac8f721
 
 insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('aaaaaaaaa', 'wBNDeBzreW', 'aaaaaaaaa', 'aaaaaaaaaa', '948-602-7488', 'dogmaaan');
