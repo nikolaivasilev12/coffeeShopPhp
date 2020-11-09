@@ -5,12 +5,6 @@ Route::set('index.php', function() {
 Route::set('index', function() {
     Index::CreateView('Index');
 });
-Route::set('about-us', function() {
-    AboutUs::CreateView('AboutUs');
-});
-Route::set('contact-us', function() {
-    ContactUs::CreateView('ContactUs');
-});
 Route::set('login', function() {
     LoginUser::CreateView('Login');
 });
@@ -72,5 +66,3 @@ Route::set('checkout-fail', function() {
 Route::set('orders', function() {
     Admin::CreateView('orders');
 });
-
-
