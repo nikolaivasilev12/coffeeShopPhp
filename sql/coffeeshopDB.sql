@@ -368,7 +368,7 @@ WHERE product.productID = producthascategory.productID
 AND
 category.categoryID = producthascategory.categoryID;
 
--- CREATE Account Roles and Permissions
+-- CREATE VIEW Account Roles and Permissions
 
 CREATE VIEW customer_roles_and_permissions AS
 SELECT
@@ -385,4 +385,13 @@ permission.permissionID = customer_permission.permissionID;
 
 -- TRIGGER
 
+-- DELIMITER //
+-- Create Trigger update_username AFTER INSERT ON customer FOR EACH ROW
+-- BEGIN
+ --   UPDATE customer c
+ --   SET c.username = NEW.username
+--    WHERE c.customerID = NEW.customerID;
+-- END //
+--
+-- DELIMITER ;
 
