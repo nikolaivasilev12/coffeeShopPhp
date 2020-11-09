@@ -76,13 +76,6 @@ if (isset($_POST['delete'])) {
             </strong>
             </div>
             <div class="product-price"><?php echo $value["price"] . " DKK"; ?></div>
-            <?php if ($value['stock'] == 0) {?>
-            <p class="mt-4">
-                <strong>Out of stock</strong>
-            </p>
-            <?php
-            } else {?>
-            <p>
                 Currently in stock:
                 <strong>
                     <?php echo $value["stock"]; ?>
@@ -90,9 +83,6 @@ if (isset($_POST['delete'])) {
             </p>
             </a>
             <a href="edit-products?productID=<?php echo $value['productID'] ?>" class="btn btn-orange">Edit Product</a>
-            <?php
-            }
-            ?>
             <a href="product?productID=<?php echo $value['productID'] ?>"></a>
         </div>
             <?php
