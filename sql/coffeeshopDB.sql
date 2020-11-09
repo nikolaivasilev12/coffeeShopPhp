@@ -384,5 +384,14 @@ AND
 permission.permissionID = customer_permission.permissionID;
 
 -- TRIGGER
+DELIMITER //
+CREATE TRIGGER add_customer_permission
+AFTER INSERT ON CUSTOMER
+FOR EACH ROW
+BEGIN
+  INSERT INTO customer_permission (customerID, permissionID) VALUES (new.customerID, 1);
+END;//  
 
+DELIMITER ;
 
+insert into CUSTOMER (email, password, fname, lname, phoneNr, username) values ('aaaaaaaaa', 'wBNDeBzreW', 'aaaaaaaaa', 'aaaaaaaaaa', '948-602-7488', 'dogmaaan');

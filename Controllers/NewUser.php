@@ -20,10 +20,10 @@ class NewUser extends Controller
         $customerParams = array($email, $username, $hashed_password, $customer['id']);
         self::query("INSERT INTO `customer` (email, `username`, `password`, `stripeID`) VALUES ( ? , ? , ? , ?)", $customerParams);
 
-        // Select customerID
-        $customerID = $this->array_flatten(self::query("SELECT customerID FROM `customer` ORDER BY customerID DESC LIMIT 1"));
+        // // Select customerID
+        // $customerID = $this->array_flatten(self::query("SELECT customerID FROM `customer` ORDER BY customerID DESC LIMIT 1"));
 
-        // Add customer permission
-        self::query("INSERT INTO `customer_permission` (customerID, permissionID) VALUES ( ? , 1)", array($customerID['customerID']));
+        // // Add customer permission
+        // self::query("INSERT INTO `customer_permission` (customerID, permissionID) VALUES ( ? , 1)", array($customerID['customerID']));
     }
 }
