@@ -4,8 +4,9 @@ class Admin extends Controller {
 
     /* Create a new 'Category' */
     public function createCategory($name, $description){
-        $name = trim($name);
-        $description = trim($description);
+        /* Sanitize Cat DATA */
+        $name = filter_var($name, FILTER_SANITIZE_STRING);
+        $description = filter_var($description, FILTER_SANITIZE_STRING);
         $params = array($name, $description);
         self::query("INSERT INTO category (name, description)
         VALUES ( ? , ? )", $params);
@@ -13,13 +14,14 @@ class Admin extends Controller {
 
     /* Create a new 'Product' */
     public function createProduct($name, $description, $price, $stock, $origin, $type, $isSpecial, $category){
-        $name = trim($name);
-        $description = trim($description);
-        $price = trim($price);
-        $stock = trim($stock);
-        $origin = trim($origin);
-        $type = trim($type);
-        $isSpecial = trim($isSpecial);
+        /* Sanitize create product admin fields */
+        $name = filter_var($name, FILTER_SANITIZE_STRING);
+        $description = filter_var($description, FILTER_SANITIZE_STRING);
+        $price = filter_var($price, FILTER_SANITIZE_STRING);
+        $stock = filter_var($stock, FILTER_SANITIZE_STRING);
+        $origin = filter_var($origin, FILTER_SANITIZE_STRING);
+        $type = filter_var($type, FILTER_SANITIZE_STRING);
+        $isSpecial = filter_var($isSpecial, FILTER_SANITIZE_STRING);
         $params = array($name, $description, $price, $stock, $origin, $type, $isSpecial);
         self::query("INSERT INTO product (name, description, price, stock, origin, type, isSpecial)
         VALUES ( ? , ? , ? , ? , ? , ? , ? )", $params);
@@ -40,10 +42,8 @@ class Admin extends Controller {
                 $fileSize = $uploadFile['file']['size'];
                 $fileError = $uploadFile['file']['error'];
                 $fileType = $uploadFile['file']['type'];
-            
                 $fileExt = explode('.', $fileName);
                 $fileActualExt = strtolower(end($fileExt));
-            
                 $allowed = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($fileActualExt, $allowed)) {
                     if ($fileError === 0) {
@@ -143,18 +143,20 @@ class Admin extends Controller {
     }
 
     public function updateCategory($name, $description, $categoryID) {
-        $name = trim($name);
-        $description = trim($description);
+        /* Sanitizing UpdateCat fields */
+        $name = filter_var($name, FILTER_SANITIZE_STRING);
+        $description = filter_var($description, FILTER_SANITIZE_STRING);
         $params = array($name, $description, $categoryID);
         self::query("UPDATE category SET name = ? , description = ?
         WHERE categoryID = ? ", $params);
     }
     public function updateProductDetails($name, $description, $price, $stock, $origin, $type, $productID) {
-        $name = trim($name);
-        $description = trim($description);
-        $price = trim($price);
-        $stock = trim($stock);
-        $origin = trim($origin);
+        /* Sanitizing upd product fields */
+        $name = filter_var($name, FILTER_SANITIZE_STRING);
+        $description = filter_var($description, FILTER_SANITIZE_STRING);
+        $price = filter_var($price, FILTER_SANITIZE_STRING);
+        $stock = filter_var($stock, FILTER_SANITIZE_STRING);
+        $origin = filter_var($origin, FILTER_SANITIZE_STRING);
         $params = array($name, $description, $price, $stock, $origin, $type, $productID);
         self::query("UPDATE product SET name = ? , description = ? ,
         price = ?, stock = ?, origin = ? , type = ? , isSpecial = NULL
@@ -192,8 +194,8 @@ class Admin extends Controller {
 
     /* Updating Working Hours */
     public function updateHours($startingHours, $closingHours, $ID){
-        $startingHours = trim($startingHours);
-        $closingHours = trim($closingHours);
+        $startingHours = filter_var($startingHours, FILTER_SANITIZE_STRING);
+        $closingHours = filter_var($closingHours, FILTER_SANITIZE_STRING);
         $params = array($startingHours, $closingHours, $ID);
         self::query("UPDATE workdays SET startingHour = ? ,
         closingHour = ? WHERE ID = ? ", $params);
