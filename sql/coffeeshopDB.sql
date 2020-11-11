@@ -360,30 +360,24 @@ CREATE VIEW products_and_categories AS
 SELECT
 product.productID AS product_productID,
 product.name AS product_name,
-category.categoryID AS category_categoryID,
-category.name AS category_name,
-producthascategory.productID, producthascategory.categoryID
+category.name AS category_name
 FROM product, category, producthascategory
 WHERE product.productID = producthascategory.productID
 AND
 category.categoryID = producthascategory.categoryID;
 
 -- CREATE VIEW Account Roles and Permissions
-
 CREATE VIEW customer_roles_and_permissions AS
 SELECT
 customer.customerID AS customer_ID,
 customer.username AS customer_USERNAME,
-permission.permissionID AS permission_ID,
-permission.name AS permission_NAME,
-customer_permission.customerID,
-customer_permission.permissionID
+permission.name AS permission_NAME
 FROM customer, permission, customer_permission
 WHERE customer.customerID = customer_permission.customerID
 AND
 permission.permissionID = customer_permission.permissionID;
 
--- TRIGGER default adding customer permission 1 to new accounts
+-- TRIGGER default adding customer permission 1 to new accounts created
 DELIMITER //
 CREATE TRIGGER add_customer_permission
 AFTER INSERT ON CUSTOMER
@@ -393,3 +387,13 @@ BEGIN
 END;//
 DELIMITER ;
 
+-- TRIGGER 2 adjust stock on change in product table
+DELIMITER //
+Create Trigger stock_minus AFTER INSERT ON orderhasproduct FOR EACH ROW
+BEGIN
+    UPDATE product sp
+    SET sp.stock = sp.stock - NEW.amount
+    WHERE sp.productID = NEW.productID;
+END //
+
+DELIMITER ;
