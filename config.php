@@ -6,6 +6,8 @@ $stripe = [
   "publishable_key" => "pk_test_51HfoSNFLc5XDnLnp0wfRwT8vStthjSJJ20IzifkSmDTJSA3AxjfWH1REdDI8ZVZ7U1faYbKOfds8h928rKm7x67J00WeTiNqWe",
 ];
 
+$captchaSecret = "6LfE8OAZAAAAAG3WPoW3pTi9zElnc3xVM_ZZsiPQ";
+
 \Stripe\Stripe::setApiKey($stripe['secret_key']);
 
 define('STRIPE_API_KEY', $stripe['secret_key']);  
