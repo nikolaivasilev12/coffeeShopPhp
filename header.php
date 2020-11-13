@@ -1,8 +1,8 @@
 <?php
 // require('cookies.php');
 $PageTitle = "Coffee Shop";
-if (!isset($_SESSION)) {
-    // $session = new SessionHandle();
+if (!isset($session)) {
+    $session = new SessionHandle();
 }
 ?>
 <!DOCTYPE html>
@@ -86,8 +86,12 @@ if (!isset($_SESSION)) {
     </script>
     <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
     <?php
-    }
+    } ?>
+    <script>
+    <?php
+    include("Views/components/js/cart.js")
     ?>
+    </script>
     <script src="cartJS" type="application/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />

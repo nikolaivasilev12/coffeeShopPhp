@@ -1,5 +1,4 @@
 <?php
-$PageTitle = "Coffee Shop";
 if (!isset($_SESSION)) {
     $session = new SessionHandle();
 }
@@ -55,8 +54,7 @@ if (!isset($_SESSION)) {
         </div>
     </div>
 </body>
-</html>
-<style>
+<style lang="css">
 #background {
     background: url("https://scontent.fbll1-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/123006300_3364057146996405_8434905044085621389_n.jpg?_nc_cat=101&ccb=2&_nc_sid=ae9488&_nc_ohc=7FajVAR79mcAX89N0pR&_nc_ht=scontent.fbll1-1.fna&tp=7&oh=f6a63ecae119c8d73bdbaac5e0220dd5&oe=5FBFAB5D");
     height: 380px; /* You must set a specified height */
@@ -74,3 +72,4 @@ if (!isset($_SESSION)) {
 }
 
 </style>
+</html>

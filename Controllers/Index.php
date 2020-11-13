@@ -16,7 +16,7 @@ class Index extends Controller {
         return $this->array_flatten(self::query("SELECT * FROM news"));
     }
     public function getCompanyData() {
-        return $this->array_flatten(self::query("SELECT * FROM companydata"));
+        return $this->array_flatten(self::query("SELECT * FROM companyData"));
     }
     public function getWorkdays() {
         return (self::query("SELECT * FROM workdays"));

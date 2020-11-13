@@ -266,7 +266,7 @@ if (isset($_GET["productID"])) {
 <?php
 include("footer.php");
 ?>
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
         // hide shopping-cart on page load
         $('#shopping-cart').hide();
@@ -284,19 +284,19 @@ include("footer.php");
         }
     }
 </script>
-<style>
+<style lang="css">
     .bg-orange {
-        background-color: #976C42;
-        color: #FFF;
+        background-color: #976C42 !important;
+        color: #FFF !important;
     }
 
     .btn-orange {
-        background-color: #976C42;
-        color: #FFF;
+        background-color: #976C42 !important;
+        color: #FFF !important;
     }
 
     .btn-orange:hover {
-        background-color: #49291F;
-        color: #FFF;
+        background-color: #49291F !important;
+        color: #FFF !important;
     }
 </style>

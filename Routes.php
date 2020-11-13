@@ -10,7 +10,7 @@ Route::set('login', function() {
 });
 Route::set('logout', function() {
     new Logoutor;
-    Logoutor::CreateView('login');
+    new Redirector('login');
 });
 Route::set('product', function() {
     Products::CreateView('products');
