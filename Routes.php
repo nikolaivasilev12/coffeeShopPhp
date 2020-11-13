@@ -1,25 +1,25 @@
 <?php
 Route::set('index.php', function() {
-    Index::CreateView('Index');
+    Index::CreateView('index');
 });
 Route::set('index', function() {
-    Index::CreateView('Index');
+    Index::CreateView('index');
 });
 Route::set('login', function() {
-    LoginUser::CreateView('Login');
+    LoginUser::CreateView('login');
 });
 Route::set('logout', function() {
     new Logoutor;
-    Logoutor::CreateView('Login');
+    Logoutor::CreateView('login');
 });
 Route::set('product', function() {
-    Products::CreateView('Products');
+    Products::CreateView('products');
 });
 Route::set('new-user', function() {
     NewUser::CreateView('newUser');
 });
 Route::set('admin', function() {
-    Admin::CreateView('Admin');
+    Admin::CreateView('admin');
 });
 Route::set('edit-categories', function() {
     Admin::CreateView('editCategories');

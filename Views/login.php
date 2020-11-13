@@ -1,6 +1,6 @@
 <?php
 spl_autoload_register(function ($class)
-{include"classes/".$class.".php";});
+{include"Classes/".$class.".php";});
 $session = new SessionHandle();
 include('header.php');
 //look for logout keyword and log the user out if == 1
