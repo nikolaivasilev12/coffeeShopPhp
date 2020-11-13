@@ -1,7 +1,7 @@
 <?php
 // require('cookies.php');
 $PageTitle = "Coffee Shop";
-if (!isset($session)) {
+if (empty($_SESSION)) {
     $session = new SessionHandle();
 }
 ?>

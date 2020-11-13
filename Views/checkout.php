@@ -6,14 +6,18 @@ namespace Phppot {
 
     require_once __DIR__ . '/../Controllers/CartController.php';
     session_start();
-    include('header.php');
     $cartObj = new CartController();
 }
 
 namespace {
-    if ($_SESSION['permission'] !== 'customer' && $_SESSION['permission'] !== 'admin') {
-        new Redirector('index');
+    if(empty($_SESSION)){
+        $session = new SessionHandle();
     }
+    if ($_SESSION['permission'] !== 'admin' && $_SESSION['permission'] !== 'customer') {
+        $session->redirect();
+    }
+    include('header.php');
+
 ?>
     <style>
         <?php include 'style.css'; ?>

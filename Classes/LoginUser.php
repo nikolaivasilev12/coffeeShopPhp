@@ -18,7 +18,7 @@ class LoginUser extends Controller
                     $_SESSION['fname'] = $found_user[0]['fname'];
                     $_SESSION['permission'] = $permissionName['name'];
                     $_SESSION['stripeID'] = $found_user[0]['stripeID'];
-                    // $redirect = new Redirector("index.php");
+                    new Redirector("index.php");
                 } else {
                     // username/password combo was not found in the database
                     $this->message = "Username/password combination incorrect.<br />

@@ -1,4 +1,3 @@
-
 <?php
 class SessionHandle extends Controller
 {
@@ -15,5 +14,9 @@ class SessionHandle extends Controller
         if (!$this->logged_in()) {
             $redirect = new Redirector("login.php");
         }
+    }
+
+    public function redirect() {
+        $redirect = new Redirector("index");
     }
 }

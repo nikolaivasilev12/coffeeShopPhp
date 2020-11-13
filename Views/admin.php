@@ -1,8 +1,11 @@
 <?php
-include("header.php");
-if ($_SESSION['permission'] != 'admin') {
-    new Redirector('index');
+if(empty($_SESSION)){
+    $session = new SessionHandle();
 }
+if ($_SESSION['permission'] !== 'admin') {
+    $session->redirect();
+}
+include("header.php");
 ?>
 <div class="container">
     <div class="row justify-content-center mt-5">
