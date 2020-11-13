@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include("header.php");
 $index = new Index();
 $productsObj = new Products();
 if (isset($_GET["productID"])) {
@@ -7,7 +7,7 @@ if (isset($_GET["productID"])) {
 }
 ?>
 <style>
-    <?php include 'style.css'; ?>
+    <?php include ('style.css'); ?>
 </style>
 <div class="container">
     <div class="row justify-content-center">
