@@ -53,13 +53,13 @@ class Admin extends Controller {
                             move_uploaded_file($fileTmpName, $fileDestination);
                             /*  If we dont have a productID passed down we will get the last inserted product's productID, 
                             assuming that the desired action will be to add an image to a newly created product */
-                            if(empty($uploadfile['productID'])){
+                            if(empty($uploadFile['productID'])){
                                 $productID = $this->array_flatten(self::query("SELECT productID FROM `product` ORDER BY productID DESC LIMIT 1"));
                                 $params = array($fileNameNew, $productID['productID']);
                             } 
                             /*  If we have a productID passed down we will use it in the image table since the desired action in this
                             scenario would be that we want to add an image to an existing product   */
-                            else if(!empty($uploadfile['productID'])) {
+                            else if(!empty($uploadFile['productID'])) {
                                 $productID = $uploadFile['productID'];
                                 $params = array($fileNameNew, $productID);
                             }
