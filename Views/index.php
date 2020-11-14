@@ -117,6 +117,7 @@ $index = new Index();
     </div>
 </div>
 <?php
+include("form.php");
 include("footer.php");
 ?>
 <style>
