@@ -1,42 +1,103 @@
 <?php
-if(isset($_GET['erId'])){
-    if ($_GET['erId']==3) {
-        echo "Wrong Email";
-    }}
+use Phppot\Captcha;
+use Phppot\Contact;
 
-
+require_once "./Classes/Captcha.php";
+$captcha = new Captcha();
+if (count($_POST) > 0) {
+    $userCaptcha = filter_var($_POST["captcha_code"], FILTER_SANITIZE_STRING);
+    $isValidCaptcha = $captcha->validateCaptcha($userCaptcha);
+    if ($isValidCaptcha) {
+        
+        $userName = filter_var($_POST["userName"], FILTER_SANITIZE_STRING);
+        $userEmail = filter_var($_POST["userEmail"], FILTER_SANITIZE_EMAIL);
+        $subject = filter_var($_POST["subject"], FILTER_SANITIZE_STRING);
+        $content = filter_var($_POST["content"], FILTER_SANITIZE_STRING);
+        
+        require_once "/Contact.php";
+        $contact = new Contact();
+        $insertId = $contact->addToContacts($userName, $userEmail, $subject, $content);
+        if (! empty($insertId)) {
+            $success_message = "Your message received successfully";
+        }
+    } else {
+        $error_message = "Incorrect Captcha Code";
+    }
+}
 ?>
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
 <body>
-    <div class="container align-center" style="justify-content: center; align-items: center;">
-        <div class="col-5 offset-4">
-            <div class="contact-title">
-                <h1>Contact Us</h1>
-            </div>
-
-            <div class="contact-form">
-                <form id="contact-form" method="post" action="email.php"><br><br>
-                    <input type ="text" class="form-control" placeholder="Your Name" name="name"><br><br>
-                    <input type ="text" class="form-control" placeholder="Your Surname" name="surname"><br><br>
-                    <input type ="text" class="form-control" placeholder="Your Email" name="email"><br><br>
-                    <input type ="text" class="form-control" placeholder="Subject" name="subject"><br><br>
-                    <textarea name="message" class="form-control-message" placeholder="Message"></textarea><br><br>
-                    <input class="submit" type="submit" id="submit" name="submit" value="Send">
-
-                </form>
-            </div>
-        </div>
-    </div>
+    <form name="frmContact" method="post" action="">
+        <table border="0" cellpadding="10" cellspacing="1" width="40%"
+            class="demo-table">
+            <tr class="tablerow">
+                <td width="50%">Name<br /> <input type="text"
+                    name="userName" class="demo-input" required></td>
+                <td width="50%">Email<br /> <input type="email"
+                    name="userEmail" class="demo-input" required></td>
+            </tr>
+            <tr class="tablerow">
+                <td colspan="2">Subject<br /> <input type="text"
+                    name="subject" class="demo-input" required></td>
+            </tr>
+            <tr class="tablerow">
+                <td colspan="2">Content<br /> <textarea name="content"
+                        class="demo-input" rows="5" required></textarea></td>
+            </tr>
+            <tr class="tablerow">
+                <td>Captcha Code: <span id="error-captcha"
+                    class="demo-error"><?php if(isset($error_message)) { echo $error_message; } ?></span>
+                    <input name="captcha_code" type="text"
+                    class="demo-input captcha-input">
+                </td>
+                <td><br /> <input type="submit" name="submit"
+                    value="Submit" class="demo-btn"></td>
+            </tr>
+        </table>
+<?php if(isset($success_message)) { ?>
+<div class="demo-success"><?php echo $success_message; ?></div>
+<?php } ?>
+</form>
 </body>
 </html>
 
-
-
-
-
-
-
-
+<style>
+    .demo-error {
+	color:#FF0000;
+    font-size: 0.95em;
+}
+.demo-input {
+    width: 100%;
+    border-radius: 5px;
+    border: #CCC 1px solid;
+    padding: 12px;
+    margin-top: 5px;
+}
+.demo-btn {
+	    padding: 12px;
+    border-radius: 5px;
+    background: #232323;
+    border: #284828 1px solid;
+    color: #FFF;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 4px;
+}
+.demo-table {
+    border-radius: 3px;
+    padding: 10px;
+    border: #E0E0E0 1px solid;
+    margin: auto;
+}
+.demo-success {
+    margin-top: 5px;
+    color: #478347;
+    background: #e2ead1;
+    padding: 10px;
+    border-radius: 5px;
+}
+.captcha-input {
+	background: #FFF url(./Views/captchaImageSource.php) repeat-y left center;
+    padding-left: 85px;
+}
+</style>

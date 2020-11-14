@@ -105,6 +105,7 @@ a.custom-card:hover {
 .product-item, .product-item:hover {border: none; text-decoration: none; color: black;}
 .cart-item {border-bottom: #79b946 1px dotted;padding: 10px;}
 
+
 /* .product-item {	float:left;	background: #ffffff;margin:15px 10px;	padding:5px;border:#CCC 1px solid;border-radius:4px;} */
 /* .product-item div{text-align:center;	margin:10px;}
 .product-price {color: #005dbb;font-weight: 600;}

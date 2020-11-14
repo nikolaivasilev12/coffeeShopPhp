@@ -135,6 +135,14 @@ CREATE TABLE news
     `date` DATETIME
 );
 
+CREATE TABLE `contact` 
+(
+  `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  `user_name` varchar(255) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `subject` text NOT NULL,
+  `content` text NOT NULL
+);
 
 -- Customer
 insert into customer (email, password, fname, lname, phoneNr, username) values ('fludovico0@hp.com', 'wBNDeBzreW', 'Frank', 'Ludovico', '948-602-7488', 'dogman');
