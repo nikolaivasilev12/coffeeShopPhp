@@ -57,7 +57,7 @@ class Products extends Categories
           return $products;
       }
     }
-    
+    /* Pagination */
     public function getProductsPages($categoryID){
       if($categoryID == 0) {
         $products = self::query("SELECT COUNT(*) as count FROM product");

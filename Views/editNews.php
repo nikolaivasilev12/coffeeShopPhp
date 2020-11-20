@@ -12,12 +12,12 @@ if(isset($_POST['saveNews'])) {
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col text-center">
-            <h2>
-                Edit News
+            <h2 class="pb-2">
+                Change News
             </h2>
             <form action="" method="post">
-                <input type="text" name="content" value="<?php echo($index->getNews()['content'])?>">
-                <input type="submit" class="btn btn-primary" name="saveNews">
+                <textarea rows="5" cols="100" type="text" name="content"><?php echo($index->getNews()['content'])?></textarea> <br>
+                <input type="submit" class="btn btn-primary mt-3" name="saveNews">
             </form>
         </div>
     </div>
