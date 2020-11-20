@@ -1,4 +1,31 @@
 <?php
+if (isset($_POST['submit']) && isset($_POST['recaptcha_response'])) { // Form has been submitted.
+    require_once('config.php');
+            // Build POST request:
+            $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+            $recaptcha_secret = $captchaSecret;
+            $recaptcha_response = $_POST['recaptcha_response'];
+            // Make and decode POST request:
+            $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+            $recaptcha = json_decode($recaptcha);
+            
+            if (!empty($recaptcha->score)) {
+                // Take action based on the score returned:
+                if ($recaptcha->score >= 0.5) {
+                    // Verified!
+                    $to = "somebody@example.com";
+                    $subject = "My subject";
+                    $txt = 'You have recieved an email from' . $_POST['user_email'] . '</br>' . 'The message was: ' . $_POST['content'];
+
+                    mail($to,$subject,$txt);
+
+                } else {
+                    echo ('Your recaptcha score was not enough to verify you are human.');
+                }
+            } else {
+                echo ('Your message was not sent because we failed to recieve a response from the reCaptcha server.');
+            }
+    }
 include("header.php");
 $index = new Index();
 ?>
@@ -115,11 +142,49 @@ $index = new Index();
             <p class="lead"><?php echo ($index->getNews()['content']) ?></p>
         </div>
     </div>
+
+
+<div class="d-flex flex-column align-items-center">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Name</label>
+                                    <input type="user_name" name="user_name" class="form-control" id="exampleInputEmail1"
+                                        placeholder="Enter Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Email</label>
+                                    <input type="user_email" name="user_email" class="form-control" id="exampleInputEmail1"
+                                        placeholder="Enter Your Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Subject</label>
+                                    <input type="subject" name="subject" class="form-control" id="exampleInputEmail1"
+                                        placeholder="Enter Your Subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Message</label>
+                                    <input type="content" name="content" class="form-control" placeholder="Message"
+                                        required>
+                                </div>
+                                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
 </div>
 <?php
-include("form.php");
 include("footer.php");
 ?>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LfE8OAZAAAAAPZ1kl14ai7le-A1TKo_HhyjiFmo"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LfE8OAZAAAAAPZ1kl14ai7le-A1TKo_HhyjiFmo', { action: 'contact' }).then(function (token) {
+            var recaptchaResponse = document.getElementById('recaptchaResponse');
+            recaptchaResponse.value = token;
+        });
+    });
+</script>
+
 <style>
     .container-fluid {
         padding: 0 0 0 0;

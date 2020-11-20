@@ -62,42 +62,4 @@ if (count($_POST) > 0) {
 </html>
 
 <style>
-    .demo-error {
-	color:#FF0000;
-    font-size: 0.95em;
-}
-.demo-input {
-    width: 100%;
-    border-radius: 5px;
-    border: #CCC 1px solid;
-    padding: 12px;
-    margin-top: 5px;
-}
-.demo-btn {
-	    padding: 12px;
-    border-radius: 5px;
-    background: #232323;
-    border: #284828 1px solid;
-    color: #FFF;
-    width: 100%;
-    cursor: pointer;
-    margin-top: 4px;
-}
-.demo-table {
-    border-radius: 3px;
-    padding: 10px;
-    border: #E0E0E0 1px solid;
-    margin: auto;
-}
-.demo-success {
-    margin-top: 5px;
-    color: #478347;
-    background: #e2ead1;
-    padding: 10px;
-    border-radius: 5px;
-}
-.captcha-input {
-	background: #FFF url(./Views/captchaImageSource.php) repeat-y left center;
-    padding-left: 85px;
-}
 </style>
