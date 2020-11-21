@@ -5,6 +5,22 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
 if (isset($_POST['submit'])) {
     $profileObj->updateProfile($_SESSION['customerID'], $_POST);
 }
+if (isset($_POST['submitPassword'])) {
+    $found_user = self::query("SELECT `password` FROM customer WHERE customerID = ? LIMIT 1", array($_SESSION['customerID']));
+    if(password_verify($_POST['currentPassword'], $found_user[0]['password'])) {
+        if (strcmp($_POST['newPassword'],$_POST['confirmNewPassword']) === 0) {
+            $iterations = ['cost' => 15];
+            $hashed_password = password_hash($_POST['newPassword'], PASSWORD_BCRYPT, $iterations);
+            self::query("UPDATE customer SET password = ?
+            WHERE customerID = ? ", array($hashed_password, $_SESSION['customerID']));
+        } else {
+            echo "Passwords dont match";
+        }
+    } else {
+        echo ('Wrong password');
+    }
+}
+if(!isset($_GET['customerID'])) {
 ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -15,7 +31,9 @@ if (isset($_POST['submit'])) {
                     <h3 class="text-left">Edit your profile</h3>
                 </div>
                 <div class="col-2 text-right">
+                <a href="edit-profile?customerID=<?php echo $_SESSION['customerID']?>">
                     <input class="btn btn-outline-primary profile-button" type="submit" value="Change Password"></input>
+                </a>
                 </div>
                 </div>
                 <form action="" method="post">
@@ -46,3 +64,40 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
+    <?php
+} elseif (isset($_GET['customerID'])) {
+    ?>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="mt-5 col-md-5 card">
+            <div class="p-3 py-5">
+                <div class="row">
+                <div class="col-7 mb-3">
+                    <h3 class="text-left">Edit your profile</h3>
+                </div>
+                </div>
+                <form action="" method="post">
+                    <div class="row mt-3 justify-content-start">
+                        <div class="col-md-12">
+                            <label class="labels">Current Password</label>
+                            <input name="currentPassword" type="text" class="form-control" placeholder="*********">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">New Password</label>
+                            <input name="newPassword" type="text" class="form-control" placeholder="*********" >
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Confirm New Password</label>
+                            <input name="confirmNewPassword" type="text" class="form-control" placeholder="*********" >
+                        </div>
+                        <div class="mt-4 col-12 text-left">
+                            <input class="btn btn-primary profile-button" name="submitPassword" type="submit" value="Save Password"></input>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php
+}
+?>
