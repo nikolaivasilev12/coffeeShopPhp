@@ -57,6 +57,9 @@ class Products extends Categories
           return $products;
       }
     }
+    public function getProductsIds() {
+      return $this->array_flatten(self::query("SELECT productID FROM product"));
+    }
     /* Pagination */
     public function getProductsPages($categoryID){
       if($categoryID == 0) {

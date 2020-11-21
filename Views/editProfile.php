@@ -5,26 +5,6 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
 if (isset($_POST['submit'])) {
     $profileObj->updateProfile($_SESSION['customerID'], $_POST);
 }
-// if (isset($_POST['saveCustomerEmail'])) {
-//     $profile->updateCustomerEmail($_POST['customerEmail']);
-//     print_r($_POST);
-// }
-// if (isset($_POST['saveCustomerPass'])) {
-//     $profile->updateCustomerPass($_POST['customerPassword']);
-//     print_r($_POST);
-// }
-// if (isset($_POST['saveCustomerfName'])) {
-//     $profile->updateCustomerfName($_POST['customerfName']);
-//     print_r($_POST);
-// }
-// if (isset($_POST['saveCustomerlName'])) {
-//     $profile->updateCustomerlName($_POST['customerlName']);
-//     print_r($_POST);
-// }
-// if (isset($_POST['saveCustomerphoneNr'])) {
-//     $profile->updateCustomerphoneNr($_POST['customerphoneNr']);
-//     print_r($_POST);
-// }
 ?>
 <div class="container">
     <div class="row justify-content-center">

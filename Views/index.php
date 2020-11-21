@@ -74,7 +74,6 @@ $index = new Index();
                         alt="">
                         <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                             <div class="card-body">
-                                Category:
                                 <h5 class="card-title"><?php echo $value['name'] ?></h5>
                                 <p class="card-text"><?php echo $value['description'] ?></p>
                                 <p class="card-text">Price: <?php echo $value['price'] ?></p>
@@ -112,7 +111,6 @@ $index = new Index();
                             alt="">
                             <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                                 <div class="card-body">
-                                    Category:
                                     <h5 class="card-title"><?php echo $value['name'] ?></h5>
                                     <p class="card-text"><?php echo $value['description'] ?></p>
                                     <p class="card-text">Price: <?php echo $value['price'] ?></p>

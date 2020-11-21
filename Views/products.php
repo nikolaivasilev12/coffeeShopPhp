@@ -3,7 +3,12 @@ include("header.php");
 $index = new Index();
 $productsObj = new Products();
 if (isset($_GET["productID"])) {
-    $productDetails = $productsObj->getProductDetails($_GET["productID"]);
+    $productIds = $productsObj->getProductsIds();
+    if (in_array($_GET["productID"] ,$productIds)) {
+        $productDetails = $productsObj->getProductDetails($_GET["productID"]);
+    } else {
+        new Redirector('product');
+    }
 }
 ?>
 <style>
@@ -189,7 +194,6 @@ if (isset($_GET["productID"])) {
                             alt="">
                             <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                                 <div class="card-body">
-                                    Category:
                                     <h5 class="card-title"><?php echo $value['name'] ?></h5>
                                     <p class="card-text"><?php echo $value['description'] ?></p>
                                     <p class="card-text">Price: <?php echo $value['price'] ?></p>
@@ -230,7 +234,6 @@ if (isset($_GET["productID"])) {
                                 alt="">
                                 <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                                     <div class="card-body">
-                                        Category:
                                         <h5 class="card-title"><?php echo $value['name'] ?></h5>
                                         <p class="card-text"><?php echo $value['description'] ?></p>
                                         <p class="card-text">Price: <?php echo $value['price'] ?></p>

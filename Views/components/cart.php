@@ -28,7 +28,7 @@ if ($cartModel->cartSessionItemCount > 0) {
 			?>
 				<tr>
 					<td><?php echo $item["name"]; ?></td>
-					<td><input type="number" name="quantity" class="quantity" value="<?php echo $item['quantity']; ?>" data-code='<?php echo $item["code"]; ?>' size=2 onChange="updatePrice(this)" /> <input type="hidden" class='total' name="total" value="<?php echo $item["price"]; ?>" /></td>
+					<td><input min="1" max="<?php echo $item["inStock"] ?>" type="number" name="quantity" class="quantity" value="<?php echo $item['quantity']; ?>" data-code='<?php echo $item["code"]; ?>' size=2 onChange="updatePrice(this)" /><input type="hidden" class='total' name="total" value="<?php echo $item["price"]; ?>" /></td>
 					<td class="prc text-right" id="price" <?php echo $i; ?>><?php echo $item["price"]; ?></td>
 					<?php $i++; ?>
 					<td class="text-right"><a onClick="cartAction('remove','<?php echo $item["code"]; ?>')" class="btn btn-secondary">Remove Item</a></td>

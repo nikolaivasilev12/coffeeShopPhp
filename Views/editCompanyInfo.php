@@ -9,27 +9,6 @@ if (isset($_POST['submit'])) {
     $admin = new Admin();
     $admin->updateCompanyData($_POST);
 }
-
-// if (isset($_POST['saveCompAddress'])) {
-//     $admin = new Admin();
-//     $admin->updateCompAddress($_POST['companyAddress']);
-//     print_r($_POST);
-// }
-// if (isset($_POST['saveCompPhone'])) {
-//     $admin = new Admin();
-//     $admin->updateCompPhone($_POST['companyPhone']);
-//     print_r($_POST);
-// }
-// if (isset($_POST['saveCompEmail'])) {
-//     $admin = new Admin();
-//     $admin->updateCompEmail($_POST['companyEmail']);
-//     print_r($_POST);
-// }
-// if (isset($_POST['saveHours'])) {
-//     $admin = new Admin();
-//     $admin->updateHours($_POST['startingHours'], $_POST['closingHours'], $_POST['ID']);
-//     print_r($_POST);
-// }
 ?>
 
 
