@@ -136,7 +136,7 @@ if (isset($_GET["productID"])) {
         </div>
     </div>
     <div class="col-12 mb-5">
-        <a href="product?action=add&name=<?php echo ($productDetails["name"]); ?>" class="btn btn-orange">Add to Shopping Cart</a>
+        <button onClick="cartAction('add', '<?php echo $productDetails['productID']; ?>','<?php echo $productDetails["name"]; ?>','<?php echo $productDetails["price"]; ?>','<?php echo $productDetails["stock"]; ?>')" class="btn btn-orange">Add to Shopping Cart</button>
     </div>
     <?php
             $catObj = new Categories();
