@@ -31,7 +31,7 @@ if (isset($_POST['delete'])) {
                             <input type="hidden" value="<?php echo $value['categoryID'] ?>" name="categoryID" class="form-control">
                             <input type="text" value="<?php echo $value['name'] ?>" name="name" class="form-control" placeholder="Category name">
                             <label class="mb-0 mt-1">Description</label>
-                            <textarea type="text" name="description" class="form-control" placeholder="<?php echo $value['description'] ?>"></textarea>
+                            <textarea type="text" name="description" class="form-control"><?php echo $value['description'] ?></textarea>
                         </div>
                         <div class="col-2">
                             <input type="submit" name="update" class="btn btn-primary btn-block"value="Update"/>

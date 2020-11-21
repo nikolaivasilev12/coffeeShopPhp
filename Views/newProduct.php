@@ -13,15 +13,12 @@ if (isset($_POST['add'])) {
     if (isset($_FILES['file'])) {
         $admin->uploadProductImage($_FILES);
     }
+    /* Redirects to admin panel once submitted */
+    new Redirector('admin');
 
-    /* JS alert message */
-    $PHPtext = "Product Successfully Added!";
+
 }
 ?>
-<script>
-var JavaScriptAlert = <?php echo json_encode($PHPtext); ?>;
-alert(JavaScriptAlert); // PHP alert
-</script>
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col text-center">
@@ -87,3 +84,8 @@ alert(JavaScriptAlert); // PHP alert
         </div>
     </div>
 </div>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>

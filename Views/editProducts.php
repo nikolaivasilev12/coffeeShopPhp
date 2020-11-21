@@ -108,7 +108,7 @@ if (isset($_POST['delete'])) {
                             <label class="mb-0 mt-1 font-weight-bold">
                                 Description
                             </label>
-                            <textarea type="text" value="<?php echo $productDetails['description'] ?>" name="description" class="form-control" placeholder="<?php echo $productDetails['description'] ?>"></textarea>
+                            <textarea type="text" name="description" class="form-control"><?php echo $productDetails['description'] ?></textarea>
                         </div>
                         <div class="form-group">
                             <label class="mb-0 mt-1 font-weight-bold">Price</label>
