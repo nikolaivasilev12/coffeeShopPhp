@@ -91,11 +91,15 @@ if (!empty($email)) {echo "<p>" . $msg . "</p>";}
 </div>
 </body>
 
-</html> 
-<script src="https://www.google.com/recaptcha/api.js?render=6LfE8OAZAAAAAPZ1kl14ai7le-A1TKo_HhyjiFmo"></script>
+</html>
+<?php
+require_once('config.php');
+$captchaSec = getenv('CAPTCHA_PRIVATE');
+?>
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $captchaSec; ?>"></script>
     <script>
         grecaptcha.ready(function () {
-            grecaptcha.execute('6LfE8OAZAAAAAPZ1kl14ai7le-A1TKo_HhyjiFmo', { action: 'contact' }).then(function (token) {
+            grecaptcha.execute("<?php echo $captchaSec; ?>", { action: 'contact' }).then(function (token) {
                 var recaptchaResponse = document.getElementById('recaptchaResponse');
                 recaptchaResponse.value = token;
             });
