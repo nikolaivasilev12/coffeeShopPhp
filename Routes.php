@@ -66,3 +66,8 @@ Route::set('checkout-fail', function() {
 Route::set('orders', function() {
     Admin::CreateView('orders');
 });
+
+
+
+// Always at the end!!!
+Route::notValidRoute();

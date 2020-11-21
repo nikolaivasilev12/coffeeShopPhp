@@ -8,13 +8,13 @@ class Route {
         self::$validRoutes[] = $route;
 
         $url = isset($_GET['url']) ? $_GET['url'] : null;
-        
         if ($url == $route) {
             $function->__invoke();
-        }else if ($url == null){
-            header('location: ' . 'index');
             exit;
         }
 
+    }
+    public static function notValidRoute() {
+        new Redirector('index');
     }
 }
