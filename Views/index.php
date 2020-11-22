@@ -72,9 +72,9 @@ $index = new Index();
                     $i = 0;
                 ?>
                     <div class="carousel-item active">
-                        <img class="d-block w-100" 
-                        <?php 
-                        if (isset($value['image'])) 
+                        <img class="d-block w-100"
+                        <?php
+                        if (isset($value['image']))
                         { ?>
                             src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
                         <?php
@@ -83,7 +83,7 @@ $index = new Index();
                             src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
                         <?php
                         }
-                        ?> 
+                        ?>
                         alt="">
                         <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                             <div class="card-body">
@@ -109,9 +109,9 @@ $index = new Index();
                     } else {
                 ?>
                         <div class="carousel-item">
-                            <img class="d-block w-100" 
-                            <?php 
-                            if (isset($value['image'])) 
+                            <img class="d-block w-100"
+                            <?php
+                            if (isset($value['image']))
                             { ?>
                                 src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
                             <?php
@@ -120,7 +120,7 @@ $index = new Index();
                                 src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
                             <?php
                             }
-                            ?> 
+                            ?>
                             alt="">
                             <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                                 <div class="card-body">
@@ -185,7 +185,7 @@ $index = new Index();
 <?php
 include("footer.php");
 ?>
-<?php 
+<?php
 require_once('config.php');
 $captchaSec = getenv('CAPTCHA_PRIVATE');
 ?>
@@ -207,7 +207,6 @@ $captchaSec = getenv('CAPTCHA_PRIVATE');
     .carousel-inner {
         height: 600px;
     }
-    
     .carousel-item,
     img {
         height: 100% !important;
