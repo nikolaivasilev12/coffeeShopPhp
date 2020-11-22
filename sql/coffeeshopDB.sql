@@ -1,6 +1,6 @@
--- DROP DATABASE IF EXISTS coffeeshopDB;
--- CREATE DATABASE coffeeshopDB;
--- USE coffeeshopDB;
+DROP DATABASE IF EXISTS coffeeshopDB;
+CREATE DATABASE coffeeshopDB;
+USE coffeeshopDB;
 
 
 CREATE TABLE customer
@@ -99,16 +99,6 @@ CREATE TABLE producthascategory
     categoryID INT NOT NULL,
     FOREIGN KEY (productID) REFERENCES product(productID),
     FOREIGN KEY (categoryID) REFERENCES category(categoryID)
-);
-
-CREATE TABLE rating
-(
-    `ratingID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    productID INT NOT NULL,
-    customerID INT NOT NULL,
-    `ratingValue` INT NOT NULL,
-    FOREIGN KEY (productID) REFERENCES product (productID),
-    FOREIGN KEY (customerID) REFERENCES customer (customerID)
 );
 
 CREATE TABLE companyData
@@ -333,19 +323,6 @@ insert into producthascategory (productID, categoryID) values (17, 6);
 insert into producthascategory (productID, categoryID) values (18, 6);
 insert into producthascategory (productID, categoryID) values (19, 6);
 insert into producthascategory (productID, categoryID) values (20, 6);
-
-
--- RATING
-insert into rating (productID, customerID, ratingValue) values (1, 1, 5);
-insert into rating (productID, customerID, ratingValue) values (2, 2, 3);
-insert into rating (productID, customerID, ratingValue) values (3, 3, 4);
-insert into rating (productID, customerID, ratingValue) values (4, 4, 3);
-insert into rating (productID, customerID, ratingValue) values (5, 5, 4);
-insert into rating (productID, customerID, ratingValue) values (6, 6, 2);
-insert into rating (productID, customerID, ratingValue) values (7, 7, 1);
-insert into rating (productID, customerID, ratingValue) values (8, 8, 3);
-insert into rating (productID, customerID, ratingValue) values (9, 9, 2);
-insert into rating (productID, customerID, ratingValue) values (10, 10, 3);
 
 -- COMPANYDATA
 insert into companyData (companyDescription, adress, phone, email) values ('Espresso House is a Swedish coffee chain owned by JAB Holding Company. We are passionate about coffee, people and the environment - and to create the worlds best coffee experience for the worlds best guest. With such an ambition, one must be able to offer really good coffee in a cozy environment. ', 'Bohrs 6 Vej, Esbjerg 6700, Denmark', '+45 799589574', 'coffee@shop.com');

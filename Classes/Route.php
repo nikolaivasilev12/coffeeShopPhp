@@ -15,6 +15,6 @@ class Route {
 
     }
     public static function notValidRoute() {
-        new Redirector('index');
+        new Redirector('404');
     }
 }

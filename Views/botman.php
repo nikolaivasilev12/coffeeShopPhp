@@ -40,7 +40,7 @@ $botman->hears('Tell me a joke', function (BotMan $bot) {
 $botman->hears('Tell me another joke', function (BotMan $bot) {
     $bot->reply('How do you make a robot angry? <br> Push its buttons.');
 });
-$botman->hears('You are funny', function (BotMan $bot) {
+$botman->hears('You are funny botman', function (BotMan $bot) {
     $bot->reply('Not as funny as your face though');
 });
 
@@ -54,7 +54,7 @@ $botman->fallback(function ($bot) {
     <br>I love you botman
     <br>Tell me a joke
     <br>Tell me another joke
-    <br>You are funny
+    <br>You are funny botman
     ');
 });
 

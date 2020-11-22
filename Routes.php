@@ -66,6 +66,9 @@ Route::set('checkout-fail', function() {
 Route::set('orders', function() {
     Admin::CreateView('orders');
 });
+Route::set('404', function() {
+    Admin::CreateView('404');
+});
 
 
 

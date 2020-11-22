@@ -8,26 +8,13 @@ body {
     text-transform: uppercase;
     margin-top: 100px;
 }
-
 .contact-title h1 {
     font-size: 32px;
     line-height: 10px;
 }
-
 form {
     margin-top: 50px;
 }
-
-/* .form-control {
-    width: 600px;
-    background: transparent;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid gray;
-    color: rgb(39, 24, 24);
-    font-size: 18px;
-    margin-bottom: 16px;
-} */
 
 /*FOR MESSAGE FIELD HEIGHT*/
 .form-control-message {
@@ -41,12 +28,11 @@ form {
     font-size: 18px;
     margin-bottom: 16px;
 }
-/*FOR MESSAGE FIELD HEIGHT END*/
 
+/*FOR MESSAGE FIELD HEIGHT END*/
 input {
     height: 45px;
 }
-
 form .submit {
     background: rgb(95, 67, 67);
     border-color: transparent;
@@ -58,27 +44,17 @@ form .submit {
     height: 50px;
     margin-top: 20px;
 }
-
 form .submit:hover {
     background-color: rgb(75, 65, 65);
     cursor: pointer;
 }
-
 #shopping-cart table{width:100%;background-color: #dedede;}
 #shopping-cart table td{background-color:#FFFFFF;}
 #shopping-cart table th{text-align:left;}
 #shopping-cart {margin-bottom:30px;}
-/* 
-.heading{
-    padding: 10px 10px;
-    border-radius: 2px;
-    color: #FFF;
-    background: #443939;
-    margin-bottom:10px;
-} */
 a.removeBtn{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;}
-a.removeBtn:visited{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;}
-
+a.removeBtn:visited{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;
+}
 #emptyBtn {
     background-color: #D60200;
     border: #D60200 1px solid;
@@ -102,11 +78,22 @@ a.custom-card:hover {
   color: inherit;
   text-decoration: none;
 }
-.product-item, .product-item:hover {border: none; text-decoration: none; color: black;}
-.cart-item {border-bottom: #79b946 1px dotted;padding: 10px;}
-
-
-/* .product-item {	float:left;	background: #ffffff;margin:15px 10px;	padding:5px;border:#CCC 1px solid;border-radius:4px;} */
-/* .product-item div{text-align:center;	margin:10px;}
-.product-price {color: #005dbb;font-weight: 600;}
-.product-image {height:100px;background-color:#FFF;} */
+.product-item, .product-item:hover {
+    border: none;
+    text-decoration: none;
+    color: black;
+}
+.cart-item {
+    border-bottom: #79b946 1px dotted;
+    padding: 10px;
+}
+.wrapper404{
+    margin-top: 100px;
+ height: 70%;
+ width: auto;
+ background-image: cover;
+}
+#ohfouroh{
+    text-decoration: none;
+    color: orange;
+}

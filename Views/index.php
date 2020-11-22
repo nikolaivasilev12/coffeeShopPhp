@@ -8,7 +8,7 @@ if (isset($_POST['submit']) && isset($_POST['recaptcha_response'])) { // Form ha
             // Make and decode POST request:
             $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
             $recaptcha = json_decode($recaptcha);
-            
+
             if (!empty($recaptcha->score)) {
                 // Take action based on the score returned:
                 if ($recaptcha->score >= 0.5) {
@@ -30,11 +30,24 @@ include("header.php");
 $index = new Index();
 ?>
 
+<!-- CART -->
+<div class="col-12">
+        <div class="row justify-content-end">
+            <div class="col-5" id="shopping-cart" tabindex="1" style="border: solid 1px orange;">
+                <div id="tbl-cart">
+                    <div id="cart-item">
+                        <?php require_once 'components/cart.php'; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <div class="container-fluid">
     <?php
     if (isset($_SESSION['permission'])) {
     ?>
-        <h1 align="center">Welcome to the backend <?php echo $_SESSION['fname']; ?></h1>
+        <h1 style="color:orange;" align="center">Welcome, <?php echo $_SESSION['username']; ?></h1>
+            </div>
     <?php
     }
     ?>
