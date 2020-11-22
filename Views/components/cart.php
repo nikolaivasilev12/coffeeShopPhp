@@ -70,7 +70,7 @@ if ($cartModel->cartSessionItemCount > 0) {
 <?php
 } else {
 ?>
-	<h2 id="empty-cart">Your cart is empty</h2>
+	<h2 id="empty-cart" class="text-center">Your cart is empty</h2>
 <?php
 }
 ?>
