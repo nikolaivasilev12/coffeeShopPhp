@@ -157,20 +157,20 @@ $index = new Index();
                 <!-- Email Form -->
 <div class="d-flex flex-column align-items-center">
 <h1 style="color:orange;" class="mt-2">Contact us</h1>
-                            <form action="" method="post">
+                            <form class="col-3 mt-2" action="" method="post">
                                 <div class="form-group">
                                     <label class="font-weight-bold">Name</label>
-                                    <input type="user_name" name="user_name" class="form-control" id="exampleInputEmail1"
+                                    <input type="user_name" name="user_name" class="form-control"
                                         placeholder="Enter Your Name" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Email</label>
-                                    <input type="user_email" name="user_email" class="form-control" id="exampleInputEmail1"
+                                    <input type="user_email" name="user_email" class="form-control"
                                         placeholder="Enter Your Email" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Subject</label>
-                                    <input type="subject" name="subject" class="form-control" id="exampleInputEmail1"
+                                    <input type="subject" name="subject" class="form-control"
                                         placeholder="Enter Your Subject" required>
                                 </div>
                                 <div class="form-group">
