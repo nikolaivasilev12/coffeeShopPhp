@@ -154,31 +154,32 @@ $index = new Index();
         </div>
     </div>
 
-
+                <!-- Email Form -->
 <div class="d-flex flex-column align-items-center">
-                            <form action="" method="post">
+<h1 style="color:orange;" class="mt-2">Contact us</h1>
+                            <form class="col-3 mt-2" action="" method="post">
                                 <div class="form-group">
                                     <label class="font-weight-bold">Name</label>
-                                    <input type="user_name" name="user_name" class="form-control" id="exampleInputEmail1"
+                                    <input type="user_name" name="user_name" class="form-control"
                                         placeholder="Enter Your Name" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Email</label>
-                                    <input type="user_email" name="user_email" class="form-control" id="exampleInputEmail1"
+                                    <input type="user_email" name="user_email" class="form-control"
                                         placeholder="Enter Your Email" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Subject</label>
-                                    <input type="subject" name="subject" class="form-control" id="exampleInputEmail1"
+                                    <input type="subject" name="subject" class="form-control"
                                         placeholder="Enter Your Subject" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Message</label>
-                                    <input type="content" name="content" class="form-control" placeholder="Message"
-                                        required>
+                                    <textarea rows="3" type="content" name="content" class="form-control"
+                                        required></textarea>
                                 </div>
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Send Email</button>
                             </form>
                         </div>
 </div>
