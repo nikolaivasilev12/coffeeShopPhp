@@ -154,8 +154,9 @@ $index = new Index();
         </div>
     </div>
 
-
+                <!-- Email Form -->
 <div class="d-flex flex-column align-items-center">
+<h1 style="color:orange;" class="mt-2">Contact us</h1>
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label class="font-weight-bold">Name</label>
@@ -174,11 +175,11 @@ $index = new Index();
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Message</label>
-                                    <input type="content" name="content" class="form-control" placeholder="Message"
-                                        required>
+                                    <textarea rows="3" type="content" name="content" class="form-control"
+                                        required></textarea>
                                 </div>
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Send Email</button>
                             </form>
                         </div>
 </div>
