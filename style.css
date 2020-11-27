@@ -48,7 +48,7 @@ form .submit:hover {
     background-color: rgb(75, 65, 65);
     cursor: pointer;
 }
-#shopping-cart table{width:100%;background-color: #dedede;}
+#shopping-cart table{width:100%;background-color: orange;}
 #shopping-cart table td{background-color:#FFFFFF;}
 #shopping-cart table th{text-align:left;}
 #shopping-cart {margin-bottom:30px;}

@@ -13,7 +13,9 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img height="150" class="rounded-circle"
+                src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("assets/nerd.png")); ?>"
+            >
                         <div class="mt-3">
                             <h4><?php
                                 if (strlen($profile['fname']) > 0) {

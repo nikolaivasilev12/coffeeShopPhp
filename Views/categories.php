@@ -10,27 +10,39 @@
         <?php
     $catArr = new Categories();
     foreach ($catArr->getCategory() as $value) {
-    echo ('
-                <a href="product?categoryID=' . $value['categoryID'] . '">
-                    <button class="btn btn-outline-dark" style="margin: 5px;" name="category" type="submit" value="' . $value['categoryID'] . '">' . $value['name'] . '</button>
-                </a>
-                ');
+    ?>
+        <a href="product?categoryID=<?php echo $value['categoryID'] ?>">
+            <button class="btn btn-outline-dark" style="margin: 5px;" name="category" type="submit" value="<?php echo $value['categoryID'] ?>"><?php echo $value['name'] ?></button>
+        </a>
+        <?php
             }
         ?>
     </div>
     <div class="row justify-content-center">
         <?php
     $productsObj = new Products();
+    if (!isset($_GET['categoryID'])) {
+        $pages=$productsObj->getProductsPages(0);
+    } elseif (isset($_GET['categoryID'])) {
+        $pages=$productsObj->getProductsPages(intval($_GET['categoryID']));
+    }
     if (isset($_GET['categoryID'])) {
-        if (isset($_GET['page'])){
-            $page = $_GET['page'];
+        $categoryIDs = $productsObj->getCategoryIds();
+        if (in_array($_GET['categoryID'], $categoryIDs)){
+            if (isset($_GET['page']) && $_GET['page'] <= $pages + 1){
+                $page = $_GET['page'];
+            } elseif (!isset($_GET['page'])) {
+                $page = 1;
+            } elseif ($_GET['page'] >= $pages + 1){
+                new Redirector('product');
+            }
+            $arr = array(
+                'category' => $_GET['categoryID'],
+                'page' => $page
+            );
         } else {
-            $page = 1;
+            new Redirector('product');
         }
-        $arr = array(
-            'category' => $_GET['categoryID'],
-            'page' => $page
-    );
     $productsByCategory = $productsObj->getProductByCategory($arr);
     foreach ($productsByCategory as $value) {?>
     <a href="product?productID=<?php echo $value['productID'] ?>" class="custom-card">
@@ -78,8 +90,10 @@
         <?php
 }
 } elseif (!isset($_GET['categoryID'])) {
-    if (isset($_GET['page'])){
+    if (isset($_GET['page']) && $_GET['page'] <= $pages + 1){
         $page = $_GET['page'];
+    } elseif (isset($_GET['page']) && $_GET['page'] >= $pages + 1) {
+        new Redirector('product');
     } else {
         $page = 1;
     }
@@ -136,11 +150,6 @@
     <?php
 }
 }
-if (!isset($_GET['categoryID'])) {
-    $pages=$productsObj->getProductsPages(0);
-} elseif (isset($_GET['categoryID'])) {
-    $pages=$productsObj->getProductsPages(intval($_GET['categoryID']));
-}
 ?>
     </div>
     <div class="row justify-content-center">
@@ -192,16 +201,6 @@ for ($x = 0; $x <= $pages; $x++) {
 </div>
 <script> 
 $("[data-toggle=popover]").popover();
-function openCart() {
-        var x = document.getElementById("shopping-cart");
-        var y = document.getElementById("show-cart")
-        if (x.style.display === "none") {
-            x.style.display = "block";
-            y.innerHTML = "Hide Cart";
-        } else {
-          // error handling
-        }
-    }
 </script>
 
 <style>

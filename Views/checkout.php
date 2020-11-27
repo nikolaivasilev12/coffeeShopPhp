@@ -41,9 +41,6 @@ namespace {
                     <?php
                     }
                     ?>
-                    <!-- <div class="row">
-                        <?php require_once 'components/product-gallery.php'; ?>
-                    </div> -->
             </div>
             <div class="row">
                 <div class="col-7" id="shopping-cart" tabindex="1">

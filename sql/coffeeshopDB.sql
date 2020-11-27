@@ -6,12 +6,12 @@ USE coffeeshopDB;
 CREATE TABLE customer
 (
     `customerID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `email` CHAR(255) NOT NULL,
-    `password` VARCHAR(250) NOT NULL,
-    `fname` VARCHAR(255) NOT NULL,
-    `lname` VARCHAR (255) NOT NULL,
+    `email` CHAR(150) NOT NULL,
+    `password` VARCHAR(150) NOT NULL,
+    `fname` VARCHAR(150) NOT NULL,
+    `lname` VARCHAR (150) NOT NULL,
     `phoneNr` CHAR(11) NOT NULL,
-    `username` VARCHAR(255) NOT NULL,
+    `username` VARCHAR(150) NOT NULL,
     `stripeID` VARCHAR(255)
 );
 
@@ -33,19 +33,19 @@ CREATE TABLE `customer_permission`
 CREATE TABLE product
 (
     `productID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `name` VARCHAR(255) NOT NULL,
-    `description` VARCHAR (800) NOT NULL,
+    `name` VARCHAR(150) NOT NULL,
+    `description` VARCHAR (350) NOT NULL,
     `price` DECIMAL(10,2) NOT NULL,
-    `stock` TINYINT(255) NOT NULL,
-    `origin` VARCHAR (255) NOT NULL,
-    `type` VARCHAR (255) NOT NULL,
+    `stock` TINYINT(150) NOT NULL,
+    `origin` VARCHAR (150) NOT NULL,
+    `type` VARCHAR (150) NOT NULL,
     `isSpecial` BOOLEAN NULL
 );
 
 CREATE TABLE `image`
 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(255) NOT NULL,
+    `name` VARCHAR(150) NOT NULL,
     productID INT NOT NULL,
     FOREIGN KEY(productID) REFERENCES `product`(productID)
 );
@@ -53,13 +53,13 @@ CREATE TABLE `image`
 CREATE TABLE postalCode
 (
     `postalCode` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `city` VARCHAR(255) NOT NULL
+    `city` VARCHAR(150) NOT NULL
 );
 
 CREATE TABLE adress
 (
     `adressID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `street` VARCHAR(255) NOT NULL,
+    `street` VARCHAR(150) NOT NULL,
     postalCode INT NOT NULL,
     FOREIGN KEY (postalCode) REFERENCES postalCode(postalCode)
 );
@@ -89,7 +89,7 @@ CREATE TABLE category
 (
     `categoryID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `name` VARCHAR(50) NOT NULL,
-    `description` TEXT
+    `description` TEXT(50)
 );
 
 CREATE TABLE producthascategory
@@ -105,9 +105,9 @@ CREATE TABLE companyData
 (
     `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `companyDescription` TEXT,
-    `adress` VARCHAR(255),
-    `phone` VARCHAR(255),
-    `email` VARCHAR(255)
+    `adress` VARCHAR(100),
+    `phone` VARCHAR(50),
+    `email` VARCHAR(70)
 );
 
 CREATE TABLE workdays
@@ -115,23 +115,14 @@ CREATE TABLE workdays
     `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `startingHour` VARCHAR(5),
     `closingHour` VARCHAR(5),
-    `openDay` VARCHAR(255)
+    `openDay` VARCHAR(70)
 );
 
 CREATE TABLE news
 (
     `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `content` TEXT,
+    `content` TEXT(350),
     `date` DATETIME
-);
-
-CREATE TABLE `contact` 
-(
-  `ID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  `user_name` varchar(255) NOT NULL,
-  `user_email` varchar(255) NOT NULL,
-  `subject` text NOT NULL,
-  `content` text NOT NULL
 );
 
 -- Customer

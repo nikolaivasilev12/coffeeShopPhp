@@ -16,26 +16,7 @@ if (isset($_GET["productID"])) {
 </style>
 <div class="container">
     <div class="row justify-content-center">
-        <?php if (!isset($_GET["productID"])) {
-        ?>
-            <div class="col-12">
-                <div class="row justify-content-center">
-                    <div class="col-8" id="shopping-cart" tabindex="1">
-                        <div id="tbl-cart">
-                            <div id="cart-item">
-                                <?php require_once 'components/cart.php'; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-end">
-                    <button class="btn btn-warning mt-2" id="show-cart" onclick="myFunction()" type="button">
-                        Show cart
-                    </button>
-                </div>
-            </div>
-        <?php
-        } else { ?>
+        <?php if (isset($_GET["productID"])) { ?>
     </div>
     <div class="container">
         <div class="row">
@@ -112,7 +93,8 @@ if (isset($_GET["productID"])) {
                     <?php
                     } else {
                         ?>
-                        <img src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+                        
+                        <img src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("assets/productPlaceholder.jpg")); ?>"
                         id="<?php echo $productDetails['productID']; ?>" width="100%">
                     <?php
                     }
@@ -179,9 +161,9 @@ if (isset($_GET["productID"])) {
                         $i = 0;
                     ?>
                         <div class="carousel-item active">
-                            <img class="d-block w-100" 
-                            <?php 
-                            if (isset($value['image'])) 
+                            <img class="d-block w-100"
+                            <?php
+                            if (isset($value['image']))
                             { ?>
                                 src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
                             <?php
@@ -269,24 +251,6 @@ if (isset($_GET["productID"])) {
 <?php
 include("Views/_partials/footer.php");
 ?>
-<script type="text/javascript">
-    $(document).ready(function() {
-        // hide shopping-cart on page load
-        $('#shopping-cart').hide();
-    });
-
-    function myFunction() {
-        var x = document.getElementById("shopping-cart");
-        var y = document.getElementById("show-cart")
-        if (x.style.display === "none") {
-            x.style.display = "block";
-            y.innerHTML = "Hide Cart";
-        } else {
-            x.style.display = "none";
-            y.innerHTML = "Show Cart";
-        }
-    }
-</script>
 <style lang="css">
     .bg-orange {
         background-color: #976C42 !important;
