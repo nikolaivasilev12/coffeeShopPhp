@@ -13,8 +13,8 @@ if (isset($_POST['submit']) && isset($_POST['recaptcha_response'])) { // Form ha
                 // Take action based on the score returned:
                 if ($recaptcha->score >= 0.5) {
                     // Verified!
-                    $to = "somebody@example.com";
-                    $subject = "My subject";
+                    $to = "NikolaiVasilev208@gmail.com";
+                    $subject = $_POST['subject'];
                     $txt = 'You have recieved an email from' . $_POST['user_email'] . '</br>' . 'The message was: ' . $_POST['content'];
 
                     mail($to,$subject,$txt);
