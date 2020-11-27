@@ -161,9 +161,9 @@ if (isset($_GET["productID"])) {
                         $i = 0;
                     ?>
                         <div class="carousel-item active">
-                            <img class="d-block w-100" 
-                            <?php 
-                            if (isset($value['image'])) 
+                            <img class="d-block w-100"
+                            <?php
+                            if (isset($value['image']))
                             { ?>
                                 src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("uploads/{$value['image']}")); ?>"
                             <?php
