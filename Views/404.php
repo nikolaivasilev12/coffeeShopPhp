@@ -1,7 +1,3 @@
-<style>
-        <?php include 'style.css'; ?>
-</style>
-
 <div class="container mt-5">
     <div class="row">
     <div class="col mt-5">

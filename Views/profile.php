@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("Views/_partials/header.php");
 $index = new Index();
 $profileObj = new Profile();
 $profile = $profileObj->getProfileData($_SESSION['customerID']);
@@ -43,7 +43,7 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
     </div>
 </div>
         <?php
-include("footer.php");
+include("Views/_partials/footer.php");
 ?>
 <style>
 .btn-orange{background-color:#976C42;color: #FFF;}

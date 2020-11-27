@@ -35,7 +35,7 @@ if (isset($_POST['submit']) && isset($_POST['recaptcha_response'])) { // Form ha
                 echo ('Account was not created because we failed to recieve a response from the reCaptcha server.');
             }
     }
-include('header.php');
+include('Views/_partials/header.php');
 ?>
 
 <html>

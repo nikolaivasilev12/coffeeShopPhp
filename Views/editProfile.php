@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include('Views/_partials/header.php');
 $profileObj = new Profile();
 $profile = $profileObj->getProfileData($_SESSION['customerID']);
 if (isset($_POST['submit'])) {
