@@ -1,13 +1,16 @@
 <?php
 require_once('Routes.php');
 
-function myErrorHandler($errno, $errstr, $errfile, $errline) {
-  echo "<b>Custom error:</b> [$errno] $errstr<br>";
-  echo " Error on line $errline in $errfile<br>";
+function handleError($errno, $errstr,$error_file,$error_line) {
+  echo "<b>Error:</b> [$errno] $errstr - $error_file:$error_line";
+  echo "<br />";
+  echo "Terminating PHP Script";
+  
+  die();
 }
 
 // Set user-defined error handler function
-set_error_handler("myErrorHandler");
+set_error_handler("handleError");
 
 function __autoload($class_name)
 {
