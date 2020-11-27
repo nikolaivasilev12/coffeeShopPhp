@@ -1,5 +1,5 @@
 <?php
-include("Views/_partials/header.php");
+include("header.php");
 // START FORM PROCESSING
 if ($session->logged_in()) {
     $redirect = new Redirector("index");

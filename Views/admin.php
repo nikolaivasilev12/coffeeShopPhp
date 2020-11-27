@@ -5,7 +5,7 @@ if(empty($_SESSION)){
 if ($_SESSION['permission'] !== 'admin') {
     $session->redirect();
 }
-include("Views/_partials/header.php");
+include("header.php");
 ?>
 <div class="container">
     <div class="row justify-content-center mt-5">

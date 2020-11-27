@@ -34,10 +34,10 @@ Route::set('edit-company', function() {
     Admin::CreateView('editCompanyInfo');
 });
 Route::set('chat', function() {
-    Controller::CreateChat('chat', 'html');
+    Controller::CreateChat('chat');
 });
 Route::set('botman', function() {
-    Controller::CreateChat('botman', 'php');
+    Controller::CreateView('botman');
 });
 Route::set('checkout', function() {
     Controller::CreateView('checkout');

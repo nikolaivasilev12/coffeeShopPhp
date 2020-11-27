@@ -1,5 +1,5 @@
 <?php
-include("Views/_partials/header.php");
+include("header.php");
 $index = new Index();
 $productsObj = new Products();
 if (isset($_GET["productID"])) {
@@ -267,7 +267,7 @@ if (isset($_GET["productID"])) {
 </div>
 </div>
 <?php
-include("Views/_partials/footer.php");
+include("footer.php");
 ?>
 <script type="text/javascript">
     $(document).ready(function() {

@@ -26,7 +26,7 @@ if (isset($_POST['submit']) && isset($_POST['recaptcha_response'])) { // Form ha
                 echo ('Your message was not sent because we failed to recieve a response from the reCaptcha server.');
             }
     }
-include("Views/_partials/header.php");
+include("header.php");
 $index = new Index();
 ?>
 
@@ -183,12 +183,8 @@ $index = new Index();
                             </form>
                         </div>
 </div>
-
-<style>
-    <?php include ('style.css'); ?>
-</style>
 <?php
-include("Views/_partials/footer.php");
+include("footer.php");
 ?>
 <?php
 require_once('config.php');

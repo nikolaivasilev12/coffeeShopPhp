@@ -5,8 +5,8 @@ class Controller extends DBController {
     public static function CreateView($viewName) {
         require_once("Views/$viewName.php");
     }
-    public static function CreateChat($viewName, $extension) {
-      require_once("Views/components/chatbot/$viewName.$extension");
+    public static function CreateChat($viewName) {
+      require_once("$viewName.html");
     }
     public static function loadJS($viewName) {
       require_once("Views/components/js/$viewName.js");

@@ -1,5 +1,5 @@
 <?php
-include "Views/_partials/header.php";
+include "header.php";
 $admin = new Admin();
 $category = new Categories();
 /* If user trying to reach page without loggin in - this prevents them */
