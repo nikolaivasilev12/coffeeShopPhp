@@ -83,7 +83,9 @@ $PageTitle = "Coffee Shop";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+    <?php 
+    if (strpos($_SERVER['REQUEST_URI'], 'checkout') === false) {
+    ?>
     <div class="row justify-content-end">
         <div class="col-6">
             <div id="b1" class="containerTab hidden" style="background:#fff;" >
@@ -114,6 +116,9 @@ $PageTitle = "Coffee Shop";
             </span>
         </button>
     </div>
+    <?php 
+    }
+    ?>
     </div>
 
     <script type="text/javascript">
@@ -175,13 +180,13 @@ $PageTitle = "Coffee Shop";
     background: orange;
     color: #fff;
     text-align: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .containerTab {
     position: fixed;
-    bottom: 7em;
-    right: 1.2em;
+    bottom: 6.7em;
+    right: 0.9em;
     padding: 20px;
     color: white;
     z-index: 15;
