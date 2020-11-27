@@ -31,7 +31,7 @@ $index = new Index();
 ?>
 
 <!-- CART -->
-<div class="col-12">
+<!-- <div class="col-12">
         <div class="row justify-content-end">
             <div class="col-5" id="shopping-cart" tabindex="1" style="border: solid 1px orange;">
                 <div id="tbl-cart">
@@ -41,7 +41,7 @@ $index = new Index();
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 <div class="container-fluid">
     <?php
     if (isset($_SESSION['permission'])) {

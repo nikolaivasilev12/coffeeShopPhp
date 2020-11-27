@@ -192,16 +192,6 @@ for ($x = 0; $x <= $pages; $x++) {
 </div>
 <script> 
 $("[data-toggle=popover]").popover();
-function openCart() {
-        var x = document.getElementById("shopping-cart");
-        var y = document.getElementById("show-cart")
-        if (x.style.display === "none") {
-            x.style.display = "block";
-            y.innerHTML = "Hide Cart";
-        } else {
-          // error handling
-        }
-    }
 </script>
 
 <style>
