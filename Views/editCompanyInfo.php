@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include('Views/_partials/header.php');
 
 if($_SESSION['permission'] != 'admin') {
     new Redirector('index');

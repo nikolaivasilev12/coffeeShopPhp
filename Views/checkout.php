@@ -16,7 +16,7 @@ namespace {
     if ($_SESSION['permission'] !== 'admin' && $_SESSION['permission'] !== 'customer') {
         $session->redirect();
     }
-    include('header.php');
+    include('Views/_partials/header.php');
 
 ?>
     <style>
