@@ -18,6 +18,8 @@ if (isset($_POST['submit']) && isset($_POST['recaptcha_response'])) { // Form ha
                     $txt = 'You have recieved an email from' . $_POST['user_email'] . '</br>' . 'The message was: ' . $_POST['content'];
 
                     mail($to,$subject,$txt);
+                    include ('Classes/Redirector.php');
+                    new Redirector('index');
 
                 } else {
                     echo ('Your recaptcha score was not enough to verify you are human.');
@@ -160,22 +162,22 @@ $index = new Index();
                             <form class="col-3 mt-2" action="" method="post">
                                 <div class="form-group">
                                     <label class="font-weight-bold">Name</label>
-                                    <input type="user_name" name="user_name" class="form-control"
+                                    <input maxlength="50" type="user_name" name="user_name" class="form-control"
                                         placeholder="Enter Your Name" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Email</label>
-                                    <input type="user_email" name="user_email" class="form-control"
+                                    <input maxlength="50" type="user_email" name="user_email" class="form-control"
                                         placeholder="Enter Your Email" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Subject</label>
-                                    <input type="subject" name="subject" class="form-control"
+                                    <input maxlength="50" type="subject" name="subject" class="form-control"
                                         placeholder="Enter Your Subject" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold">Message</label>
-                                    <textarea rows="3" type="content" name="content" class="form-control"
+                                    <textarea maxlength="250" rows="3" type="content" name="content" class="form-control"
                                         required></textarea>
                                 </div>
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">

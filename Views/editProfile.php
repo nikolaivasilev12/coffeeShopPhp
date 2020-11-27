@@ -40,21 +40,21 @@ if(!isset($_GET['customerID'])) {
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <label class="labels">First Name</label>
-                            <input name="fname" type="text" class="form-control" placeholder="John" value="<?php echo ($profile['fname']) ?>">
+                            <input maxlength="50" name="fname" type="text" class="form-control" placeholder="John" value="<?php echo ($profile['fname']) ?>">
                         </div>
                         <div class="col-md-6">
                             <label class="labels">Last Name</label>
-                            <input name="lname" type="text" class="form-control" value="<?php echo ($profile['lname']) ?>" placeholder="Doe">
+                            <input maxlength="50" name="lname" type="text" class="form-control" value="<?php echo ($profile['lname']) ?>" placeholder="Doe">
                         </div>
                     </div>
                     <div class="row mt-3 justify-content-start">
                         <div class="col-md-12">
                             <label class="labels">Phone No.</label>
-                            <input name="phoneNr" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['phoneNr']) ?>">
+                            <input maxlength="50" name="phoneNr" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['phoneNr']) ?>">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Email</label>
-                            <input name="email" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['email']) ?>">
+                            <input maxlength="50" name="email" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['email']) ?>">
                         </div>
                         <div class="mt-4 col-12 text-left">
                             <input class="btn btn-primary profile-button" name="submit" type="submit" value="Save Profile"></input>

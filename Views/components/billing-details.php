@@ -1,3 +1,24 @@
+<?php
+
+if ($_SESSION["cart_item"]) {
+	$txt = 'You have ordered these items: <br />';
+	foreach (($_SESSION["cart_item"]) as $key => $cart_item) {
+		$txt .= $cart_item['quantity'] . ' ' . "units" . " ". $cart_item['name'] . ' ' . "for" . ' ' . $cart_item['price'] .  '<br />';
+	}
+}
+
+
+if (isset($_POST['submit'])) {
+$to = $_POST['email'];
+$subject = "You have successfully bought items!";
+
+print($_POST['email']);
+mail($to,$subject,$txt);
+}
+
+
+?>
+
 <div class="col">
 	<div class="row justify-content-center">
 		<h3>

@@ -93,7 +93,8 @@ if (isset($_GET["productID"])) {
                     <?php
                     } else {
                         ?>
-                        <img src="https://unblast.com/wp-content/uploads/2019/05/Paper-Pouch-Packaging-Mockup-2.jpg"
+                        
+                        <img src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("assets/productPlaceholder.jpg")); ?>"
                         id="<?php echo $productDetails['productID']; ?>" width="100%">
                     <?php
                     }
