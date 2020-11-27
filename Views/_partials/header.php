@@ -2,11 +2,10 @@
 if (empty($_SESSION)) {
     $session = new SessionHandle();
 }
-// require('cookies.php');
+require('cookies.php');
 $PageTitle = "Coffee Shop";
 ?>
 <header>
-
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <meta charset="UTF-8">
@@ -25,9 +24,6 @@ $PageTitle = "Coffee Shop";
                 <li class="nav-item">
                     <a class="nav-link" href="product">Products</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="about-us">About us</a>
-                </li> -->
                 <?php
                 if (isset($_SESSION['permission'])) {
                     if ($_SESSION['permission'] === 'customer' || $_SESSION['permission'] === 'admin') { ?>
@@ -49,10 +45,6 @@ $PageTitle = "Coffee Shop";
                 }
                 ?>
             </ul>
-            <!-- <form class="form-inline my-2 my-lg-0 px-4">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
             <?php
             if (isset($_SESSION['permission'])) { ?>
                 <button type="button" class="btn btn-danger"><a class="link" href="logout">Logout!</a> </button>
@@ -171,6 +163,7 @@ $PageTitle = "Coffee Shop";
     position: fixed;
     bottom: 7em;
     right: 1.2em;
+    z-index: 7;
 }
 
 .help-button {
