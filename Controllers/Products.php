@@ -60,6 +60,9 @@ class Products extends Categories
     public function getProductsIds() {
       return $this->array_flatten(self::query("SELECT productID FROM product"));
     }
+    public function getCategoryIds() {
+      return $this->array_flatten(self::query("SELECT categoryID FROM category"));
+    }
     /* Pagination */
     public function getProductsPages($categoryID){
       if($categoryID == 0) {
