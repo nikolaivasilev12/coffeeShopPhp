@@ -68,7 +68,7 @@ if (!isset($_GET['customerID'])) {
     } elseif (isset($_GET['customerID'])) {
         $customerIDs = $profileObj->getCustomerIds();
         if (in_array($_GET['customerID'], $customerIDs)) {
-            if ($_GET['customerID'] === $_SESSION['customerID']) {
+            if ($_GET['customerID'] == $_SESSION['customerID']) {
         ?>
                 <div class="container">
                     <div class="row justify-content-center">
