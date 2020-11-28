@@ -7,9 +7,9 @@
         <div class="col-sm-6 col-sm-offset-3">
             <br />
             <br />
-            <h2 style="color:#0fad00">Success!</h2>
-            <h3>Your payment was successful!</h3>
-            <p style="font-size:20px;color:#5C5C5C;">Thank you for your purchase. You will recieve an email shortly containing your invoice.</p>
+            <h2 style="color:#0fad00"><?php echo('Success!'); ?></h2>
+            <h3><?php echo('Your payment was successful!'); ?></h3>
+            <p style="font-size:20px;color:#5C5C5C;"><?php echo('Thank you for your purchase. You will recieve an email shortly containing your invoice.'); ?></p>
         </div>
     </div>
     <div class="row text-center">
