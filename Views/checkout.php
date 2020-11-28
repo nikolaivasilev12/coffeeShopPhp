@@ -88,8 +88,8 @@ namespace {
             'payment_method_types' => ['card'],
             'line_items' => [$items],
             'mode' => 'payment',
-            'success_url' => 'http://localhost/coffeeShopPhp/checkout-success',
-            'cancel_url' => 'http://localhost/coffeeShopPhp/checkout-fail',
+            'success_url' => 'http://'. BASE_URL .'/checkout-success',
+            'cancel_url' => 'http://'. BASE_URL .'/checkout-fail',
         ]);
         if (isset($_POST['submit'])) {
             require_once __DIR__ . '/../Controllers/Order.php';
