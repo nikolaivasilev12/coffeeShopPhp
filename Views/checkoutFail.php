@@ -7,8 +7,8 @@
         <div class="col-sm-6 col-sm-offset-3">
             <br />
             <br />
-            <h2 style="color: red;">Transaction failed</h2>
-            <p style="font-size:20px;color:#5C5C5C;">The transaction was declined. Please review your payment details and try again.</p>
+            <h2 style="color: red;"><?php echo('Transaction failed'); ?></hh2>
+            <p style="font-size:20px;color:#5C5C5C;"><?php echo('The transaction was declined. Please review your payment details and try again.'); ?></p>
         </div>
     </div>
     <div class="row text-center">
