@@ -3,7 +3,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <div class="container">
-    <div class="row text-center">
+	<div class="row text-center">
         <div class="col-sm-6 col-sm-offset-3">
             <br />
             <br />
@@ -19,13 +19,6 @@
 </div>
 
 <style>
-    .btn-orange {
-        background-color: #976C42;
-        color: #FFF;
-    }
-
-    .btn-orange:hover {
-        background-color: #49291F;
-        color: #FFF;
-    }
+.btn-orange{background-color:#976C42;color: #FFF;}
+.btn-orange:hover{background-color:#49291F;color: #FFF;}
 </style>
