@@ -12,7 +12,6 @@ if (isset($_POST['submit'])) {
 $to = $_POST['email'];
 $subject = "You have successfully bought items!";
 
-print($_POST['email']);
 mail($to,$subject,$txt);
 }
 
