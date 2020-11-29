@@ -9,7 +9,7 @@
                 <img height="650" class="wrapper404 img-fluid"
                 src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("assets/404.png")); ?>"
             >
-                <h1><a id="ohfouroh" href="index">Back to Home</a></h1>
+                <h1><a class="text-warning" href="index">Back to Home</a></h1>
         </div>
     </div>
 </div>

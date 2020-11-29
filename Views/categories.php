@@ -1,10 +1,10 @@
 <div class="container">
     <div class="row justify-content-center">
-        <h1 style="margin-bottom: 3%;">Choose a Category</h1>
+        <h1 class="text-body" style="margin-bottom: 3%;">Choose a Category</h1>
     </div>
     <div class="row justify-content-center">
         <a href="product?categoryID=0">
-            <button style="margin: 5px;" class="btn btn-outline-dark" name="category" type="submit" value="0">All</button>
+            <button style="margin: 5px;" class="btn btn-outline-dark btn-orange" name="category" type="submit" value="0">All</button>
         </a>
 
         <?php
@@ -12,7 +12,7 @@
     foreach ($catArr->getCategory() as $value) {
     ?>
         <a href="product?categoryID=<?php echo $value['categoryID'] ?>">
-            <button class="btn btn-outline-dark" style="margin: 5px;" name="category" type="submit" value="<?php echo $value['categoryID'] ?>"><?php echo $value['name'] ?></button>
+            <button class="btn btn-outline-dark btn-orange" style="margin: 5px;" name="category" type="submit" value="<?php echo $value['categoryID'] ?>"><?php echo $value['name'] ?></button>
         </a>
         <?php
             }
@@ -66,12 +66,12 @@
             </div>
             <div class="product-price"><?php echo $value["price"] . " DKK"; ?></div>
             <?php if ($value['stock'] == 0) {?>
-            <p class="mt-4">
+            <p class="mt-4 text-body">
                 <strong>Out of stock</strong>
             </p>
             <?php
 } else {?>
-            <p>
+            <p class="text-body">
                 Currently in stock:
                 <strong>
                     <?php echo $value["stock"]; ?>
@@ -124,12 +124,12 @@
             </div>
             <div class="product-price"><?php echo $value["price"] . " DKK"; ?></div>
             <?php if ($value['stock'] == 0) {?>
-            <p class="mt-4">
+            <p class="mt-4 text-body">
                 <strong>Out of stock</strong>
             </p>
             <?php
 } else {?>
-            <p>
+            <p class="text-body">
                 Currently in stock:
                 <strong>
                     <?php echo $value["stock"]; ?>
@@ -145,7 +145,6 @@
         ?>
             <a href="product?productID=<?php echo $value['productID'] ?>"></a>
         </div>
-        
 
     <?php
 }
@@ -159,8 +158,8 @@
 <?php
 for ($x = 0; $x <= $pages; $x++) {
     ?>
-    <li class="page-item">
-        <a class="page-link" href="<?php
+    <li class="page-item pl-1 pr-1">
+        <a class="page-link btn-orange" href="<?php
             /* Get the url and parse it checking if it has a php query (variable) */
             $url = $_SERVER['REQUEST_URI'];
             $query = parse_url($url, PHP_URL_QUERY);

@@ -90,8 +90,8 @@ $index = new Index();
                         <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $value['name'] ?></h5>
-                                <p class="card-text"><?php echo $value['description'] ?></p>
-                                <p class="card-text">Price: <?php echo $value['price'] ?></p>
+                                <p class="card-text"><?php echo $value['description'] ?></p> <br>
+                                <p class="card-text">Price: <?php echo $value['price'] ?></p> <br>
                                 <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-orange">View Product</a>
                             </div>
                         </div>
@@ -127,8 +127,8 @@ $index = new Index();
                             <div class="carousel-caption" style="background-color:rgba(0, 0, 0, 0.5);">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $value['name'] ?></h5>
-                                    <p class="card-text"><?php echo $value['description'] ?></p>
-                                    <p class="card-text">Price: <?php echo $value['price'] ?></p>
+                                    <p class="card-text"><?php echo $value['description'] ?></p> <br>
+                                    <p class="card-text">Price: <?php echo $value['price'] ?></p> <br>
                                     <a href="product?productID=<?php echo $value['productID'] ?>" class="btn btn-orange">View Product</a>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ $index = new Index();
     <div class="jumbotron jumbotron-fluid mb-0 mt-5">
         <div class="container">
             <h1 class="display-4">News</h1>
-            <p class="lead"><?php echo ($index->getNews()['content']) ?></p>
+            <p class="lead text-body"><?php echo ($index->getNews()['content']) ?></p>
         </div>
     </div>
 
@@ -181,7 +181,7 @@ $index = new Index();
                                         required></textarea>
                                 </div>
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-                                <button type="submit" name="submit" class="btn btn-primary">Send Email</button>
+                                <button type="submit" name="submit" class="btn btn-orange">Send Email</button>
                             </form>
                         </div>
 </div>

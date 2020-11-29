@@ -93,7 +93,6 @@ if (isset($_GET["productID"])) {
                     <?php
                     } else {
                         ?>
-                        
                         <img src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents("assets/productPlaceholder.jpg")); ?>"
                         id="<?php echo $productDetails['productID']; ?>" width="100%">
                     <?php
@@ -102,17 +101,17 @@ if (isset($_GET["productID"])) {
                 </div>
             </div>
             <div class="col-lg-7">
-                <h5>
+                <h5 class="text-body">
                     <?php echo $productDetails['name'] ?>
                 </h5>
-                <h3>
+                <h3 class="text-body">
                     <?php echo $productDetails['price'] ?> DKK
                 </h3>
                 <ul>
-                    <p class="pb-2 text-left"><b>Description:</b> <br /> <?php echo $productDetails['description'] ?></p>
-                    <p class="pb-2 text-left"><b>Origin:</b> <br /> <?php echo $productDetails['origin'] ?></p>
-                    <p class="pb-2 text-left"><b>Type:</b> <br /> <?php echo $productDetails['type'] ?></p>
-                    <p class="pb-2 text-left"><b>Currently in stock:</b> <br /> <?php echo $productDetails['stock'] ?></p>
+                    <p class="pb-2 text-left text-body"><b>Description:</b> <br /> <?php echo $productDetails['description'] ?></p>
+                    <p class="pb-2 text-left text-body"><b>Origin:</b> <br /> <?php echo $productDetails['origin'] ?></p>
+                    <p class="pb-2 text-left text-body"><b>Type:</b> <br /> <?php echo $productDetails['type'] ?></p>
+                    <p class="pb-2 text-left text-body"><b>Currently in stock:</b> <br /> <?php echo $productDetails['stock'] ?></p>
                 </ul>
             </div>
         </div>
