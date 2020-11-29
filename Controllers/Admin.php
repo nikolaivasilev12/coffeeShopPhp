@@ -108,7 +108,7 @@ class Admin extends Controller {
     public function getOrderAdress($adressId) {
         $adress = self::query("SELECT * FROM `adress` WHERE adressID = ? ", array($adressId));
         if(!empty($adress[0]['postalCode'])){
-            $city = self::query("SELECT * FROM `postalcode` WHERE postalCode = ? ", array($adress[0]['postalCode']));
+            $city = self::query("SELECT * FROM `postalCode` WHERE postalCode = ? ", array($adress[0]['postalCode']));
             return array($this->array_flatten($adress), $this->array_flatten($city));
         } else {
             return;
@@ -131,16 +131,16 @@ class Admin extends Controller {
 
     /* Getting Company's DATA FIRST */
     public function getCompDesc() {
-        return (self::query("SELECT companyDescription FROM companydata"));
+        return (self::query("SELECT companyDescription FROM companyData"));
     }
     public function getCompAddress() {
-        return (self::query("SELECT adress FROM companydata"));
+        return (self::query("SELECT adress FROM companyData"));
     }
     public function getCompPhone() {
-        return (self::query("SELECT phone FROM companydata"));
+        return (self::query("SELECT phone FROM companyData"));
     }
     public function getCompEmail() {
-        return (self::query("SELECT email FROM companydata"));
+        return (self::query("SELECT email FROM companyData"));
     }
 
     public function updateCategory($name, $description, $categoryID) {
