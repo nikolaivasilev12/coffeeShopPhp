@@ -118,7 +118,7 @@ if (isset($_GET["productID"])) {
     </div> <?php  if ($productDetails['stock'] >= 1){
     ?>
     <div class="col-12 mb-5">
-        <button onClick="cartAction('add', '<?php echo $productDetails['productID']; ?>','<?php echo $productDetails["name"]; ?>','<?php echo $productDetails["price"]; ?>','<?php echo $productDetails["stock"]; ?>')" class="btn btn-orange">Add to Shopping Cart</button>
+        <button onclick="openCart('b1'), cartAction('add', '<?php echo $productDetails['productID']; ?>','<?php echo $productDetails["name"]; ?>','<?php echo $productDetails["price"]; ?>','<?php echo $productDetails["stock"]; ?>')" class="btn btn-orange">Add to Shopping Cart</button>
     </div>
     <?php }
             $catObj = new Categories();

@@ -79,7 +79,7 @@
             </p>
             </a>
             <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-orange" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
-                onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>', '<?php echo $value["stock"]; ?>')">
+                onclick="openCart('b1'), cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>', '<?php echo $value["stock"]; ?>')">
                 Add to cart
             </button>
             <?php
@@ -137,7 +137,7 @@
             </p>
             </a>
             <button type="button" id="add_<?php echo $value['productID']; ?>" class="btn btn-orange" data-trigger="focus" data-toggle="popover" data-content="Added to cart"
-                onClick="cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["stock"]; ?>');openCart()">
+                onclick="openCart('b1'), cartAction('add', '<?php echo $value['productID']; ?>','<?php echo $value["name"]; ?>','<?php echo $value["price"]; ?>','<?php echo $value["stock"]; ?>')">
                 Add to cart
             </button>
             <?php
@@ -154,7 +154,6 @@
     <div class="row justify-content-center">
 <nav aria-label="Page navigation example">
 <ul class="pagination">
-<!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li> -->
 <?php
 for ($x = 0; $x <= $pages; $x++) {
     ?>
@@ -193,7 +192,6 @@ for ($x = 0; $x <= $pages; $x++) {
     </li>
     <?php
 } ?>
-<!-- <li class="page-item"><a class="page-link" href="#">Next</a></li>  -->
 </ul>
 </nav>
     </div>
