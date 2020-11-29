@@ -53,12 +53,12 @@ if (!isset($_GET['customerID'])) {
                                 <label class="labels">Phone No.</label>
                                 <input maxlength="20" name="phoneNr" type="text" class="form-control" placeholder="Phone No." value="<?php echo ($profile['phoneNr']) ?>">
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-3">
                                 <label class="labels">Email</label>
                                 <input maxlength="50" name="email" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['email']) ?>">
                             </div>
                             <div class="mt-4 col-12 text-left">
-                                <input class="btn btn-primary btn-orange" name="submit" type="submit" value="Save Profile"></input>
+                                <input class="btn btn-orange" name="submit" type="submit" value="Save Profile"></input>
                             </div>
                         </div>
                     </form>

@@ -24,7 +24,7 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
                                     echo 'You havent set a profile name!';
                                 }
                                 ?></h4>
-                            <p class="text-secondary mb-1 font-weight-bold">Email: <?php echo ($profile['email']); ?></p><br>
+                            <p class="text-secondary mb-1 font-weight-bold">Email: <?php echo ($profile['email']); ?></p>
                             <p class="text-muted font-size-sm font-weight-bold">
                                 <?php
                                 if (strlen($profile['phoneNr']) > 0) {
@@ -32,7 +32,7 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
                                     Phone Number: <?php echo ($profile['phoneNr']) ?>
                                 <?php
                                 }
-                                ?></p> <br>
+                                ?></p>
                             <a class="btn btn-orange mt-2" href="edit-profile">
                                 Edit Personal Information
                             </a>
