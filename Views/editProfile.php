@@ -4,6 +4,7 @@ $profileObj = new Profile();
 $profile = $profileObj->getProfileData($_SESSION['customerID']);
 if (isset($_POST['submit'])) {
     $profileObj->updateProfile($_SESSION['customerID'], $_POST);
+    new Redirector('profile');
 }
 if (isset($_POST['submitPassword'])) {
     $found_user = self::query("SELECT `password` FROM customer WHERE customerID = ? LIMIT 1", array($_SESSION['customerID']));
@@ -32,7 +33,7 @@ if (!isset($_GET['customerID'])) {
                         </div>
                         <div class="col-2 text-right">
                             <a href="edit-profile?customerID=<?php echo $_SESSION['customerID'] ?>">
-                                <input class="btn btn-outline-primary profile-button" type="submit" value="Change Password"></input>
+                                <input class="btn btn-orange" type="submit" value="Change Password"></input>
                             </a>
                         </div>
                     </div>
@@ -50,14 +51,14 @@ if (!isset($_GET['customerID'])) {
                         <div class="row mt-3 justify-content-start">
                             <div class="col-md-12">
                                 <label class="labels">Phone No.</label>
-                                <input maxlength="50" name="phoneNr" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['phoneNr']) ?>">
+                                <input maxlength="20" name="phoneNr" type="text" class="form-control" placeholder="Phone No." value="<?php echo ($profile['phoneNr']) ?>">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">Email</label>
                                 <input maxlength="50" name="email" type="text" class="form-control" placeholder="headline" value="<?php echo ($profile['email']) ?>">
                             </div>
                             <div class="mt-4 col-12 text-left">
-                                <input class="btn btn-primary profile-button" name="submit" type="submit" value="Save Profile"></input>
+                                <input class="btn btn-primary btn-orange" name="submit" type="submit" value="Save Profile"></input>
                             </div>
                         </div>
                     </form>
@@ -75,26 +76,24 @@ if (!isset($_GET['customerID'])) {
                         <div class="mt-5 col-md-5 card">
                             <div class="p-3 py-5">
                                 <div class="row">
-                                    <div class="col-7 mb-3">
-                                        <h3 class="text-left">Edit your profile</h3>
-                                    </div>
+                                        <h3 class="text-left ml-3">Change your Password</h3>
                                 </div>
                                 <form action="" method="post">
                                     <div class="row mt-3 justify-content-start">
                                         <div class="col-md-12">
                                             <label class="labels">Current Password</label>
-                                            <input name="currentPassword" type="text" class="form-control" placeholder="*********">
+                                            <input maxlength="50" name="currentPassword" type="text" class="form-control" placeholder="*********">
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">New Password</label>
-                                            <input name="newPassword" type="text" class="form-control" placeholder="*********">
+                                            <input maxlength="50" name="newPassword" type="text" class="form-control" placeholder="*********">
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Confirm New Password</label>
-                                            <input name="confirmNewPassword" type="text" class="form-control" placeholder="*********">
+                                            <input maxlength="50" name="confirmNewPassword" type="text" class="form-control" placeholder="*********">
                                         </div>
                                         <div class="mt-4 col-12 text-left">
-                                            <input class="btn btn-primary profile-button" name="submitPassword" type="submit" value="Save Password"></input>
+                                            <input class="btn btn-orange" name="submitPassword" type="submit" value="Save Password"></input>
                                         </div>
                                     </div>
                                 </form>
