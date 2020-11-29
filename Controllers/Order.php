@@ -17,11 +17,11 @@ class Order extends Controller
             self::query("UPDATE `product` SET stock = ? WHERE productID = ?", $productLeftInStockParams);
         };
         
-        $postalCodeExists = self::query("SELECT 1 FROM postalcode WHERE postalCode = ? ", array($order['zipcode']));
+        $postalCodeExists = self::query("SELECT 1 FROM postalCode WHERE postalCode = ? ", array($order['zipcode']));
         
         if (!!$postalCodeExists !== true) {
             $postalCodeParams = array($order['zipcode'], $order['city']);
-            self::query("INSERT INTO postalcode (postalCode, city) VALUES ( ? , ? )", $postalCodeParams);
+            self::query("INSERT INTO postalCode (postalCode, city) VALUES ( ? , ? )", $postalCodeParams);
         }
         $adressParams = array($order['adress'], $order['zipcode']);
         self::query("INSERT INTO adress (street, postalCode) VALUES ( ? , ? )", $adressParams);
