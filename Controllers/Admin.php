@@ -190,7 +190,7 @@ class Admin extends Controller {
     /* Edit company's Desc, address, phone no., email */
         public function updateCompanyData($content){
             $params = array($content['companyDescription'], $content['adress'], $content['phone'], $content['email']);
-            self::query("UPDATE companydata SET companyDescription = ? , adress = ? , phone = ? ,
+            self::query("UPDATE companyData SET companyDescription = ? , adress = ? , phone = ? ,
             email = ? WHERE ID = 1", $params);
         }
 
