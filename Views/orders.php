@@ -52,7 +52,7 @@ if (!isset($_GET['orderID'])) {
                             <td>Pending</td>
                             <td><?php echo $value['date'] ?></td>
                             <td>
-                                <a href="orders?orderID=<?php echo $value['orderID'] ?>" class="btn btn-primary">
+                                <a href="orders?orderID=<?php echo $value['orderID'] ?>" class="btn btn-orange ">
                                     Details
                                 </a>
                             </td>
@@ -209,7 +209,7 @@ if (!isset($_GET['orderID'])) {
                 <p>
                     Status: <strong id="order_status">Accepted</strong>
                 </p>
-                <button onclick="updateOrderStatus()" class="btn btn-primary">
+                <button onclick="updateOrderStatus()" class="btn btn-orange">
                     Update Status
                 </button>
             </div>

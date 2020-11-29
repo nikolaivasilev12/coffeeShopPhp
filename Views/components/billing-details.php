@@ -72,7 +72,7 @@ mail($to,$subject,$txt);
 	</div>
 	<div class="row justify-content-center">
 		<div class="col">
-			<button class="btn btn-primary my-3" id="checkout-button" role="link" name="submit" type="submit">
+			<button class="btn btn-orange my-3" id="checkout-button" role="link" name="submit" type="submit">
 				Proceed to payment
 			</button>
 		</div>

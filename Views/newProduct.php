@@ -78,7 +78,7 @@ if (isset($_POST['add'])) {
                     </div>
                     <input type="file" name="file">
                     <div class="form-row col-md-6 mt-5">
-                        <button type="submit" name="add" class="btn btn-primary">Create</button>
+                        <button type="submit" name="add" class="btn btn-orange">Create Product</button>
                     </div>
             </form>
         </div>

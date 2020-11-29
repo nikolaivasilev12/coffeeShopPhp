@@ -16,13 +16,13 @@ include("Views/_partials/header.php");
             <h3 class="mt-5 text-center">
                 Product Controls
             </h3>
-            <a href="new-product" class="btn btn-outline-primary btn-block">
+            <a href="new-product" class="btn btn-orange btn-block">
                 Add Product
             </a>
-            <a href="edit-products" class="btn btn-outline-primary btn-block">
+            <a href="edit-products" class="btn btn-orange btn-block">
                 Edit Products
             </a>
-            <a href="edit-categories" class="btn btn-outline-primary btn-block">
+            <a href="edit-categories" class="btn btn-orange btn-block">
                 Edit Categories
             </a>
         </div>
@@ -30,13 +30,13 @@ include("Views/_partials/header.php");
             <h3 class="mt-5 text-center">
                 News & Company
             </h3>
-            <a href="orders" class="btn btn-outline-primary btn-block">
+            <a href="orders" class="btn btn-orange btn-block">
                 View Orders
             </a>
-            <a href="edit-news" class="btn btn-outline-primary btn-block">
+            <a href="edit-news" class="btn btn-orange btn-block">
                 Edit News
             </a>
-            <a href="edit-company" class="btn btn-outline-primary btn-block">
+            <a href="edit-company" class="btn btn-orange btn-block">
                 Edit Company's Information
             </a>
         </div>

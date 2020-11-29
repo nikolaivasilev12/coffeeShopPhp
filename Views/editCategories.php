@@ -34,7 +34,7 @@ if (isset($_POST['delete'])) {
                             <textarea type="text" name="description" class="form-control"><?php echo $value['description'] ?></textarea>
                         </div>
                         <div class="col-2">
-                            <input type="submit" name="update" class="btn btn-primary btn-block"value="Update"/>
+                            <input type="submit" name="update" class="btn btn-orange btn-block"value="Update"/>
                             <input type="submit" name="delete" class="btn btn-outline-danger btn-block" value="Delete"/>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ if (isset($_POST['delete'])) {
                 <h2>Create a new category</h2>
                 <input type="text" name="name" class="form-control" placeholder="Category name">
                 <input type="text" name="description" class="form-control" placeholder="Description">
-                <input type="submit" class="btn btn-primary btn-block mt-2"name="add" value="Add" />
+                <input type="submit" class="btn btn-orange  btn-block mt-2"name="add" value="Add" />
             </form>
         </div>
     </div>

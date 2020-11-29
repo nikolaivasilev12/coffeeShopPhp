@@ -64,6 +64,7 @@ class Admin extends Controller {
                                 $params = array($fileNameNew, $productID);
                             }
                             self::query("INSERT INTO `image` (`name`, productID) VALUES ( ? , ? )", $params);
+                            new Redirector('admin');
 
                         } else {
                             echo "Your file is too big!";
@@ -174,6 +175,7 @@ class Admin extends Controller {
             $params = array($productID, $categoryID, $productID);
             self::query("UPDATE producthascategory SET productID = ? , categoryID = ?
             WHERE productID = ? ", $params);
+            new Redirector('admin');
         } else {
             $paramsElse = array($productID, $categoryID);
             self::query("INSERT INTO producthascategory (productID, categoryID)
@@ -212,8 +214,6 @@ class Admin extends Controller {
         WHERE productID = ? ", $params);
         $productHasOrder = self::query("SELECT * FROM orderhasproduct
         WHERE productID = ? ", $params);
-        $productHasRating = self::query("SELECT * FROM rating
-        WHERE productID = ? ", $params);
         $productHasImage = self::query("SELECT * FROM `image`
         WHERE productID = ? ", $params);
         if($productHasCategory){
@@ -221,9 +221,6 @@ class Admin extends Controller {
         }
         if ($productHasOrder) {
             self::query("DELETE FROM orderhasproduct WHERE productID = ? ", $params);
-        }
-        if ($productHasRating) {
-            self::query("DELETE FROM rating WHERE productID = ? ", $params);
         }
         if ($productHasImage) {
             /* Delete image column from db */
@@ -237,6 +234,7 @@ class Admin extends Controller {
                 }
         }
         self::query("DELETE FROM product WHERE productID = ? ", $params);
+        new Redirector('admin');
     }
     public function deleteProductImage($image) {
         self::query("DELETE FROM `image` WHERE `name` = ?", array($image));

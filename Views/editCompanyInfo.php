@@ -8,6 +8,11 @@ $index = new Index();
 if (isset($_POST['submit'])) {
     $admin = new Admin();
     $admin->updateCompanyData($_POST);
+    new Redirector('admin');
+}
+elseif (isset($_POST['saveHours'])) {
+    $admin = new Admin();
+    $admin->updateHours($_POST['startingHours'], $_POST['closingHours'], $_POST['ID']);
 }
 ?>
 
@@ -39,7 +44,7 @@ if (isset($_POST['submit'])) {
                     <textarea name="companyDescription" type="text" class="form-control" placeholder="Write your company's description here"><?php echo($index->getCompanyData()['companyDescription']); ?></textarea>
                 </div>
                 <div class="mt-4 col-12 text-left">
-                    <input class="btn btn-primary profile-button" name="submit" type="submit" value="Save Profile"></input>
+                    <input class="btn btn-orange profile-button" name="submit" type="submit" value="Save Information"></input>
                 </div>
             </div>
         </form>
@@ -59,7 +64,7 @@ if (isset($_POST['submit'])) {
                             <input type="text" name="startingHours" value="<?php print_r($value['startingHour']) ?>">
                            <br> Closing at:&nbsp; <br>
                             <input type="text" name="closingHours" value="<?php print_r($value['closingHour']) ?>"> <br>
-                            <button  class="mt-2 btn btn-primary" name="saveHours" type="submit" value="<?php print_r($value) ?>">Submit</button>
+                            <button  class="mt-2 btn btn-orange " name="saveHours" type="submit" value="<?php print_r($value) ?>">Submit</button>
                         </form>
                     </span>
                 </div>

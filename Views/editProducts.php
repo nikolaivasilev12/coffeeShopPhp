@@ -26,6 +26,7 @@ if (isset($_POST['update'])) {
     } else {
         $admin->updateProductDetails($_POST['name'], $_POST['description'], $_POST['price'], $_POST['stock'], $_POST['origin'], $_POST['type'], $_POST['productID']);
     }
+    new Redirector('admin');
 }
 if (isset($_POST['updateCat'])) {
     $admin->updateProductCategory($_POST['productID'], $_POST['categoryID']);
@@ -36,7 +37,7 @@ if (isset($_POST['delete'])) {
 ?>
 <div class="container">
     <div class="row justify-content-center mt-5 mb-4">
-        <h2>Edit Products</h2>
+        <h2>Edit Product</h2>
     </div>
     <div class="row justify-content-center">
         <?php
@@ -112,7 +113,7 @@ if (isset($_POST['delete'])) {
                         </div>
                         <div class="form-group">
                             <label class="mb-0 mt-1 font-weight-bold">Price</label>
-                            <input type="number" value="<?php echo $productDetails['price'] ?>" name="price" class="form-control" placeholder="<?php echo $productDetails['price'] ?>"></input>
+                            <input type="text" value="<?php echo $productDetails['price'] ?>" name="price" class="form-control" placeholder="<?php echo $productDetails['price'] ?>"></input>
                         </div>
                         <div class="form-group">
                             <label class="mb-0 mt-1 font-weight-bold">Stock</label>
@@ -136,7 +137,7 @@ if (isset($_POST['delete'])) {
                         </div>
                     </div>
                     <div class="col-12">
-                        <input class="btn btn-primary" type="submit" name="update" value="Update" />
+                        <input class="btn btn-orange" type="submit" name="update" value="Update Product" />
                         <input class="btn btn-outline-danger"type="submit" name="delete" value="Delete"/>
                     </div>
                 </div>
@@ -171,7 +172,7 @@ if (isset($_POST['delete'])) {
                     </div>
                 </div>
                 <div class="col-12">
-                    <input type="submit" class="btn btn-primary"name="updateCat" value="Update Category" />
+                    <input type="submit" class="btn btn-orange" name="updateCat" value="Update Category" />
                 </div>
             </form>
         </div>
@@ -213,7 +214,7 @@ if (isset($_POST['delete'])) {
             <form action="" method="post" enctype="multipart/form-data">
                 <input type='file' name="file" class="imageUpload"/>
                 <div class="imageOutput"></div>
-                <button type="submit" name="add" class="btn btn-primary">Upload Image</button>
+                <button type="submit" name="add" class="btn btn-orange">Upload Image</button>
             </form>
         </div>
     </div>
