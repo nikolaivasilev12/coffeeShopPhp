@@ -75,13 +75,13 @@ if (!empty($email)) {echo "<p>" . $msg . "</p>";}
                                 <input type="password" name="pass" class="form-control" required
                                     placeholder="Enter Password">
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" name="submit" class="btn btn-orange">Create New User</button>
                             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                         </form>
-                        <a href="login">
-                            <div>
+                        <a href="login" class="mt-3">
+                            <button class="btn btn-outline-dark">
                                 Login Here
-                            </div>
+                            </button>
                         </a>
                     </div>
                 </div>

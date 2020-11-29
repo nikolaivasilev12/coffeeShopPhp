@@ -70,12 +70,12 @@ if (!empty($msg)) {echo "<p>" . $msg . "</p>";}
                                         required>
                                 </div>
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-                                <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" name="submit" class="btn btn-orange">Login</button>
                             </form>
-                            <a href="new-user">
-                                <div>
-                                    Create a new account
-                                </div>
+                            <a href="new-user" class="mt-3">
+                                <button class="btn btn-outline-dark">
+                                    Create a New Account
+                                </button>
                             </a>
                         </div>
                     </div>
