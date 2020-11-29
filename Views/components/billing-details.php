@@ -1,9 +1,9 @@
 <?php
 
 if ($_SESSION["cart_item"]) {
-	$txt = 'You have ordered these items: <br />';
+	$txt = 'You have ordered these items: ';
 	foreach (($_SESSION["cart_item"]) as $key => $cart_item) {
-		$txt .= $cart_item['quantity'] . ' ' . "units" . " ". $cart_item['name'] . ' ' . "for" . ' ' . $cart_item['price'] .  '<br />';
+		$txt .= $cart_item['quantity'] . ' ' . "units" . " ". "of" . " ". $cart_item['name'] . ' ' . "for" . ' ' . $cart_item['price'] . " " . "DKK" . ",";
 	}
 }
 
