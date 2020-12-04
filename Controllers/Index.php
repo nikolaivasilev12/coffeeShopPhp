@@ -13,7 +13,7 @@ class Index extends Controller {
         return $products;
     }
     public function getNews() {
-        return $this->array_flatten(self::query("SELECT * FROM news"));
+        return $this->array_flatten(self::query("SELECT * FROM `news` ORDER BY ID DESC LIMIT 1"));
     }
     public function getCompanyData() {
         return $this->array_flatten(self::query("SELECT * FROM companyData"));

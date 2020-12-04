@@ -85,6 +85,9 @@ class Admin extends Controller {
     public function getCategories() {
         return (self::query("SELECT * FROM category"));
     }
+    public function getAllNews() {
+        return (self::query("SELECT * FROM news"));
+    }
     public function getProducts() {
         $products = (self::query("SELECT * FROM product"));
          /* Check if each product contains an image and if it does add an image to the product's inner array */
@@ -183,8 +186,9 @@ class Admin extends Controller {
         }
     }
     public function updateNews($content){
-        $params = array($content);
-        self::query("UPDATE news SET content = ? WHERE ID = 1", $params);
+        $currentDateTime = new DateTime();
+        $params = array($content, $currentDateTime->format('Y-m-d H:i:s'));
+        self::query("INSERT INTO news (content, `date`) VALUES ( ? , ? )", $params);
     }
 
     /* Edit company's Desc, address, phone no., email */
