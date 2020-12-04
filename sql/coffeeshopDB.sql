@@ -8,11 +8,11 @@ CREATE TABLE customer
     `customerID` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `email` CHAR(150) NOT NULL,
     `password` VARCHAR(150) NOT NULL,
-    `fname` VARCHAR(150) NOT NULL,
-    `lname` VARCHAR (150) NOT NULL,
-    `phoneNr` CHAR(11) NOT NULL,
+    `fname` VARCHAR(150),
+    `lname` VARCHAR (150),
+    `phoneNr` CHAR(11),
     `username` VARCHAR(150) NOT NULL,
-    `stripeID` VARCHAR(255)
+    `stripeID` VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE permission
