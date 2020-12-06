@@ -36,6 +36,9 @@ $profile = $profileObj->getProfileData($_SESSION['customerID']);
                             <a class="btn btn-orange mt-2" href="edit-profile">
                                 Edit Personal Information
                             </a>
+                            <a class="btn btn-orange mt-2" href="order-history">
+                                Order History
+                            </a>
                         </div>
                     </div>
                 </div>
